@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>METRO FOH - LDN Station</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .timeline-card {
+      margin: 14px 0 18px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(20, 53, 90, 0.08);
+    }
+    .timeline-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .timeline-top h3 { margin: 0; font-family: "Space Grotesk", sans-serif; }
+    .timeline-axis {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 10px;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .axis-months {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+    }
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin: 8px 0;
+    }
+    .timeline-label { font-size: 0.83rem; color: #35546f; font-weight: 700; }
+    .timeline-track {
+      height: 26px;
+      border-radius: 999px;
+      background: #eef4fb;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(20, 53, 90, 0.08);
+    }
+    .timeline-bar {
+      position: absolute;
+      top: 3px;
+      bottom: 3px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      padding: 0 10px;
+    }
+    .bar-samples { background: linear-gradient(90deg, #17a2ff, #4bc8ff); }
+    .bar-drawings { background: linear-gradient(90deg, #0a7adf, #1ea5ff); }
+    .bar-procurement { background: linear-gradient(90deg, #5a7ce2, #7d9bff); }
+    .bar-installation { background: linear-gradient(90deg, #18a66d, #36c389); }
+    .timeline-footnote { margin-top: 8px; color: var(--muted); font-size: 0.82rem; }
+    @media (max-width: 760px) {
+      .timeline-axis, .timeline-row { grid-template-columns: 1fr; }
+      .axis-months { font-size: 0.66rem; }
+      .timeline-label { margin-bottom: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-badge">B</div>
+          <div>METRO FOH</div>
+        </div>
+        <nav class="menu">
+          <a href="index.html">Home</a>
+          <a href="ldn.html" class="active">LDN</a>
+          <a href="atl.html">ATL</a>
+          <a href="aec.html">AEC</a>
+          <a href="abp.html">ABP</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-intro">
+      <div class="eyebrow">Station Dashboard</div>
+      <h1 style="margin-top:14px;font-family:'Space Grotesk',sans-serif;">LDN Station Overview</h1>
+      <p>Complete station tracking across sample submissions, shop drawings, procurement, and installation.</p>
+    </section>
+
+    <section class="section-panel">
+      <div class="station-banner">
+        <div>
+          <h2>LDN</h2>
+          <p style="margin-top:8px;color:var(--muted);">Detailed tracker tables for all project phases.</p>
+        </div>
+        <div class="section-kpis" id="stationKpis"></div>
+      </div>
+
+      <div class="status-legend">
+        <span class="legend-item legend-approved"><span class="legend-dot"></span>Approved</span>
+        <span class="legend-item legend-review"><span class="legend-dot"></span>Under Review</span>
+        <span class="legend-item legend-pending"><span class="legend-dot"></span>Pending</span>
+        <span class="legend-item legend-started"><span class="legend-dot"></span>Not Started</span>
+      </div>
+
+      <article class="timeline-card">
+        <div class="timeline-top">
+          <h3>LDN Project Timeline</h3>
+          <span class="hero-pill">Window: Mar 2026 - Dec 2026</span>
+        </div>
+        <div class="timeline-axis">
+          <div></div>
+          <div class="axis-months">
+            <span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+            <span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-label">Sample Submissions</div>
+          <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:18%;">Mar-Apr</div></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-label">Shop Drawings</div>
+          <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-label">Procurement</div>
+          <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-label">Installation</div>
+          <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">May-Dec</div></div>
+        </div>
+        <p class="timeline-footnote">Critical long-lead item: IWS-321E drives completion through November/December 2026.</p>
+      </article>
+
+      <div class="station-sections" id="tablesGrid">
+        <article class="table-card">
+          <h3>Sample Submission Tracker</h3>
+          <p class="small-copy">7 tracked items</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Description</th><th>Form Submission</th><th>Sample Submission</th><th>Approval Status</th><th>Completion Date</th></tr>
+              </thead>
+              <tbody>
+                <tr class="status-row-review"><td>CLG-401C Aluminium Batten</td><td>Submitted</td><td>Pending</td><td><span class="tag tag-review">Under Review</span></td><td>-</td></tr>
+                <tr class="status-row-review"><td>CLG-402 Aluminium Batten</td><td>Submitted</td><td>Pending</td><td><span class="tag tag-review">Under Review</span></td><td>-</td></tr>
+                <tr class="status-row-started"><td>CLG-405 Bulkhead</td><td>To be Submitted</td><td>Not Submitted</td><td><span class="tag tag-started">Not Started</span></td><td>-</td></tr>
+                <tr class="status-row-review"><td>IWS-321E SS Panel</td><td>Submitted</td><td>Pending</td><td><span class="tag tag-review">Under Review</span></td><td>-</td></tr>
+                <tr class="status-row-review"><td>IWS-301E SS Panel</td><td>Submitted</td><td>Pending</td><td><span class="tag tag-review">Under Review</span></td><td>-</td></tr>
+                <tr class="status-row-review"><td>GLA-201C Glass</td><td>Submitted</td><td>Under Review</td><td><span class="tag tag-review">Under Review</span></td><td>-</td></tr>
+                <tr class="status-row-started"><td>DOR-403 Door</td><td>Pending</td><td>Pending</td><td><span class="tag tag-started">Not Started</span></td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="table-card">
+          <h3>Shop Drawings</h3>
+          <p class="small-copy">4 tracked items</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Date</th><th>Completion Date</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>CLG-401C &amp; CLG-410C</td><td>10</td><td>11/03/2026</td><td>21/03/2026</td><td>-</td></tr>
+                <tr><td>CLG-402 + IWS Panels</td><td>10</td><td>23/03/2026</td><td>01/04/2026</td><td>-</td></tr>
+                <tr><td>CLG-405 Bulkhead</td><td>10</td><td>23/03/2026</td><td>01/04/2026</td><td>-</td></tr>
+                <tr><td>CLG-103 Bike Store</td><td>10</td><td>25/03/2026</td><td>03/04/2026</td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="table-card">
+          <h3>Procurement</h3>
+          <p class="small-copy">5 tracked items</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Activity Description</th><th>Lead Time (Days)</th><th>Start Date</th><th>Target Delivery Date</th><th>Completion Date</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>CLG-401C</td><td>60</td><td>16/04/2026</td><td>15/06/2026</td><td>-</td></tr>
+                <tr><td>CLG-402</td><td>55</td><td>24/04/2026</td><td>15/06/2026</td><td>-</td></tr>
+                <tr><td>IWS-321E</td><td>160</td><td>24/04/2026</td><td>30/11/2026</td><td>-</td></tr>
+                <tr><td>IWS-301E</td><td>55</td><td>24/04/2026</td><td>15/06/2026</td><td>-</td></tr>
+                <tr><td>CLG-103</td><td>30</td><td>28/04/2026</td><td>30/05/2026</td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="table-card">
+          <h3>Installation</h3>
+          <p class="small-copy">5 tracked items</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Completion Date</th><th>Completion Date</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>CLG-401C</td><td>10</td><td>15/06/2026</td><td>25/06/2026</td><td>-</td></tr>
+                <tr><td>CLG-402</td><td>10</td><td>15/06/2026</td><td>25/06/2026</td><td>-</td></tr>
+                <tr><td>IWS-321E</td><td>10</td><td>30/11/2026</td><td>10/12/2026</td><td>-</td></tr>
+                <tr><td>IWS-301E</td><td>10</td><td>15/06/2026</td><td>25/06/2026</td><td>-</td></tr>
+                <tr><td>CLG-103</td><td>7</td><td>30/05/2026</td><td>06/06/2026</td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer-note">Use top menu to switch across stations.</div>
+  </div>
+
+  <script src="dashboard-data.js?v=2"></script>
+  <script>
+    const STATION = "LDN";
+    const fallbackData = {
+      stationData: {
+        LDN: {
+          sampleSubmissionTracker: [
+            { description: "CLG-401C Aluminium Batten", formSubmission: "Submitted", sampleSubmission: "Pending", approvalStatus: "Under Review", completionDate: "" },
+            { description: "CLG-402 Aluminium Batten", formSubmission: "Submitted", sampleSubmission: "Pending", approvalStatus: "Under Review", completionDate: "" },
+            { description: "CLG-405 Bulkhead", formSubmission: "To be Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Started", completionDate: "" },
+            { description: "IWS-321E SS Panel", formSubmission: "Submitted", sampleSubmission: "Pending", approvalStatus: "Under Review", completionDate: "" },
+            { description: "IWS-301E SS Panel", formSubmission: "Submitted", sampleSubmission: "Pending", approvalStatus: "Under Review", completionDate: "" },
+            { description: "GLA-201C Glass", formSubmission: "Submitted", sampleSubmission: "Under Review", approvalStatus: "Under Review", completionDate: "" },
+            { description: "DOR-403 Door", formSubmission: "Pending", sampleSubmission: "Pending", approvalStatus: "Not Started", completionDate: "" }
+          ],
+          shopDrawings: [
+            { activityDescription: "CLG-401C & CLG-410C", durationDays: 10, startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "" },
+            { activityDescription: "CLG-402 + IWS Panels", durationDays: 10, startDate: "23/03/2026", targetDate: "01/04/2026", completionDate: "" },
+            { activityDescription: "CLG-405 Bulkhead", durationDays: 10, startDate: "23/03/2026", targetDate: "01/04/2026", completionDate: "" },
+            { activityDescription: "CLG-103 Bike Store", durationDays: 10, startDate: "25/03/2026", targetDate: "03/04/2026", completionDate: "" }
+          ],
+          procurement: [
+            { activityDescription: "CLG-401C", leadTimeDays: 60, startDate: "16/04/2026", targetDeliveryDate: "15/06/2026", completionDate: "" },
+            { activityDescription: "CLG-402", leadTimeDays: 55, startDate: "24/04/2026", targetDeliveryDate: "15/06/2026", completionDate: "" },
+            { activityDescription: "IWS-321E", leadTimeDays: 160, startDate: "24/04/2026", targetDeliveryDate: "30/11/2026", completionDate: "" },
+            { activityDescription: "IWS-301E", leadTimeDays: 55, startDate: "24/04/2026", targetDeliveryDate: "15/06/2026", completionDate: "" },
+            { activityDescription: "CLG-103", leadTimeDays: 30, startDate: "28/04/2026", targetDeliveryDate: "30/05/2026", completionDate: "" }
+          ],
+          installation: [
+            { activityDescription: "CLG-401C", durationDays: 10, startDate: "15/06/2026", targetCompletionDate: "25/06/2026", completionDate: "" },
+            { activityDescription: "CLG-402", durationDays: 10, startDate: "15/06/2026", targetCompletionDate: "25/06/2026", completionDate: "" },
+            { activityDescription: "IWS-321E", durationDays: 10, startDate: "30/11/2026", targetCompletionDate: "10/12/2026", completionDate: "" },
+            { activityDescription: "IWS-301E", durationDays: 10, startDate: "15/06/2026", targetCompletionDate: "25/06/2026", completionDate: "" },
+            { activityDescription: "CLG-103", durationDays: 7, startDate: "30/05/2026", targetCompletionDate: "06/06/2026", completionDate: "" }
+          ]
+        }
+      },
+      sectionDefinitions: [
+        { key: "sampleSubmissionTracker", title: "Sample Submission Tracker", columns: ["Description", "Form Submission", "Sample Submission", "Approval Status", "Completion Date"] },
+        { key: "shopDrawings", title: "Shop Drawings", columns: ["Activity Description", "Duration (Days)", "Start Date", "Target Date", "Completion Date"] },
+        { key: "procurement", title: "Procurement", columns: ["Activity Description", "Lead Time (Days)", "Start Date", "Target Delivery Date", "Completion Date"] },
+        { key: "installation", title: "Installation", columns: ["Activity Description", "Duration (Days)", "Start Date", "Target Completion Date", "Completion Date"] }
+      ],
+      stationMetrics: function (station) {
+        const data = this.stationData[station];
+        const sample = data.sampleSubmissionTracker;
+        const totalItems = Object.values(data).reduce((sum, items) => sum + items.length, 0);
+        const completedItems = Object.values(data).reduce((sum, items) => sum + items.filter((item) => item.completionDate).length, 0);
+        const progress = totalItems ? Math.round((completedItems / totalItems) * 100) : 0;
+        const approved = sample.filter((item) => item.approvalStatus === "Approved").length;
+        const review = sample.filter((item) => item.approvalStatus === "Under Review").length;
+        const pending = sample.filter((item) => item.approvalStatus === "Pending" || item.approvalStatus === "Not Started").length;
+        let overallStatus = "Needs Attention";
+        if (progress >= 55) overallStatus = "On Track";
+        else if (progress >= 25) overallStatus = "In Progress";
+        return { totalItems, completedItems, progress, approved, review, pending, overallStatus };
+      },
+      buildTable: function (section, rows) {
+        const rowItems = Array.isArray(rows) ? rows : [];
+        const tag = (status) => {
+          if (status === "Approved") return '<span class="tag tag-approved">Approved</span>';
+          if (status === "Under Review") return '<span class="tag tag-review">Under Review</span>';
+          if (status === "Not Started") return '<span class="tag tag-started">Not Started</span>';
+          return '<span class="tag tag-pending">Pending</span>';
+        };
+        const rowClass = (status) => {
+          if (status === "Approved") return "status-row-approved";
+          if (status === "Under Review") return "status-row-review";
+          if (status === "Not Started") return "status-row-started";
+          return "status-row-pending";
+        };
+        const bodyRows = rowItems.map((row) => {
+          const values = Object.values(row);
+          return `<tr class="${rowClass(row.approvalStatus || "")}">${values.map((value, index) => {
+            if (index === 3 && row.approvalStatus) return `<td>${tag(value)}</td>`;
+            return `<td>${value || "-"}</td>`;
+          }).join("")}</tr>`;
+        }).join("");
+        return `
+          <article class="table-card">
+            <h3>${section.title}</h3>
+            <p class="small-copy">${rowItems.length} tracked items</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr>${section.columns.map((c) => `<th>${c}</th>`).join("")}</tr></thead>
+                <tbody>${bodyRows}</tbody>
+              </table>
+            </div>
+          </article>
+        `;
+      }
+    };
+
+    const dataSource = window.DashboardData && window.DashboardData.stationData ? window.DashboardData : fallbackData;
+    const { stationData, sectionDefinitions, buildTable } = dataSource;
+    const stationMetrics = dataSource.stationMetrics.bind(dataSource);
+
+    function renderStationPage() {
+      const data = stationData[STATION];
+      const metrics = stationMetrics(STATION);
+
+      document.getElementById("stationKpis").innerHTML = [
+        ` <div class="hero-pill">Overall: ${metrics.overallStatus}</div>`,
+        ` <div class="hero-pill">Progress: ${metrics.progress}%</div>`,
+        ` <div class="hero-pill">Items: ${metrics.completedItems}/${metrics.totalItems}</div>`,
+        ` <div class="hero-pill">Approved Samples: ${metrics.approved}</div>`
+      ].join("");
+
+      const tableOrder = ["sampleSubmissionTracker", "shopDrawings", "procurement", "installation"]
+        .map((key) => sectionDefinitions.find((section) => section.key === key))
+        .filter(Boolean);
+
+      document.getElementById("tablesGrid").innerHTML = tableOrder
+        .map((section) => buildTable(section, data[section.key] || []))
+        .join("");
+    }
+
+    renderStationPage();
+  </script>
+</body>
+</html>

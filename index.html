@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>METRO FOH - Metro FOH Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-badge">B</div>
+          <div>METRO FOH</div>
+        </div>
+        <nav class="menu">
+          <a href="index.html" class="active">Home</a>
+          <a href="ldn.html">LDN</a>
+          <a href="atl.html">ATL</a>
+          <a href="aec.html">AEC</a>
+          <a href="abp.html">ABP</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Metro FOH Dashboard</div>
+        <h1>Overall Dashboard Home</h1>
+        <p>
+          This home page keeps the complete dashboard and overall project summary.
+          Each station now has its own dedicated page from the top menu.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-pill">4 stations tracked</div>
+          <div class="hero-pill">Dedicated station pages</div>
+          <div class="hero-pill">Upload-friendly HTML</div>
+        </div>
+      </div>
+
+      <aside class="summary-card">
+        <div>
+          <h3>Project Summary</h3>
+          <p style="margin-top:8px;color:var(--muted);line-height:1.6;">
+            Portfolio-level status pulled from all station datasets.
+          </p>
+        </div>
+        <div class="summary-grid" id="summaryGrid"></div>
+        <div class="overall-progress">
+          <div class="progress-row">
+            <span>Overall Completion</span>
+            <span id="overallProgressText">0%</span>
+          </div>
+          <div class="progress-shell">
+            <div class="progress-fill" id="overallProgressBar" style="width:0%;"></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="section-header">
+      <div>
+        <h2>Station Snapshot</h2>
+        <p>
+          Click any station card or top-menu item to open its full page with all four tables.
+        </p>
+      </div>
+    </div>
+    <section class="stations-overview" id="stationOverview"></section>
+
+    <div class="footer-note">
+      Dashboard on home page and station details split across 4 pages.
+    </div>
+  </div>
+
+  <script src="dashboard-data.js?v=2"></script>
+  <script>
+    const { stationData, stationMetrics } = window.DashboardData;
+
+    function renderSummary() {
+      const metricsByStation = Object.keys(stationData).map(stationMetrics);
+      const stationCount = Object.keys(stationData).length;
+      const totalItems = metricsByStation.reduce((sum, item) => sum + item.totalItems, 0);
+      const completedItems = metricsByStation.reduce((sum, item) => sum + item.completedItems, 0);
+      const approvedSamples = metricsByStation.reduce((sum, item) => sum + item.approved, 0);
+      const averageProgress = stationCount
+        ? Math.round(metricsByStation.reduce((sum, item) => sum + item.progress, 0) / stationCount)
+        : 0;
+
+      const summaryGrid = document.getElementById("summaryGrid");
+      summaryGrid.innerHTML = [
+        { label: "Stations", value: stationCount },
+        { label: "Tracked Items", value: totalItems },
+        { label: "Completed Items", value: completedItems },
+        { label: "Approved Samples", value: approvedSamples }
+      ].map((item) => `
+        <div class="mini-stat">
+          <span>${item.label}</span>
+          <strong>${item.value}</strong>
+        </div>
+      `).join("");
+
+      document.getElementById("overallProgressText").textContent = `${averageProgress}%`;
+      document.getElementById("overallProgressBar").style.width = `${averageProgress}%`;
+    }
+
+    function renderOverviewCards() {
+      const wrap = document.getElementById("stationOverview");
+      wrap.innerHTML = Object.keys(stationData).map((station) => {
+        const metrics = stationMetrics(station);
+        return `
+          <a class="station-card" href="${station.toLowerCase()}.html">
+            <div class="station-top">
+              <div>
+                <div style="color:var(--muted);font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;">Station</div>
+                <div class="station-code">${station}</div>
+              </div>
+              <div class="status-badge ${metrics.overallClass}">${metrics.overallStatus}</div>
+            </div>
+            <p>${metrics.completedItems} of ${metrics.totalItems} items completed across submissions, drawings, procurement, and installation.</p>
+            <div style="margin-top:16px;">
+              <div class="progress-row" style="color:#45617c;margin-bottom:8px;">
+                <span>Progress</span>
+                <span>${metrics.progress}%</span>
+              </div>
+              <div class="progress-shell" style="background:#e7eef6;">
+                <div class="progress-fill" style="width:${metrics.progress}%;background:linear-gradient(90deg,#0b84f3 0%,#58c2ff 100%);"></div>
+              </div>
+            </div>
+            <div class="station-metrics">
+              <div class="metric-box"><span>Approved</span><strong>${metrics.approved}</strong></div>
+              <div class="metric-box"><span>Under Review</span><strong>${metrics.review}</strong></div>
+              <div class="metric-box"><span>Pending</span><strong>${metrics.pending}</strong></div>
+              <div class="metric-box"><span>Tables</span><strong>4</strong></div>
+            </div>
+          </a>
+        `;
+      }).join("");
+    }
+
+    renderSummary();
+    renderOverviewCards();
+  </script>
+</body>
+</html>
