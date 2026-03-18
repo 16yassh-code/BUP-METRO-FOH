@@ -5,13 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>METRO FOH - Metro FOH Tracker</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .portfolio-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      padding: 22px;
+    }
+    .big-progress {
+      padding: 16px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #0b84f3 0%, #58c2ff 100%);
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .big-progress .progress-shell { background: rgba(255, 255, 255, 0.28); height: 14px; }
+    .portfolio-timeline-item { padding: 14px; border: 1px solid rgba(20, 53, 90, 0.08); border-radius: 14px; background: rgba(255, 255, 255, 0.92); margin-bottom: 12px; }
+    .portfolio-timeline-item:last-child { margin-bottom: 0; }
+    .timeline-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .timeline-head strong { font-family: "Space Grotesk", sans-serif; font-size: 1.1rem; }
+    .timeline-track { height: 24px; border-radius: 999px; background: #eaf1f8; border: 1px solid rgba(20, 53, 90, 0.08); position: relative; overflow: hidden; margin: 7px 0; }
+    .timeline-bar { position: absolute; top: 3px; bottom: 3px; border-radius: 999px; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; padding: 0 10px; }
+    .bar-samples { background: linear-gradient(90deg, #17a2ff, #4bc8ff); }
+    .bar-drawings { background: linear-gradient(90deg, #0a7adf, #1ea5ff); }
+    .bar-procurement { background: linear-gradient(90deg, #5a7ce2, #7d9bff); }
+    .bar-installation { background: linear-gradient(90deg, #18a66d, #36c389); }
+  </style>
 </head>
 <body>
   <div class="page-shell">
     <header class="topbar">
       <div class="topbar-inner">
         <div class="brand">
-          <div class="brand-badge">B</div>
           <div>METRO FOH</div>
         </div>
         <nav class="menu">
@@ -61,13 +88,66 @@
 
     <div class="section-header">
       <div>
-        <h2>Station Snapshot</h2>
+        <h2>Portfolio Timeline</h2>
         <p>
-          Click any station card or top-menu item to open its full page with all four tables.
+          One master progress bar and all station timelines stacked one-by-one.
         </p>
       </div>
     </div>
-    <section class="stations-overview" id="stationOverview"></section>
+    <section class="portfolio-panel" id="portfolioTimeline">
+      <div class="big-progress">
+        <div class="progress-row"><span>Overall Project Progress</span><span>0%</span></div>
+        <div class="progress-shell"><div class="progress-fill" style="width:0%;"></div></div>
+      </div>
+
+      <div class="portfolio-timeline-item">
+        <div class="timeline-head">
+          <strong>LDN</strong>
+          <a href="ldn.html" class="hero-pill" style="padding:8px 12px;">Open LDN</a>
+        </div>
+        <div class="progress-row" style="color:#45617c;"><span>Station Progress</span><span>0%</span></div>
+        <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:18%;">Mar-Apr</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">May-Dec</div></div>
+      </div>
+
+      <div class="portfolio-timeline-item">
+        <div class="timeline-head">
+          <strong>ATL</strong>
+          <a href="atl.html" class="hero-pill" style="padding:8px 12px;">Open ATL</a>
+        </div>
+        <div class="progress-row" style="color:#45617c;"><span>Station Progress</span><span>0%</span></div>
+        <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:16%;">Mar-Apr</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">Jun-Dec</div></div>
+      </div>
+
+      <div class="portfolio-timeline-item">
+        <div class="timeline-head">
+          <strong>AEC</strong>
+          <a href="aec.html" class="hero-pill" style="padding:8px 12px;">Open AEC</a>
+        </div>
+        <div class="progress-row" style="color:#45617c;"><span>Station Progress</span><span>0%</span></div>
+        <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:16%;">Mar-Apr</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">Jun-Dec</div></div>
+      </div>
+
+      <div class="portfolio-timeline-item">
+        <div class="timeline-head">
+          <strong>ABP</strong>
+          <a href="abp.html" class="hero-pill" style="padding:8px 12px;">Open ABP</a>
+        </div>
+        <div class="progress-row" style="color:#45617c;"><span>Station Progress</span><span>0%</span></div>
+        <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:12%;">Mar</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:16%;">Mar-Apr</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
+        <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">Jun-Dec</div></div>
+      </div>
+    </section>
 
     <div class="footer-note">
       Dashboard on home page and station details split across 4 pages.
@@ -76,7 +156,30 @@
 
   <script src="dashboard-data.js?v=2"></script>
   <script>
-    const { stationData, stationMetrics } = window.DashboardData;
+    const fallbackDashboardData = {
+      stationData: {
+        LDN: { sampleSubmissionTracker: new Array(7).fill({ completionDate: "" }), shopDrawings: new Array(4).fill({ completionDate: "" }), procurement: new Array(5).fill({ completionDate: "" }), installation: new Array(5).fill({ completionDate: "" }) },
+        ATL: { sampleSubmissionTracker: new Array(5).fill({ completionDate: "" }), shopDrawings: new Array(4).fill({ completionDate: "" }), procurement: new Array(4).fill({ completionDate: "" }), installation: new Array(4).fill({ completionDate: "" }) },
+        AEC: { sampleSubmissionTracker: new Array(5).fill({ completionDate: "" }), shopDrawings: new Array(4).fill({ completionDate: "" }), procurement: new Array(5).fill({ completionDate: "" }), installation: new Array(5).fill({ completionDate: "" }) },
+        ABP: { sampleSubmissionTracker: new Array(6).fill({ completionDate: "" }), shopDrawings: new Array(5).fill({ completionDate: "" }), procurement: new Array(6).fill({ completionDate: "" }), installation: new Array(6).fill({ completionDate: "" }) }
+      },
+      stationMetrics(station) {
+        const data = this.stationData[station];
+        const totalItems = Object.values(data).reduce((sum, items) => sum + items.length, 0);
+        const completedItems = 0;
+        const progress = 0;
+        const approved = 0;
+        const review = 0;
+        const pending = data.sampleSubmissionTracker.length;
+        return { totalItems, completedItems, progress, approved, review, pending, overallStatus: "Needs Attention", overallClass: "status-pending" };
+      }
+    };
+
+    const dashboard = (window.DashboardData && window.DashboardData.stationData && window.DashboardData.stationMetrics)
+      ? window.DashboardData
+      : fallbackDashboardData;
+    const { stationData } = dashboard;
+    const stationMetrics = (station) => dashboard.stationMetrics(station);
 
     function renderSummary() {
       const metricsByStation = Object.keys(stationData).map(stationMetrics);
@@ -105,42 +208,48 @@
       document.getElementById("overallProgressBar").style.width = `${averageProgress}%`;
     }
 
-    function renderOverviewCards() {
-      const wrap = document.getElementById("stationOverview");
-      wrap.innerHTML = Object.keys(stationData).map((station) => {
-        const metrics = stationMetrics(station);
-        return `
-          <a class="station-card" href="${station.toLowerCase()}.html">
-            <div class="station-top">
-              <div>
-                <div style="color:var(--muted);font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;">Station</div>
-                <div class="station-code">${station}</div>
+    function renderPortfolioTimeline() {
+      const ranges = {
+        LDN: { s: "0,18,Mar-Apr", d: "0,14,Mar", p: "11,79,Apr-Nov", i: "22,78,May-Dec" },
+        ATL: { s: "0,16,Mar-Apr", d: "0,14,Mar", p: "11,79,Apr-Nov", i: "22,78,Jun-Dec" },
+        AEC: { s: "0,16,Mar-Apr", d: "0,14,Mar", p: "11,79,Apr-Nov", i: "22,78,Jun-Dec" },
+        ABP: { s: "0,12,Mar", d: "0,16,Mar-Apr", p: "11,79,Apr-Nov", i: "22,78,Jun-Dec" }
+      };
+
+      const all = Object.keys(stationData).map((station) => ({ station, metrics: stationMetrics(station) }));
+      const avg = all.length ? Math.round(all.reduce((sum, x) => sum + x.metrics.progress, 0) / all.length) : 0;
+      const wrap = document.getElementById("portfolioTimeline");
+
+      wrap.innerHTML = `
+        <div class="big-progress">
+          <div class="progress-row"><span>Overall Project Progress</span><span>${avg}%</span></div>
+          <div class="progress-shell"><div class="progress-fill" style="width:${avg}%;"></div></div>
+        </div>
+        ${all.map(({ station, metrics }) => {
+          const r = ranges[station];
+          const [sl, sw, st] = r.s.split(",");
+          const [dl, dw, dt] = r.d.split(",");
+          const [pl, pw, pt] = r.p.split(",");
+          const [il, iw, it] = r.i.split(",");
+          return `
+            <div class="portfolio-timeline-item">
+              <div class="timeline-head">
+                <strong>${station}</strong>
+                <a href="${station.toLowerCase()}.html" class="hero-pill" style="padding:8px 12px;">Open ${station}</a>
               </div>
-              <div class="status-badge ${metrics.overallClass}">${metrics.overallStatus}</div>
+              <div class="progress-row" style="color:#45617c;"><span>Station Progress</span><span>${metrics.progress}%</span></div>
+              <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:${sl}%;width:${sw}%;">${st}</div></div>
+              <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:${dl}%;width:${dw}%;">${dt}</div></div>
+              <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:${pl}%;width:${pw}%;">${pt}</div></div>
+              <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:${il}%;width:${iw}%;">${it}</div></div>
             </div>
-            <p>${metrics.completedItems} of ${metrics.totalItems} items completed across submissions, drawings, procurement, and installation.</p>
-            <div style="margin-top:16px;">
-              <div class="progress-row" style="color:#45617c;margin-bottom:8px;">
-                <span>Progress</span>
-                <span>${metrics.progress}%</span>
-              </div>
-              <div class="progress-shell" style="background:#e7eef6;">
-                <div class="progress-fill" style="width:${metrics.progress}%;background:linear-gradient(90deg,#0b84f3 0%,#58c2ff 100%);"></div>
-              </div>
-            </div>
-            <div class="station-metrics">
-              <div class="metric-box"><span>Approved</span><strong>${metrics.approved}</strong></div>
-              <div class="metric-box"><span>Under Review</span><strong>${metrics.review}</strong></div>
-              <div class="metric-box"><span>Pending</span><strong>${metrics.pending}</strong></div>
-              <div class="metric-box"><span>Tables</span><strong>4</strong></div>
-            </div>
-          </a>
-        `;
-      }).join("");
+          `;
+        }).join("")}
+      `;
     }
 
     renderSummary();
-    renderOverviewCards();
+    renderPortfolioTimeline();
   </script>
 </body>
 </html>
