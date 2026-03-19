@@ -6,6 +6,35 @@
   <title>METRO FOH - Metro FOH Tracker</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    .hero-card {
+      background:
+        radial-gradient(circle at 8% 10%, rgba(88, 194, 255, 0.22), transparent 32%),
+        radial-gradient(circle at 88% 18%, rgba(30, 132, 255, 0.2), transparent 30%),
+        linear-gradient(140deg, #ffffff 0%, #eff5ff 60%, #e8f0fb 100%);
+      border: 1px solid rgba(30, 68, 111, 0.16);
+    }
+    .hero-card h1 { max-width: 14ch; }
+    .hero-card p { color: #435367; font-size: 1.03rem; }
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .hero-link {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #0f172a;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hero-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+    }
     .portfolio-panel {
       background: var(--surface);
       border: 1px solid var(--line);
@@ -14,15 +43,54 @@
       backdrop-filter: blur(14px);
       padding: 22px;
     }
+    .glance-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .glance-card {
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(20, 53, 90, 0.12);
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(15, 45, 71, 0.08);
+    }
+    .glance-card .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    .glance-card strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.05rem;
+    }
+    .glance-card .pct {
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .glance-card .progress-shell {
+      background: rgba(15, 23, 42, 0.12);
+      height: 10px;
+    }
+    .glance-card .meta {
+      margin-top: 8px;
+      color: #5b697b;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
     .big-progress {
       padding: 16px;
       border-radius: 16px;
-      background: linear-gradient(135deg, #0b84f3 0%, #58c2ff 100%);
+      background: linear-gradient(135deg, #0b84f3 0%, #42a5ff 48%, #79d2ff 100%);
       color: #fff;
       margin-bottom: 16px;
     }
     .big-progress .progress-shell { background: rgba(255, 255, 255, 0.28); height: 14px; }
-    .portfolio-timeline-item { padding: 14px; border: 1px solid rgba(20, 53, 90, 0.08); border-radius: 14px; background: rgba(255, 255, 255, 0.92); margin-bottom: 12px; }
+    .portfolio-timeline-item { padding: 14px; border: 1px solid rgba(20, 53, 90, 0.08); border-radius: 14px; background: rgba(255, 255, 255, 0.92); margin-bottom: 12px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .portfolio-timeline-item:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(15,45,71,0.1); }
     .portfolio-timeline-item:last-child { margin-bottom: 0; }
     .timeline-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
     .timeline-head strong { font-family: "Space Grotesk", sans-serif; font-size: 1.1rem; }
@@ -32,6 +100,66 @@
     .bar-drawings { background: linear-gradient(90deg, #0a7adf, #1ea5ff); }
     .bar-procurement { background: linear-gradient(90deg, #5a7ce2, #7d9bff); }
     .bar-installation { background: linear-gradient(90deg, #18a66d, #36c389); }
+    .station-rings {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .station-rings-title {
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: #334155;
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+    .station-ring-card {
+      background: #fff;
+      border: 1px solid rgba(20, 53, 90, 0.1);
+      border-radius: 12px;
+      padding: 10px 8px;
+      display: grid;
+      justify-items: center;
+      gap: 6px;
+    }
+    .station-ring {
+      --deg: 0deg;
+      --ring-color: #ef4444;
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      background: conic-gradient(var(--ring-color) var(--deg), #e5e7eb var(--deg));
+      display: grid;
+      place-items: center;
+    }
+    .station-ring::after {
+      content: "";
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(20, 53, 90, 0.08);
+    }
+    .station-ring-value {
+      position: absolute;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .station-ring-wrap {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+    .station-ring-label {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #334155;
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 1100px) { .glance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 680px) { .glance-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 680px) { .station-rings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   </style>
 </head>
 <body>
@@ -56,25 +184,31 @@
       <div class="hero-card">
         <div class="eyebrow">Metro FOH Dashboard</div>
         <h1>Overall Dashboard Home</h1>
-        <p>
-          This home page keeps the complete dashboard and overall project summary.
-          Each station now has its own dedicated page from the top menu.
-        </p>
+        <div class="hero-actions">
+          <a class="hero-link" href="ldn.html">Open LDN</a>
+          <a class="hero-link" href="atl.html">Open ATL</a>
+          <a class="hero-link" href="aec.html">Open AEC</a>
+          <a class="hero-link" href="abp.html">Open ABP</a>
+        </div>
         <div class="hero-meta">
-          <div class="hero-pill">4 stations tracked</div>
-          <div class="hero-pill">Dedicated station pages</div>
-          <div class="hero-pill">Upload-friendly HTML</div>
+          <div class="hero-pill">4 Stations</div>
+          <div class="hero-pill">Live Portfolio View</div>
+          <div class="hero-pill">Progress Sync Active</div>
         </div>
       </div>
 
       <aside class="summary-card">
         <div>
           <h3>Project Summary</h3>
-          <p style="margin-top:8px;color:var(--muted);line-height:1.6;">
-            Portfolio-level status pulled from all station datasets.
-          </p>
         </div>
         <div class="summary-grid" id="summaryGrid"></div>
+        <div class="station-rings-title">Station Progress Rings</div>
+        <div class="station-rings" id="stationRings">
+          <article class="station-ring-card"><div class="station-ring-label">LDN Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:0deg;--ring-color:#9ca3af"></div><span class="station-ring-value">0%</span></div></article>
+          <article class="station-ring-card"><div class="station-ring-label">ATL Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:0deg;--ring-color:#9ca3af"></div><span class="station-ring-value">0%</span></div></article>
+          <article class="station-ring-card"><div class="station-ring-label">AEC Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:0deg;--ring-color:#9ca3af"></div><span class="station-ring-value">0%</span></div></article>
+          <article class="station-ring-card"><div class="station-ring-label">ABP Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:0deg;--ring-color:#9ca3af"></div><span class="station-ring-value">0%</span></div></article>
+        </div>
         <div class="overall-progress">
           <div class="progress-row">
             <span>Overall Completion</span>
@@ -263,7 +397,47 @@
       `;
     }
 
+    function renderStationRings() {
+      const grid = document.getElementById("stationRings");
+      if (!grid) return;
+      const stations = Object.keys(stationData).map((station) => {
+        const metrics = stationMetrics(station);
+        const stored = JSON.parse(localStorage.getItem(`metro_foh_progress_${station}`) || "null");
+        return {
+          station,
+          ...(stored
+            ? { ...metrics, progress: stored.progress, completedItems: stored.completedItems, totalItems: stored.totalItems }
+            : metrics)
+        };
+      });
+
+      const ringColor = (pct) => {
+        if (pct >= 80) return "#10b981";
+        if (pct >= 50) return "#3b82f6";
+        if (pct >= 1) return "#f59e0b";
+        return "#9ca3af";
+      };
+
+      const labelMap = {
+        LDN: "LDN Page",
+        ATL: "ATL Page",
+        AEC: "AEC Page",
+        ABP: "ABP Page"
+      };
+
+      grid.innerHTML = stations.map((item) => `
+        <article class="station-ring-card">
+          <div class="station-ring-label">${labelMap[item.station] || item.station}</div>
+          <div class="station-ring-wrap">
+            <div class="station-ring" style="--deg:${Math.round((item.progress / 100) * 360)}deg;--ring-color:${ringColor(item.progress)}"></div>
+            <span class="station-ring-value">${item.progress}%</span>
+          </div>
+        </article>
+      `).join("");
+    }
+
     renderSummary();
+    renderStationRings();
     renderPortfolioTimeline();
     syncHomeProgress();
   </script>
