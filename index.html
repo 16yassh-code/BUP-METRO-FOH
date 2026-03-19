@@ -47,6 +47,7 @@
           <a href="atl.html">ATL</a>
           <a href="aec.html">AEC</a>
           <a href="abp.html">ABP</a>
+          <a href="product-specification.html">Product Specification</a>
         </nav>
       </div>
     </header>
@@ -154,7 +155,8 @@
     </div>
   </div>
 
-  <script src="dashboard-data.js?v=2"></script>
+  <script src="dashboard-data.js?v=3"></script>
+  <script src="persistence.js?v=3"></script>
   <script>
     const fallbackDashboardData = {
       stationData: {
@@ -182,7 +184,13 @@
     const stationMetrics = (station) => dashboard.stationMetrics(station);
 
     function renderSummary() {
-      const metricsByStation = Object.keys(stationData).map(stationMetrics);
+      const metricsByStation = Object.keys(stationData).map((station) => {
+        const metrics = stationMetrics(station);
+        const stored = JSON.parse(localStorage.getItem(`metro_foh_progress_${station}`) || "null");
+        return stored
+          ? { ...metrics, progress: stored.progress, completedItems: stored.completedItems, totalItems: stored.totalItems }
+          : metrics;
+      });
       const stationCount = Object.keys(stationData).length;
       const totalItems = metricsByStation.reduce((sum, item) => sum + item.totalItems, 0);
       const completedItems = metricsByStation.reduce((sum, item) => sum + item.completedItems, 0);
@@ -216,7 +224,14 @@
         ABP: { s: "0,12,Mar", d: "0,16,Mar-Apr", p: "11,79,Apr-Nov", i: "22,78,Jun-Dec" }
       };
 
-      const all = Object.keys(stationData).map((station) => ({ station, metrics: stationMetrics(station) }));
+      const all = Object.keys(stationData).map((station) => {
+        const metrics = stationMetrics(station);
+        const stored = JSON.parse(localStorage.getItem(`metro_foh_progress_${station}`) || "null");
+        const merged = stored
+          ? { ...metrics, progress: stored.progress, completedItems: stored.completedItems, totalItems: stored.totalItems }
+          : metrics;
+        return { station, metrics: merged };
+      });
       const avg = all.length ? Math.round(all.reduce((sum, x) => sum + x.metrics.progress, 0) / all.length) : 0;
       const wrap = document.getElementById("portfolioTimeline");
 
@@ -250,6 +265,7 @@
 
     renderSummary();
     renderPortfolioTimeline();
+    syncHomeProgress();
   </script>
 </body>
 </html>

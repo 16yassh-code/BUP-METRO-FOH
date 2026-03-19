@@ -36,6 +36,7 @@
           <a href="atl.html" class="active">ATL</a>
           <a href="aec.html">AEC</a>
           <a href="abp.html">ABP</a>
+          <a href="product-specification.html">Product Specification</a>
         </nav>
       </div>
     </header>
@@ -53,6 +54,16 @@
           <p style="margin-top:8px;color:var(--muted);">Detailed tracker tables for all project phases.</p>
         </div>
         <div class="section-kpis" id="stationKpis"></div>
+      </div>
+
+      <div class="overall-progress" style="margin-bottom:12px;">
+        <div class="progress-row">
+          <span>Station Completion</span>
+          <span id="stationProgressText">0%</span>
+        </div>
+        <div class="progress-shell">
+          <div class="progress-fill" id="stationProgressBar" style="width:0%;"></div>
+        </div>
       </div>
 
       <div class="status-legend">
@@ -126,7 +137,8 @@
     <div class="footer-note">Use top menu to switch across stations.</div>
   </div>
 
-  <script src="dashboard-data.js?v=2"></script>
+  <script src="dashboard-data.js?v=3"></script>
+  <script src="persistence.js?v=3"></script>
   <script>
     const STATION = "ATL";
     const fallbackData = {
@@ -230,6 +242,11 @@
         ` <div class="hero-pill">Approved Samples: ${metrics.approved}</div>`
       ].join("");
 
+      const stationProgressTextEl = document.getElementById("stationProgressText");
+      const stationProgressBarEl = document.getElementById("stationProgressBar");
+      if (stationProgressTextEl) stationProgressTextEl.textContent = `${metrics.progress}%`;
+      if (stationProgressBarEl) stationProgressBarEl.style.width = `${metrics.progress}%`;
+
       const tableOrder = ["sampleSubmissionTracker", "shopDrawings", "procurement", "installation"]
         .map((key) => sectionDefinitions.find((section) => section.key === key))
         .filter(Boolean);
@@ -239,7 +256,108 @@
         .join("");
     }
 
+    function initLiveProgressTracker() {
+      const formatDateDisplay = (isoDate) => {
+        if (!isoDate) return "-";
+        const [y, m, d] = isoDate.split("-");
+        if (!y || !m || !d) return isoDate;
+        return `${d}/${m}/${y}`;
+      };
+
+      const parseDateToIso = (text) => {
+        const value = (text || "").trim();
+        if (!value || value === "-") return "";
+        if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+        const match = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+        if (!match) return "";
+        return `${match[3]}-${match[2]}-${match[1]}`;
+      };
+
+      const makeEditable = () => {
+        // Editing disabled intentionally for fixed progress validation.
+      };
+
+      const recalc = () => {
+        const rows = Array.from(document.querySelectorAll("#tablesGrid .table-card tbody tr"));
+        const totalItems = rows.length;
+        const completedItems = rows.filter((row) => {
+          const cells = row.querySelectorAll("td");
+          const completion = (cells[cells.length - 1]?.textContent || "").trim().toLowerCase();
+          return !!completion && completion !== "-";
+        }).length;
+        const progress = totalItems ? Math.round((completedItems / totalItems) * 100) : 0;
+        const overallStatus = progress >= 55 ? "On Track" : (progress >= 25 ? "In Progress" : "Needs Attention");
+
+        document.getElementById("stationKpis").innerHTML = [
+          `<div class="hero-pill">Overall: ${overallStatus}</div>`,
+          `<div class="hero-pill">Progress: ${progress}%</div>`,
+          `<div class="hero-pill">Items: ${completedItems}/${totalItems}</div>`,
+          `<div class="hero-pill">Live Sync: On</div>`
+        ].join("");
+
+        const stationProgressTextEl = document.getElementById("stationProgressText");
+        const stationProgressBarEl = document.getElementById("stationProgressBar");
+        if (stationProgressTextEl) stationProgressTextEl.textContent = `${progress}%`;
+        if (stationProgressBarEl) stationProgressBarEl.style.width = `${progress}%`;
+
+        const progressPayload = {
+          progress,
+          completedItems,
+          totalItems,
+          updatedAt: new Date().toISOString()
+        };
+        localStorage.setItem(`metro_foh_progress_${STATION}`, JSON.stringify(progressPayload));
+        if (typeof window.autoPersistStationProgress === "function") {
+          window.autoPersistStationProgress(progressPayload);
+        }
+      };
+
+      makeEditable();
+      recalc();
+      document.getElementById("tablesGrid").addEventListener("input", recalc);
+      document.getElementById("tablesGrid").addEventListener("blur", recalc, true);
+      document.getElementById("tablesGrid").addEventListener("change", recalc, true);
+    }
+
     renderStationPage();
+    initLiveProgressTracker();
+    attachPersistence();
+  </script>
+<script>
+    (function forceAtlProgressFromTable() {
+      function recalcFromDom() {
+        const rows = Array.from(document.querySelectorAll("#tablesGrid .table-card tbody tr"));
+        const total = rows.length;
+        const completed = rows.filter((row) => {
+          const cells = row.querySelectorAll("td");
+          const completion = (cells[cells.length - 1]?.textContent || "").trim();
+          return completion && completion !== "-";
+        }).length;
+        const pct = total ? Math.round((completed / total) * 100) : 0;
+
+        const textEl = document.getElementById("stationProgressText");
+        const barEl = document.getElementById("stationProgressBar");
+        if (textEl) textEl.textContent = `${pct}%`;
+        if (barEl) barEl.style.width = `${pct}%`;
+
+        const kpiWrap = document.getElementById("stationKpis");
+        if (kpiWrap) {
+          kpiWrap.innerHTML = [
+            `<div class="hero-pill">Overall: ${pct >= 55 ? "On Track" : (pct >= 25 ? "In Progress" : "Needs Attention")}</div>`,
+            `<div class="hero-pill">Progress: ${pct}%</div>`,
+            `<div class="hero-pill">Items: ${completed}/${total}</div>`,
+            `<div class="hero-pill">Live Sync: On</div>`
+          ].join("");
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", recalcFromDom);
+      } else {
+        recalcFromDom();
+      }
+      setTimeout(recalcFromDom, 200);
+    })();
   </script>
 </body>
 </html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>METRO FOH - Product Specification</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .section-panel {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #f6f8fb 100%);
+    }
+
+    .section-header {
+      margin-top: 16px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(20, 53, 90, 0.1);
+    }
+
+    .section-header h2 {
+      margin: 0 0 2px;
+      font-size: 1.35rem;
+      letter-spacing: 0.01em;
+      color: #13283c;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: #4b6278;
+    }
+
+    .spec-shell {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .spec-accordion {
+      border: 1px solid rgba(24, 50, 78, 0.14);
+      border-radius: 14px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(16, 34, 56, 0.06);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .spec-accordion:hover {
+      border-color: rgba(24, 50, 78, 0.22);
+      box-shadow: 0 10px 24px rgba(16, 34, 56, 0.1);
+    }
+
+    .spec-accordion summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 48px 14px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #f5f8fc 0%, #edf2f8 100%);
+      color: #1a2f45;
+      position: relative;
+    }
+
+    .spec-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .spec-accordion summary::after {
+      content: "+";
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(21, 59, 96, 0.2);
+      display: grid;
+      place-items: center;
+      color: #114770;
+      background: #fff;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .spec-accordion[open] summary::after {
+      content: "-";
+      background: #dfeefb;
+    }
+
+    .spec-accordion summary .spec-code,
+    .spec-accordion summary span:first-child {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.03em;
+      color: #0c4a78;
+      border: 1px solid rgba(12, 74, 120, 0.2);
+      background: rgba(12, 74, 120, 0.08);
+      border-radius: 999px;
+      padding: 4px 9px;
+      white-space: nowrap;
+    }
+
+    .spec-accordion summary span:nth-child(2) {
+      color: #1f3348;
+      font-size: 0.96rem;
+      line-height: 1.25;
+    }
+
+    .spec-content {
+      padding: 12px;
+      border-top: 1px solid rgba(20, 53, 90, 0.1);
+      background: #fff;
+      overflow-x: auto;
+    }
+
+    .spec-content .table-wrap {
+      border-radius: 10px;
+      border: 1px solid rgba(18, 44, 71, 0.12);
+      overflow: hidden;
+    }
+
+    .spec-content table {
+      margin: 0;
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+    }
+
+    .spec-content thead th {
+      background: #16324d;
+      color: #eef5fb;
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      padding: 10px 10px;
+    }
+
+    .spec-content tbody td {
+      background: #fbfdff;
+      color: #162a3d;
+      line-height: 1.45;
+      vertical-align: top;
+      padding: 10px 10px;
+    }
+
+    .spec-content tbody tr:nth-child(even) td {
+      background: #f5f8fc;
+    }
+
+    @media (max-width: 760px) {
+      .section-panel {
+        padding: 14px;
+        border-radius: 12px;
+      }
+
+      .section-header h2 {
+        font-size: 1.12rem;
+      }
+
+      .spec-accordion summary {
+        padding: 12px 42px 12px 12px;
+      }
+
+      .spec-accordion summary span:nth-child(2) {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div>METRO FOH</div>
+        </div>
+        <nav class="menu">
+          <a href="index.html">Home</a>
+          <a href="ldn.html">LDN</a>
+          <a href="atl.html">ATL</a>
+          <a href="aec.html">AEC</a>
+          <a href="abp.html">ABP</a>
+          <a href="product-specification.html" class="active">Product Specification</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="section-panel">
+      <div class="section-header" style="margin-top:0;">
+        <div>
+          <h2>Products for ABP</h2>
+          <p>Accordion register of ABP product specifications in standard table format.</p>
+        </div>
+      </div>
+
+      <div class="spec-shell">
+        <details class="spec-accordion" open>
+          <summary><span class="spec-code">INS-101</span><span>- Mineral Fibre Insulation</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>INS-101</td>
+                    <td>0431 2.38</td>
+                    <td>Mineral fibre insulation, 50mm thick, nominal density 24 kg/m3, foil faced (internal walls).</td>
+                    <td>Thermal resistance R1.5. Provide and install where shown.</td>
+                    <td>Provide independently certified test data / arrange accredited testing per Section 0431 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">INS-102</span><span>- Mineral Fibre Insulation</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>INS-102</td>
+                    <td>0431 2.39</td>
+                    <td>Mineral fibre insulation, 100mm thick, 24 kg/m³, foil faced.</td>
+                    <td>Thermal resistance R2.7.</td>
+                    <td>Certified test data / accredited testing per Section 0431 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">INS-201</span><span>- Acoustic Insulation</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>INS-201</td>
+                    <td>0522 2.12</td>
+                    <td>CSR Martini Absorb XXHD, 60kg/m³, min 50mm, black.</td>
+                    <td>R1.45, NRC 0.9.</td>
+                    <td>Certified test data per Section 0522 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">CLG-401</span><span>- Metal Batten Ceiling</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CLG-401</td>
+                    <td>0541 2.1</td>
+                    <td>40x100 aluminium battens, powdercoat finish, suspended system.</td>
+                    <td>Corrosion protection, aligned gaps (100mm).</td>
+                    <td>Certified test data per Section 0541 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">CLG-401</span><span>- Access Panels</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CLG-401</td>
+                    <td>0541 2.1</td>
+                    <td>Same as CLG-401 Metal Batten Ceiling specification.</td>
+                    <td>Same as CLG-401.</td>
+                    <td>Certified test data per Section 0541 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">CLG-410D</span><span>- Metal Pan Ceiling</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CLG-410D</td>
+                    <td>0531 2.15</td>
+                    <td>Metal pan ceiling, Interpon colour.</td>
+                    <td>Free area 60%.</td>
+                    <td>Certified test data per Section 0531 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">CLG-410H</span><span>- Mesh Panel Ceiling</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CLG-410H</td>
+                    <td>0531 2.13</td>
+                    <td>Expanded aluminium mesh panels, 3mm thick.</td>
+                    <td>Free area 60%, removable panels.</td>
+                    <td>Certified test data per Section 0531 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">IWS-204D</span><span>- Perforated Aluminium Wall Panel</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>IWS-204D</td>
+                    <td>0522 2.19</td>
+                    <td>3mm perforated aluminium, 30% free area.</td>
+                    <td>Pattern alignment, removable panels.</td>
+                    <td>Certified test data per Section 0522 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">IWS-321</span><span>- Stainless Steel Wall Panel System</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>IWS-321</td>
+                    <td>0522 2.49</td>
+                    <td>Rimex ColourTex Pinstripe, Grade 316 SS, 0.8mm.</td>
+                    <td>Anti-fingerprint, aligned joints.</td>
+                    <td>Certified test data per Section 0522 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">IWS-211</span><span>- Flat Aluminium Panel System</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>IWS-211</td>
+                    <td>0522 2.29</td>
+                    <td>3mm aluminium sheet with folded edges.</td>
+                    <td>Removable panels.</td>
+                    <td>Certified test data per Section 0522 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">IWS-220D / 221D</span><span>- Aluminium Trims & Covers</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>IWS-220D</td>
+                    <td>0522 2.1</td>
+                    <td>Stainless steel trims, Rimex Pinstripe.</td>
+                    <td>Sealed joints, corner protection.</td>
+                    <td>Certified test data per Section 0522 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">IWS-222D</span><span>- Mild Steel Cover Sheet</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>IWS-222D</td>
+                    <td>0431 2.13</td>
+                    <td>SS sheet (ASTM 304), 0.9mm, ribbed.</td>
+                    <td>Anti-graffiti, max 2500mm length.</td>
+                    <td>Certified test data per Section 0431 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">IWS-223</span><span>- Cover Sheet with Signage Support</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>IWS-223</td>
+                    <td>0431 2.14</td>
+                    <td>Same as IWS-222 (unpainted SS).</td>
+                    <td>Same as IWS-222.</td>
+                    <td>Certified test data per Section 0431 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">IWS-224</span><span>- Perforated Cover Sheet (Speaker)</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>IWS-224</td>
+                    <td>0431 2.15</td>
+                    <td>SS perforated sheet, Granite finish.</td>
+                    <td>Anti-graffiti, protection.</td>
+                    <td>Certified test data per Section 0431 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">EWS-202</span><span>- Expanded Mesh System</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>EWS-202</td>
+                    <td>0431 2.8</td>
+                    <td>Expanded stainless steel mesh.</td>
+                    <td>Install per facade engineer.</td>
+                    <td>Certified test data per Section 0431 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">ILG-505</span><span>- Vermin/Bird Mesh</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ILG-505</td>
+                    <td>0451 2.40</td>
+                    <td>Stainless steel welded mesh.</td>
+                    <td>Vermin/bird protection.</td>
+                    <td>Material compliance per Section 0451.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+        <details class="spec-accordion">
+          <summary><span class="spec-code">CLG-303</span><span>- Timber Batten Ceiling</span></summary>
+          <div class="spec-content">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Spec Clause</th>
+                    <th>Material</th>
+                    <th>Performance</th>
+                    <th>Testing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CLG-303</td>
+                    <td>0531 2.12</td>
+                    <td>Grandis hardwood battens (50x75), Dulux finish.</td>
+                    <td>50mm spacing, moisture ≤15%.</td>
+                    <td>Certified test data per Section 0531 1.5.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="section-header" style="margin-top:18px;">
+        <div>
+          <h2>Products for ATL</h2>
+          <p>Accordion register of ATL product specifications in standard table format.</p>
+        </div>
+      </div>
+      <div class="spec-shell">
+        <details class="spec-accordion" open><summary><span class="spec-code">INS-101</span><span>- Mineral Fibre Insulation</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>INS-101</td><td>0431 2.38</td><td>Mineral fibre insulation, 50mm thick, nominal density 24 kg/m3, foil faced (internal walls).</td><td>Thermal resistance R1.5. Provide and install where shown.</td><td>Provide independently certified test data / arrange accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">INS-104</span><span>- Thermal Insulation (Soffits)</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>INS-104</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">INS-120</span><span>- Mineral Fibre Insulation (L02)</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>INS-120</td><td>0431 2.40</td><td>Mineral fibre roof insulation, Kingspan AIR-CELL Insulbreak 66 or equivalent.</td><td>Min R1.8. Meet NCC 2022 condensation management. Install per manufacturer; tape all joints and penetrations.</td><td>Provide independently certified test data / arrange accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-401E</span><span>- Metal Batten Ceiling</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401E</td><td>0541 2.1</td><td>40x100 aluminium battens, premium powdercoat, concealed suspended track, 100mm gap.</td><td>Corrosion protection to suit location; maintain alignment and consistent gaps.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">Access Panel</span><span>- 600x600</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>-</td><td>-</td><td>Access panel 600mm x 600mm.</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-410E</span><span>- Metal Pan Ceiling</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-410E</td><td>0531 2.13</td><td>Expanded aluminium mesh panels, 3mm, powdercoat to schedule.</td><td>Free area 60%; removable panels for access.</td><td>Arrange or provide certified test data per Section 0531 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-420E</span><span>- Metal Pan Ceiling with Applied Finish</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-420E</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-201E</span><span>- Applied Finish Metal Wall Panel</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-201E</td><td>0522 2.15</td><td>Applied finish aluminium panel system, 3mm, folded edges; finish per PNT-401A (Section 0345).</td><td>Removable panels for access where required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-204E</span><span>- Applied Finish Perforated Metal Wall Panel</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-204E</td><td>0522 2.19</td><td>Perforated aluminium panel, 3mm, free area 30%, Perftech P2530 pattern, finish per PNT-401A.</td><td>Maintain free area and pattern alignment; removable where required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-204E-ART</span><span>- Perforated Wall Panel with Artwork</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-204E</td><td>0522 2.19</td><td>Applied finish perforated aluminium system with artwork, 3mm, 30% free area, Perftech P2530.</td><td>Maintain free area and alignment; removable where required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-210E</span><span>- Solid Curved Aluminium Panel</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-210E</td><td>0522 2.26</td><td>Rolled solid curved aluminium panel system, 3mm, folded edges; finish per PNT-401A.</td><td>Curved panels to detail; coordinate tolerance and fixing.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-301E</span><span>- Stainless Steel Wall Panel System 1</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-301E</td><td>0522 2.35</td><td>Rimex ColourTex INCO (or equivalent), Grade 316 SS, 0.8mm, folded and bonded to 9mm fibre cement, anti-fingerprint CernoTex.</td><td>Provide trims/corners and sealed joints; protect finish during transport/storage.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-321E</span><span>- Stainless Steel Wall Panel System 2</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-321E</td><td>0522 2.49</td><td>Rimex ColourTex Pinstripe, Grade 316 SS, 0.8mm, folded edges, bonded to 9mm fibre cement, anti-fingerprint CernoTex.</td><td>Maintain alignment and jointing; anti-fingerprint coating mandatory.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-220E</span><span>- Aluminium Trims</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-220E</td><td>0522 2.1</td><td>Stainless capping and trims, Rimex Pinstripe, Grade 316, 0.8mm bonded to 9mm fibre cement, CernoTex coating.</td><td>For corners/upstands; sealed joints where specified.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-221E</span><span>- Removable Aluminium Cover Sheet</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-221E</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-330E</span><span>- Stainless Steel Trims</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-330E</td><td>0522 2.1</td><td>Rimex ColourTex INCO trims/cappings or equivalent, Grade 316, min 0.9mm, No.4 linished finish, anti-graffiti where specified.</td><td>Provide trims/capping/flashing; removable sections where required.</td><td>Certified test data per Section 0522 1.5 and 0552 1.5 where applicable.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-222E</span><span>- Removable Mild Steel Cover Sheet</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-222E</td><td>0431 2.13</td><td>Ribbed metal cover sheets, ASTM 304 SS or equivalent, min 0.9mm, adhesive fixed, max 2500mm panel length, 2mm joints.</td><td>Factory anti-graffiti treatment; protect during transport/storage.</td><td>Provide independently certified test data / accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-223</span><span>- Removable Mild Steel Cover Sheet with Signage Interface</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-223</td><td>0431 2.14</td><td>Metal cover sheets as IWS-222 but unpainted SS.</td><td>Same as IWS-222.</td><td>Provide independently certified test data / accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-224</span><span>- Perforated Mild Steel Cover Sheet for Speaker</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-224</td><td>0431 2.15</td><td>Metal cover sheets as IWS-222 with alternate fastening per facade engineer docs and Granite SS grey finish (or station-specific).</td><td>Factory anti-graffiti; protect during transport/storage.</td><td>Provide independently certified test data / accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">EWS-501</span><span>- Bird Netting/Wire Mesh</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>EWS-501</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">ILG-505</span><span>- Vermin/Bird Proofing Mesh</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>ILG-505</td><td>0451 2.40</td><td>Stainless steel welded mesh, SSWM 06.35 0.8 1226 B3 (or equivalent).</td><td>Vermin/bird exclusion and durability.</td><td>Provide certified material compliance/testing per Section 0451.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-303</span><span>- Block Batten Timber Ceiling</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-303</td><td>0531 2.12</td><td>Grandis hardwood battens (50x75 or 50x50 at run ends), Dulux finish, suspended track, sheltered exterior use.</td><td>50mm spacing; battens max 15% moisture; ends stained black (PNT-701D).</td><td>Arrange or provide certified test data per Section 0531 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-401</span><span>- Aluminium Batten Ceiling</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401</td><td>0541 2.1</td><td>40x100 aluminium battens, premium powdercoat, 100mm gap, concealed suspended track.</td><td>Corrosion protection to suit location; align and maintain consistent gaps.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
+      </div>
+    </div>
+    
+
+      <div class="section-header" style="margin-top:18px;">
+        <div>
+          <h2>Products for AEC</h2>
+          <p>Accordion register of AEC product specifications in standard table format.</p>
+        </div>
+      </div>
+      <div class="spec-shell">
+        <details class="spec-accordion" open><summary><span class="spec-code">CLG-401</span><span>- Metal Batten Ceiling</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401</td><td>0541 2.1</td><td>40x100 aluminium battens. Finish: premium powdercoat. Install on concealed suspended ceiling track. 100mm gap.</td><td>Ensure corrosion protection suitable for location; align and maintain consistent gaps.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-404F</span><span>- Ceiling System</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-404F</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-410</span><span>- Mesh Panel Ceiling</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-410</td><td>0531 2.13</td><td>Expanded aluminium mesh panels, 3mm thick, powdercoat finish.</td><td>Free area 60%. Panels removable for access where required.</td><td>Arrange or provide certified test data per Section 0531 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-420</span><span>- Metal Pan Ceiling</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-420</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-101</span><span>- Access Panel for CLG-101</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-101</td><td>0531 2.3</td><td>Suspended plasterboard ceiling system (13mm) with channels; autex thermaline blanket above.</td><td>Allow for lighting drops; ceilings graded. Comply with AS 2589, AS/NZS 2311 and AS/NZS 2785 where applicable.</td><td>Arrange or provide certified test data per Section 0531 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-103</span><span>- Access Panel for CLG-103</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-103</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-102</span><span>- Access Panel for CLG-102</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-102</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-131</span><span>- Access Panel for CLG-131</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-131</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-401</span><span>- Access Panel for CLG-401</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401</td><td>0541 2.1</td><td>40x100 aluminium battens. Finish: premium powdercoat. Install on concealed suspended ceiling track. 100mm gap.</td><td>Ensure corrosion protection suitable for location; align and maintain consistent gaps.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-202</span><span>- Access Panel for CLG-202</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-202</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-201F</span><span>- Applied Finish Metal Wall Panel System</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-201F</td><td>0522 2.15</td><td>Applied finish metal wall panel system (aluminium panels with folded edges), 3mm. Finish per PNT-401A, Section 0345.</td><td>Removable panels for access where required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-204F</span><span>- Applied Finish Perforated Metal Wall Panel System</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-204F</td><td>0522 2.19</td><td>Perforated aluminium panel, 3mm, 30% free area, Perftech P2530 pattern. Finish per PNT-401A Section 0345.</td><td>Maintain free area; align perforation; removable panels where required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-204F-ART</span><span>- Perforated Wall Panel with Artwork</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-204F</td><td>0522 2.19</td><td>Applied finish perforated aluminium system with artwork, 3mm, 30% free area, Perftech P2530.</td><td>Maintain free area; align perforation; removable where required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-205</span><span>- Perforated Aluminium Cladding Panel (Black)</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-205</td><td>0522 2.25</td><td>Perforated aluminium cladding panel, black powdercoat, Locker Group R02040 (2mm dia, pitch 3mm).</td><td>Panel alignment to match below; removable if required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-210F</span><span>- Applied Finish Solid Curved Aluminium Panel System</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-210F</td><td>0522 2.26</td><td>Rolled aluminium sheet with folded edges, 3mm. Finish per PNT-401A Section 0345.</td><td>Curved panels to detail; coordinate tolerance and fixing system.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-222F</span><span>- Removable Mild Steel Cover Sheet</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-222F</td><td>0431 2.13</td><td>Ribbed metal cover sheets for exposed SS roof structure, ASTM 304 SS or equivalent, min 0.9mm, No.4 linished, adhesive fixed, max 2500mm length.</td><td>Factory anti-graffiti treatment; protect for transport/storage.</td><td>Provide independently certified test data / arrange accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-301F</span><span>- Stainless Steel Wall Panel System 1</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-301F</td><td>0522 2.35</td><td>Rimex ColourTex INCO (or equivalent), Grade 316 SS, 0.8mm, folded edges, bonded to 9mm FC backing, anti-fingerprint CernoTex.</td><td>Provide trims/corners/sealed joints; protect finish in storage/transport.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-321F</span><span>- Stainless Steel Wall Panel System 2</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-321F</td><td>0522 2.49</td><td>Rimex ColourTex Pinstripe, Grade 316 SS, 0.8mm, folded and bonded to 9mm FC, anti-fingerprint CernoTex.</td><td>Maintain alignment and jointing; protect finish; anti-fingerprint coating required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-201F</span><span>- Trims</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-201F</td><td>0522 2.15</td><td>Applied finish aluminium trim system, 3mm; finish per PNT-401A Section 0345.</td><td>Removable where access required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-220F</span><span>- Aluminium Trims</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-220F</td><td>0522 2.1</td><td>Stainless capping and trims, Rimex Pinstripe, Grade 316, 0.8mm, bonded to 9mm FC backing, CernoTex finish.</td><td>Provide corners/upstands/trims with sealed joints where specified.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-221F</span><span>- Removable Aluminium Cover Sheet</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-221F</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-301F</span><span>- Trims</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-301F</td><td>0522 2.35</td><td>Rimex ColourTex INCO system trims, Grade 316 SS, 0.8mm, bonded to 9mm FC.</td><td>Provide trims/corners/sealed joints; protect finish in handling.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-321F</span><span>- Trims</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-321F</td><td>0522 2.49</td><td>Rimex Pinstripe trim system, Grade 316 SS, 0.8mm, anti-fingerprint CernoTex.</td><td>Maintain alignment/jointing; finish protection required.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-330F</span><span>- Stainless Steel Trims</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-330F</td><td>0522 2.1</td><td>SS trims/cappings, Grade 316, min 0.9mm, No.4 linished (Ra&lt;0.5µm), anti-graffiti where specified.</td><td>Provide trims/capping/flashing; removable access sections where required.</td><td>Certified test data per Section 0522 1.5 and 0552 1.5 where applicable.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-223</span><span>- Removable Mild Steel Cover Sheet with Signage Interface</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-223</td><td>0431 2.14</td><td>Metal cover sheets as IWS-222, unpainted SS.</td><td>Same as IWS-222.</td><td>Provide independently certified test data / arrange accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-224</span><span>- Perforated Mild Steel Cover Sheet for Speaker</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-224</td><td>0431 2.15</td><td>Metal cover sheets as IWS-222 with alternate fastening per facade engineer and Granite finish (or station-specific).</td><td>Factory anti-graffiti and handling protection required.</td><td>Provide independently certified test data / arrange accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-401</span><span>- Aluminium Batten Ceiling (Reference)</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401</td><td>0541 2.1</td><td>40x100 aluminium battens, premium powdercoat, 100mm gap, concealed suspended track.</td><td>Corrosion protection and alignment with consistent gaps.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
+      </div>
+
+
+
+      <div class="section-header" style="margin-top:18px;">
+        <div>
+          <h2>Products for LDN</h2>
+          <p>Accordion register of LDN product specifications in standard table format.</p>
+        </div>
+      </div>
+      <div class="spec-shell">
+        <details class="spec-accordion" open><summary><span class="spec-code">INS-201</span><span>- Ceilings with Acoustic Back Supply and Install</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>INS-201</td><td>0522 2.12</td><td>Acoustic insulation, CSR Martini Absorb XXHD 60kg/m3 (or equivalent), min 50mm, black.</td><td>R-value R1.45; NRC 0.9. Refer Acoustic Engineer docs.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-401</span><span>- Roof Canopy Soffit L02 Platform</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401</td><td>0541 2.1</td><td>40x100 aluminium battens, premium powdercoat, concealed suspended track, 100mm gap.</td><td>Corrosion protection and consistent gap alignment.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-401C</span><span>- L00 North Zone A Bulkhead Ceiling</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401C</td><td>0541 2.1</td><td>40x100 aluminium battens, premium powdercoat, concealed suspended track, 100mm gap.</td><td>Corrosion protection and consistent gap alignment.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-404C</span><span>- Perforated Aluminium Ceiling FOH Amenities Corridor</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-404C</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-410C</span><span>- Metal Pan Ceiling L02 Platform</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-410C</td><td>0531 2.13</td><td>Expanded aluminium mesh panels, 3mm, powdercoat finish.</td><td>Free area 60%; removable access panels.</td><td>Arrange or provide certified test data per Section 0531 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-321C</span><span>- Rimex Stainless with 9mm CFC (Blue Pinstripe)</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-321C</td><td>0522 2.49</td><td>Rimex ColourTex Pinstripe, Grade 316 SS, 0.8mm, bonded to 9mm fibre cement, anti-fingerprint CernoTex.</td><td>Maintain alignment and jointing; protect finish.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-321F</span><span>- Rimex Stainless with 9mm CFC (Champagne Pinstripe)</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-321F</td><td>0522 2.49</td><td>Rimex ColourTex Pinstripe, Grade 316 SS, 0.8mm, bonded to 9mm fibre cement, anti-fingerprint CernoTex.</td><td>Maintain alignment and jointing; protect finish.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">SGN-300</span><span>- Integration to IWS Panels</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>SGN-300</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">RFS-205</span><span>- Aluminium Capping with PNT-201B</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>RFS-205</td><td>0431 2.56</td><td>Aluminium capping to Section 0431 and design drawings.</td><td>Provide watertight roofing system incl. fixings/flashing/capping.</td><td>Provide independently certified test data / accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-222G</span><span>- Removable Steel Cover to Concrete Wall Termination</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-222G</td><td>0431 2.13</td><td>Ribbed metal cover sheet, ASTM 304 SS or equivalent, min 0.9mm, No.4 linished, adhesive fixed.</td><td>Factory anti-graffiti treatment; transport/storage protection required.</td><td>Provide independently certified test data / accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-221B</span><span>- Removable Aluminium Cover Sheet to Canopy/Pod Columns</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-221B</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-220B</span><span>- Aluminium Trims to Canopy Soffit</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-220B</td><td>0522 2.1</td><td>Stainless capping/trims, Rimex Pinstripe, Grade 316, 0.8mm bonded to 9mm FC backing, CernoTex coating.</td><td>Provide corners/upstands/trims; sealed joints where specified.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-223</span><span>- Removable Mild Steel Cover Sheet for Services</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-223</td><td>0431 2.14</td><td>Metal cover sheets as IWS-222, unpainted SS.</td><td>Same as IWS-222.</td><td>Provide independently certified test data / accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-222C</span><span>- Soffit to Gateline Portal</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-222C</td><td>0431 2.13</td><td>Ribbed metal cover sheet, ASTM 304 SS or equivalent, min 0.9mm, No.4 linished finish.</td><td>Factory anti-graffiti treatment and handling protection required.</td><td>Provide independently certified test data / accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">IWS-224</span><span>- Perforated Mild Steel Cover Sheet for Speaker</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-224</td><td>0431 2.15</td><td>Cover sheet as IWS-222 with alternate fastening per facade engineer docs, Granite finish as applicable.</td><td>Factory anti-graffiti; protection for transport/storage.</td><td>Provide independently certified test data / accredited testing per Section 0431 1.5.</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-401</span><span>- Aluminium Batten Ceiling (Reference)</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401</td><td>0541 2.1</td><td>40x100 aluminium battens, premium powdercoat, 100mm gap, concealed suspended track.</td><td>Corrosion protection and alignment with consistent gaps.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
+      </div>
+
+    <div class="footer-note">Product specification page added to global menu.</div>
+  </div>
+</body>
+</html>
