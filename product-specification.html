@@ -33,6 +33,30 @@
       color: #4b6278;
     }
 
+    .spec-search {
+      margin: 6px 0 16px;
+      position: sticky;
+      top: 8px;
+      z-index: 5;
+    }
+
+    .spec-search input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      background: #ffffff;
+      color: #111827;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .spec-search input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
     .spec-shell {
       display: grid;
       gap: 12px;
@@ -206,6 +230,15 @@
     </header>
 
     <section class="section-panel">
+      <div class="spec-search">
+        <input
+          id="specSearchInput"
+          type="search"
+          placeholder="Search products by code or name (e.g., INS-101, Mineral Fibre)"
+          aria-label="Search product specifications"
+        >
+      </div>
+
       <div class="section-header" style="margin-top:0;">
         <div>
           <h2>Products for ABP</h2>
@@ -773,5 +806,27 @@
 
     <div class="footer-note">Product specification page added to global menu.</div>
   </div>
+  <script>
+    (function initProductSpecSearch() {
+      const input = document.getElementById("specSearchInput");
+      if (!input) return;
+
+      const accordions = Array.from(document.querySelectorAll(".spec-accordion"));
+
+      const applyFilter = () => {
+        const query = input.value.trim().toLowerCase();
+
+        accordions.forEach((item) => {
+          const summary = item.querySelector("summary");
+          const text = (summary ? summary.textContent : item.textContent || "").toLowerCase();
+          const match = !query || text.includes(query);
+          item.style.display = match ? "" : "none";
+          if (!match) item.open = false;
+        });
+      };
+
+      input.addEventListener("input", applyFilter);
+    })();
+  </script>
 </body>
 </html>
