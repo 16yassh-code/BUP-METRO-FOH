@@ -40,116 +40,127 @@
     }
 
     .spec-accordion {
-      border: 1px solid rgba(24, 50, 78, 0.14);
-      border-radius: 14px;
-      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-left: 0 solid transparent;
+      border-radius: 12px;
+      background: #f3f4f6;
       overflow: hidden;
-      box-shadow: 0 6px 18px rgba(16, 34, 56, 0.06);
-      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, border-left-width 0.3s ease;
     }
 
     .spec-accordion:hover {
-      border-color: rgba(24, 50, 78, 0.22);
-      box-shadow: 0 10px 24px rgba(16, 34, 56, 0.1);
+      background: #e5e7eb;
+    }
+
+    .spec-accordion[open] {
+      background: #ffffff;
+      border-left: 4px solid #3b82f6;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .spec-accordion summary {
       list-style: none;
       cursor: pointer;
-      padding: 14px 48px 14px 14px;
+      padding: 14px 14px;
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: 700;
-      background: linear-gradient(90deg, #f5f8fc 0%, #edf2f8 100%);
-      color: #1a2f45;
+      color: #111827;
       position: relative;
+      transition: background-color 0.3s ease;
     }
 
-    .spec-accordion summary::-webkit-details-marker {
-      display: none;
+    .spec-accordion summary:hover {
+      background: rgba(255,255,255,0.35);
     }
+
+    .spec-accordion summary::-webkit-details-marker { display: none; }
 
     .spec-accordion summary::after {
-      content: "+";
+      content: "▼";
       position: absolute;
       right: 14px;
       top: 50%;
-      transform: translateY(-50%);
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 1px solid rgba(21, 59, 96, 0.2);
-      display: grid;
-      place-items: center;
-      color: #114770;
-      background: #fff;
-      font-weight: 600;
-      line-height: 1;
+      transform: translateY(-50%) rotate(0deg);
+      color: #374151;
+      font-size: 0.9rem;
+      transition: transform 0.3s ease;
     }
 
     .spec-accordion[open] summary::after {
-      content: "-";
-      background: #dfeefb;
+      transform: translateY(-50%) rotate(180deg);
     }
 
     .spec-accordion summary .spec-code,
     .spec-accordion summary span:first-child {
       font-family: "Space Grotesk", sans-serif;
-      font-size: 0.88rem;
-      letter-spacing: 0.03em;
-      color: #0c4a78;
-      border: 1px solid rgba(12, 74, 120, 0.2);
-      background: rgba(12, 74, 120, 0.08);
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      color: #1e40af;
+      background: #dbeafe;
       border-radius: 999px;
-      padding: 4px 9px;
+      padding: 4px 10px;
       white-space: nowrap;
+      border: 1px solid #bfdbfe;
     }
 
     .spec-accordion summary span:nth-child(2) {
-      color: #1f3348;
-      font-size: 0.96rem;
+      color: #111827;
+      font-size: 0.98rem;
       line-height: 1.25;
+      font-weight: 700;
+      padding-right: 24px;
     }
 
     .spec-content {
-      padding: 12px;
-      border-top: 1px solid rgba(20, 53, 90, 0.1);
-      background: #fff;
-      overflow-x: auto;
+      max-height: 0;
+      padding: 0 18px;
+      overflow: hidden;
+      background: #ffffff;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .spec-accordion[open] .spec-content {
+      max-height: 900px;
+      padding: 16px 18px 18px;
     }
 
     .spec-content .table-wrap {
       border-radius: 10px;
-      border: 1px solid rgba(18, 44, 71, 0.12);
-      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      overflow: auto;
+      background: #fff;
     }
 
     .spec-content table {
       margin: 0;
       width: 100%;
       min-width: 820px;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
     }
 
     .spec-content thead th {
-      background: #16324d;
-      color: #eef5fb;
+      background: #1f2937;
+      color: #ffffff;
       font-size: 0.82rem;
       letter-spacing: 0.02em;
-      padding: 10px 10px;
+      padding: 12px 12px;
+      text-align: left;
     }
 
     .spec-content tbody td {
-      background: #fbfdff;
-      color: #162a3d;
+      background: #f9fafb;
+      color: #111827;
       line-height: 1.45;
       vertical-align: top;
-      padding: 10px 10px;
+      padding: 12px 12px;
+      border-top: 1px solid #e5e7eb;
     }
 
     .spec-content tbody tr:nth-child(even) td {
-      background: #f5f8fc;
+      background: #ffffff;
     }
 
     @media (max-width: 760px) {
@@ -163,11 +174,15 @@
       }
 
       .spec-accordion summary {
-        padding: 12px 42px 12px 12px;
+        padding: 12px;
       }
 
       .spec-accordion summary span:nth-child(2) {
         font-size: 0.9rem;
+      }
+
+      .spec-accordion[open] .spec-content {
+        padding: 14px;
       }
     }
   </style>
@@ -352,7 +367,7 @@
                   <tr>
                     <td>CLG-410D</td>
                     <td>0531 2.15</td>
-                    <td>Metal pan ceiling, Interpon colour.</td>
+                    <td>As CLG-410 but colour: Interpon Sydney Metro St Marys D2525 POW806126/1.</td>
                     <td>Free area 60%.</td>
                     <td>Certified test data per Section 0531 1.5.</td>
                   </tr>
@@ -433,8 +448,8 @@
                   <tr>
                     <td>IWS-321</td>
                     <td>0522 2.49</td>
-                    <td>Rimex ColourTex Pinstripe, Grade 316 SS, 0.8mm.</td>
-                    <td>Anti-fingerprint, aligned joints.</td>
+                    <td>Stainless steel wall panel system 2 (Pinstripe). Manufacturer: Rimex Metals ColourTex Pinstripe (or equivalent). SS sheet folded edges, bonded to 9mm fibre cement. Grade 316. Thickness 0.8mm. Acid bath coloured. Range: Pinstripe. Finish: satin brushed extrusions + mirrored indents. Fingerprint-resistant CernoTex. Colour varies by station (e.g., STM Rosy Gold Pinstripe; OHE Stainless Steel Pinstripe).</td>
+                    <td>Maintain alignment and jointing as detailed; protect finish; anti-fingerprint coating required.</td>
                     <td>Certified test data per Section 0522 1.5.</td>
                   </tr>
                 </tbody>
@@ -443,7 +458,7 @@
           </div>
         </details>
         <details class="spec-accordion">
-          <summary><span class="spec-code">IWS-211</span><span>- Flat Aluminium Panel System</span></summary>
+          <summary><span class="spec-code">IWS-211</span><span>- Applied Finish Flat Aluminium Panel System</span></summary>
           <div class="spec-content">
             <div class="table-wrap">
               <table>
@@ -460,8 +475,8 @@
                   <tr>
                     <td>IWS-211</td>
                     <td>0522 2.29</td>
-                    <td>3mm aluminium sheet with folded edges.</td>
-                    <td>Removable panels.</td>
+                    <td>Applied finish flat aluminium panel system. Material: rolled aluminium sheet with folded edges. Thickness 3mm. Finish refer PNT-401A Section 0345.</td>
+                    <td>Panels removable for access as required.</td>
                     <td>Certified test data per Section 0522 1.5.</td>
                   </tr>
                 </tbody>
@@ -487,8 +502,8 @@
                   <tr>
                     <td>IWS-220D</td>
                     <td>0522 2.1</td>
-                    <td>Stainless steel trims, Rimex Pinstripe.</td>
-                    <td>Sealed joints, corner protection.</td>
+                    <td>Stainless steel capping and trims. Range: Rimex ColourTex Pinstripe. Material: stainless steel sheet folded on 4 edges, fully bonded to 9mm fibre cement backing. Grade 316. Thickness 0.8mm. Acid bath coloured. Finish: satin brushed extrusions + mirrored indents. Fingerprint-resistant CernoTex coating. Colour varies by station.</td>
+                    <td>Provide for corners, upstands, trims; sealed joints where specified.</td>
                     <td>Certified test data per Section 0522 1.5.</td>
                   </tr>
                 </tbody>
@@ -649,8 +664,8 @@
                   <tr>
                     <td>CLG-303</td>
                     <td>0531 2.12</td>
-                    <td>Grandis hardwood battens (50x75), Dulux finish.</td>
-                    <td>50mm spacing, moisture ≤15%.</td>
+                    <td>50x75 (or 50x50 at end of runs) Grandis hardwood battens. Min grade ST2 with maximum 15% moisture. Finish: Dulux (2 coats) in accordance with Section 0991 + type PNT-701. Use for sheltered external areas.</td>
+                    <td>Batten spacing 50mm. Ends stained black (PNT-701D).</td>
                     <td>Certified test data per Section 0531 1.5.</td>
                   </tr>
                 </tbody>
@@ -741,7 +756,7 @@
         <details class="spec-accordion" open><summary><span class="spec-code">INS-201</span><span>- Ceilings with Acoustic Back Supply and Install</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>INS-201</td><td>0522 2.12</td><td>Acoustic insulation, CSR Martini Absorb XXHD 60kg/m3 (or equivalent), min 50mm, black.</td><td>R-value R1.45; NRC 0.9. Refer Acoustic Engineer docs.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
         <details class="spec-accordion"><summary><span class="spec-code">CLG-401</span><span>- Roof Canopy Soffit L02 Platform</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401</td><td>0541 2.1</td><td>40x100 aluminium battens, premium powdercoat, concealed suspended track, 100mm gap.</td><td>Corrosion protection and consistent gap alignment.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
         <details class="spec-accordion"><summary><span class="spec-code">CLG-401C</span><span>- L00 North Zone A Bulkhead Ceiling</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-401C</td><td>0541 2.1</td><td>40x100 aluminium battens, premium powdercoat, concealed suspended track, 100mm gap.</td><td>Corrosion protection and consistent gap alignment.</td><td>Arrange or provide certified test data per Section 0541 1.5.</td></tr></tbody></table></div></div></details>
-        <details class="spec-accordion"><summary><span class="spec-code">CLG-404C</span><span>- Perforated Aluminium Ceiling FOH Amenities Corridor</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-404C</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
+        <details class="spec-accordion"><summary><span class="spec-code">CLG-404C</span><span>- Perforated Aluminium Ceiling FOH Amentities Corridor</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-404C</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div></div></details>
         <details class="spec-accordion"><summary><span class="spec-code">CLG-410C</span><span>- Metal Pan Ceiling L02 Platform</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>CLG-410C</td><td>0531 2.13</td><td>Expanded aluminium mesh panels, 3mm, powdercoat finish.</td><td>Free area 60%; removable access panels.</td><td>Arrange or provide certified test data per Section 0531 1.5.</td></tr></tbody></table></div></div></details>
         <details class="spec-accordion"><summary><span class="spec-code">IWS-321C</span><span>- Rimex Stainless with 9mm CFC (Blue Pinstripe)</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-321C</td><td>0522 2.49</td><td>Rimex ColourTex Pinstripe, Grade 316 SS, 0.8mm, bonded to 9mm fibre cement, anti-fingerprint CernoTex.</td><td>Maintain alignment and jointing; protect finish.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>
         <details class="spec-accordion"><summary><span class="spec-code">IWS-321F</span><span>- Rimex Stainless with 9mm CFC (Champagne Pinstripe)</span></summary><div class="spec-content"><div class="table-wrap"><table><thead><tr><th>Code</th><th>Spec Clause</th><th>Material</th><th>Performance</th><th>Testing</th></tr></thead><tbody><tr><td>IWS-321F</td><td>0522 2.49</td><td>Rimex ColourTex Pinstripe, Grade 316 SS, 0.8mm, bonded to 9mm fibre cement, anti-fingerprint CernoTex.</td><td>Maintain alignment and jointing; protect finish.</td><td>Arrange or provide certified test data per Section 0522 1.5.</td></tr></tbody></table></div></div></details>

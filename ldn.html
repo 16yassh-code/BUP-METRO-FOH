@@ -72,6 +72,23 @@
     .bar-procurement { background: linear-gradient(90deg, #5a7ce2, #7d9bff); }
     .bar-installation { background: linear-gradient(90deg, #18a66d, #36c389); }
     .timeline-footnote { margin-top: 8px; color: var(--muted); font-size: 0.82rem; }
+    .table-progress {
+      margin: 8px 0 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(20, 53, 90, 0.1);
+      border-radius: 12px;
+      background: rgba(245, 248, 252, 0.95);
+    }
+    .table-progress .progress-shell {
+      background: rgba(20, 53, 90, 0.15);
+      height: 10px;
+    }
+    .table-progress .progress-fill {
+      background: #9ca3af;
+    }
+    .progress-fill {
+      transition: width 0.3s ease, background-color 0.3s ease;
+    }
     @media (max-width: 760px) {
       .timeline-axis, .timeline-row { grid-template-columns: 1fr; }
       .axis-months { font-size: 0.66rem; }
@@ -114,7 +131,7 @@
 
       <div class="overall-progress" style="margin-bottom:12px;">
         <div class="progress-row">
-          <span>Station Completion</span>
+          <span>Overall Station Completion</span>
           <span id="stationProgressText">0%</span>
         </div>
         <div class="progress-shell">
@@ -164,6 +181,15 @@
         <article class="table-card">
           <h3>Sample Submission Tracker</h3>
           <p class="small-copy">7 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span id="tableProgressText1">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill" id="tableProgressBar1" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>
@@ -185,6 +211,15 @@
         <article class="table-card">
           <h3>Shop Drawings</h3>
           <p class="small-copy">10 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span id="tableProgressText2">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill" id="tableProgressBar2" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>
@@ -209,6 +244,15 @@
         <article class="table-card">
           <h3>Procurement</h3>
           <p class="small-copy">10 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span id="tableProgressText3">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill" id="tableProgressBar3" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>
@@ -233,6 +277,15 @@
         <article class="table-card">
           <h3>Installation</h3>
           <p class="small-copy">10 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span id="tableProgressText4">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill" id="tableProgressBar4" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>
@@ -376,7 +429,6 @@
     const stationMetrics = dataSource.stationMetrics.bind(dataSource);
 
     function renderStationPage() {
-      const data = stationData[STATION];
       const metrics = stationMetrics(STATION);
 
       document.getElementById("stationKpis").innerHTML = [
@@ -391,57 +443,88 @@
       if (stationProgressTextEl) stationProgressTextEl.textContent = `${metrics.progress}%`;
       if (stationProgressBarEl) stationProgressBarEl.style.width = `${metrics.progress}%`;
 
-      // Keep static HTML tables as the source of truth on this page.
     }
 
     function initLiveProgressTracker() {
-      const formatDateDisplay = (isoDate) => {
-        if (!isoDate) return "-";
-        const [y, m, d] = isoDate.split("-");
-        if (!y || !m || !d) return isoDate;
-        return `${d}/${m}/${y}`;
+      const grid = document.getElementById("tablesGrid");
+      if (!grid) return;
+
+      const isCompletionValueValid = (value) => {
+        if (value === null || value === undefined) return false;
+        const text = String(value).trim();
+        if (text === "" || text === "-" || text === "—") return false;
+        return text.toLowerCase() !== "null";
       };
 
-      const parseDateToIso = (text) => {
-        const value = (text || "").trim();
-        if (!value || value === "-") return "";
-        if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
-        const match = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-        if (!match) return "";
-        return `${match[3]}-${match[2]}-${match[1]}`;
+      const getColorByPercent = (pct) => {
+        if (pct === 100) return "#10B981";
+        if (pct >= 80) return "#3B82F6";
+        if (pct >= 50) return "#F59E0B";
+        if (pct >= 1) return "#EF4444";
+        return "#9CA3AF";
       };
 
-      const makeEditable = () => {
-        // Editing disabled intentionally for fixed progress validation.
+      const calcTableProgress = (tableCard) => {
+        const rows = Array.from(tableCard.querySelectorAll("tbody tr"));
+        const totalRows = rows.length;
+        const completedRows = rows.filter((row) => {
+          const cells = row.querySelectorAll("td");
+          const completionDate = cells[cells.length - 1]?.textContent;
+          return isCompletionValueValid(completionDate);
+        }).length;
+        const percent = totalRows ? Math.round((completedRows / totalRows) * 100) : 0;
+        return { totalRows, completedRows, percent };
+      };
+
+      const setProgressBar = (barEl, textEl, percent) => {
+        const safePercent = Number.isFinite(percent) ? Math.max(0, Math.min(100, percent)) : 0;
+        if (textEl) textEl.textContent = `${safePercent}%`;
+        if (barEl) {
+          barEl.style.width = `${safePercent}%`;
+          barEl.style.background = getColorByPercent(safePercent);
+        }
       };
 
       const recalc = () => {
-        const rows = Array.from(document.querySelectorAll("#tablesGrid .table-card tbody tr"));
-        const totalItems = rows.length;
-        const completedItems = rows.filter((row) => {
-          const cells = row.querySelectorAll("td");
-          const completion = (cells[cells.length - 1]?.textContent || "").trim().toLowerCase();
-          return !!completion && completion !== "-";
-        }).length;
-        const progress = totalItems ? Math.round((completedItems / totalItems) * 100) : 0;
-        const overallStatus = progress >= 55 ? "On Track" : (progress >= 25 ? "In Progress" : "Needs Attention");
+        const cards = Array.from(grid.querySelectorAll(".table-card"));
+        const tablePercents = [];
+        let totalRowsAll = 0;
+        let completedRowsAll = 0;
 
-        document.getElementById("stationKpis").innerHTML = [
-          `<div class="hero-pill">Overall: ${overallStatus}</div>`,
-          `<div class="hero-pill">Progress: ${progress}%</div>`,
-          `<div class="hero-pill">Items: ${completedItems}/${totalItems}</div>`,
-          `<div class="hero-pill">Live Sync: On</div>`
-        ].join("");
+        cards.forEach((card, index) => {
+          const { totalRows, completedRows, percent } = calcTableProgress(card);
+          tablePercents.push(percent);
+          const textEl = document.getElementById(`tableProgressText${index + 1}`);
+          const barEl = document.getElementById(`tableProgressBar${index + 1}`);
+          setProgressBar(barEl, textEl, percent);
+
+          totalRowsAll += totalRows;
+          completedRowsAll += completedRows;
+        });
+
+        const [table1Progress = 0, table2Progress = 0, table3Progress = 0, table4Progress = 0] = tablePercents;
+        const overallPercent = Math.round((table1Progress + table2Progress + table3Progress + table4Progress) / 4);
 
         const stationProgressTextEl = document.getElementById("stationProgressText");
         const stationProgressBarEl = document.getElementById("stationProgressBar");
-        if (stationProgressTextEl) stationProgressTextEl.textContent = `${progress}%`;
-        if (stationProgressBarEl) stationProgressBarEl.style.width = `${progress}%`;
+        setProgressBar(stationProgressBarEl, stationProgressTextEl, overallPercent);
+
+        const overallStatus = overallPercent >= 55 ? "On Track" : (overallPercent >= 25 ? "In Progress" : "Needs Attention");
+        document.getElementById("stationKpis").innerHTML = [
+          `<div class="hero-pill">Overall: ${overallStatus}</div>`,
+          `<div class="hero-pill">Progress: ${overallPercent}%</div>`,
+          `<div class="hero-pill">Items: ${completedRowsAll}/${totalRowsAll}</div>`,
+          `<div class="hero-pill">Live Sync: On</div>`
+        ].join("");
 
         const progressPayload = {
-          progress,
-          completedItems,
-          totalItems,
+          progress: overallPercent,
+          table1Progress,
+          table2Progress,
+          table3Progress,
+          table4Progress,
+          completedItems: completedRowsAll,
+          totalItems: totalRowsAll,
           updatedAt: new Date().toISOString()
         };
         localStorage.setItem(`metro_foh_progress_${STATION}`, JSON.stringify(progressPayload));
@@ -450,52 +533,16 @@
         }
       };
 
-      makeEditable();
       recalc();
-      document.getElementById("tablesGrid").addEventListener("input", recalc);
-      document.getElementById("tablesGrid").addEventListener("blur", recalc, true);
-      document.getElementById("tablesGrid").addEventListener("change", recalc, true);
+      grid.addEventListener("input", recalc);
+      grid.addEventListener("change", recalc);
+      const observer = new MutationObserver(recalc);
+      observer.observe(grid, { subtree: true, childList: true, characterData: true });
     }
 
     renderStationPage();
     initLiveProgressTracker();
     attachPersistence();
-  </script>
-  <script>
-    (function forceLdnProgressFromTable() {
-      function recalcFromDom() {
-        const rows = Array.from(document.querySelectorAll("#tablesGrid .table-card tbody tr"));
-        const total = rows.length;
-        const completed = rows.filter((row) => {
-          const cells = row.querySelectorAll("td");
-          const completion = (cells[cells.length - 1]?.textContent || "").trim();
-          return completion && completion !== "-";
-        }).length;
-        const pct = total ? Math.round((completed / total) * 100) : 0;
-
-        const textEl = document.getElementById("stationProgressText");
-        const barEl = document.getElementById("stationProgressBar");
-        if (textEl) textEl.textContent = `${pct}%`;
-        if (barEl) barEl.style.width = `${pct}%`;
-
-        const kpiWrap = document.getElementById("stationKpis");
-        if (kpiWrap) {
-          kpiWrap.innerHTML = [
-            `<div class="hero-pill">Overall: ${pct >= 55 ? "On Track" : (pct >= 25 ? "In Progress" : "Needs Attention")}</div>`,
-            `<div class="hero-pill">Progress: ${pct}%</div>`,
-            `<div class="hero-pill">Items: ${completed}/${total}</div>`,
-            `<div class="hero-pill">Live Sync: On</div>`
-          ].join("");
-        }
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", recalcFromDom);
-      } else {
-        recalcFromDom();
-      }
-      setTimeout(recalcFromDom, 200);
-    })();
   </script>
 </body>
 </html>
