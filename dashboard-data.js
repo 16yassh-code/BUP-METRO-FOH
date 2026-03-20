@@ -12,8 +12,10 @@
         shopDrawings: [
           { activityDescription: "CLG-401C – Metal Batten Ceiling (Platform/Concourse Priority)", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
           { activityDescription: "CLG-410C – Metal Pan Ceiling", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
-          { activityDescription: "CLG-402 – Aluminium Batten Ceiling (Amenities Corridor)", durationDays: "12 days", startDate: "23/03/2026", targetDate: "09/04/2026", completionDate: "—" },
-          { activityDescription: "CLG-131 – Suspended Plasterboard Ceiling", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
+          { activityDescription: "CLG-402 Aluminium batten", durationDays: "12 days", startDate: "23/03/2026", targetDate: "09/04/2026", completionDate: "20/03/2026" },
+          { activityDescription: "CLG-131 CFC panel", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "20/03/2026" },
+          { activityDescription: "CLG-402 Aluminium Batten Platform L00 Concourse PAID", durationDays: "12 days", startDate: "23/03/2026", targetDate: "09/04/2026", completionDate: "20/03/2026" },
+          { activityDescription: "CLG-131 CFC celeing layout Ground floor Zone A - Bicycle Parking", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "20/03/2026" },
           { activityDescription: "IWS-321C – Stainless Steel Wall Panel System 2 (Primary Cladding)", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
           { activityDescription: "IWS-301C – Stainless Steel Wall Panel System 1", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
           { activityDescription: "IWS-321C – Alternative (Alumate)", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
