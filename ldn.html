@@ -97,6 +97,11 @@
     .progress-fill {
       transition: width 0.3s ease, background-color 0.3s ease;
     }
+    .completion-on-time {
+      background: #dcfce7;
+      color: #166534;
+      font-weight: 700;
+    }
     @media (max-width: 760px) {
       .timeline-axis, .timeline-row { grid-template-columns: 1fr; }
       .axis-months { font-size: 0.66rem; }
@@ -140,10 +145,10 @@
       <div class="overall-progress" style="margin-bottom:12px;">
         <div class="progress-row">
           <span>Overall Station Completion</span>
-          <span id="stationProgressText">13%</span>
+          <span id="stationProgressText">23%</span>
         </div>
         <div class="progress-shell">
-          <div class="progress-fill" id="stationProgressBar" style="width:13%;"></div>
+          <div class="progress-fill" id="stationProgressBar" style="width:23%;"></div>
         </div>
       </div>
 
@@ -222,10 +227,10 @@
           <div class="table-progress">
             <div class="progress-row">
               <span>Table Completion</span>
-              <span id="tableProgressText2" class="table-progress-text">33%</span>
+              <span id="tableProgressText2" class="table-progress-text">67%</span>
             </div>
             <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" id="tableProgressBar2" style="width:33%;"></div>
+              <div class="progress-fill table-progress-fill" id="tableProgressBar2" style="width:67%;"></div>
             </div>
           </div>
           <div class="table-wrap">
@@ -236,14 +241,14 @@
               <tbody>
                 <tr><td>CLG-401C – Metal Batten Ceiling (Platform/Concourse Priority)</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>—</td></tr>
                 <tr><td>CLG-410C – Metal Pan Ceiling</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>—</td></tr>
-                <tr><td>CLG-402 Aluminium batten</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td>20/03/2026</td></tr>
-                <tr><td>CLG-131 CFC panel</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>20/03/2026</td></tr>
-                <tr><td>CLG-402 Aluminium Batten Platform L00 Concourse PAID</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td>20/03/2026</td></tr>
-                <tr><td>CLG-131 CFC celeing layout Ground floor Zone A - Bicycle Parking</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>20/03/2026</td></tr>
-                <tr><td>IWS-321C – Stainless Steel Wall Panel System 2 (Primary Cladding)</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>—</td></tr>
-                <tr><td>IWS-301C – Stainless Steel Wall Panel System 1</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>—</td></tr>
-                <tr><td>IWS-321C – Alternative (Alumate)</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>—</td></tr>
-                <tr><td>IWS-301C – Alternative (Alumate)</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>—</td></tr>
+                <tr><td>CLG-402 Aluminium batten</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td class="completion-on-time">20/03/2026</td></tr>
+                <tr><td>CLG-131 CFC panel</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td class="completion-on-time">20/03/2026</td></tr>
+                <tr><td>CLG-402 Aluminium Batten Platform L00 Concourse PAID</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td class="completion-on-time">20/03/2026</td></tr>
+                <tr><td>CLG-131 CFC celeing layout Ground floor Zone A - Bicycle Parking</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td class="completion-on-time">20/03/2026</td></tr>
+                <tr><td>IWS-321 Stainless steel cladding layout drawing - Elevation A [Platform L00 Concourse Paid]</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
+                <tr><td>IWS-321 Stainless steel cladding layout drawing - Elevation B-F [Platform L00 Concourse Paid]</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
+                <tr><td>IWS-321 Stainless Steel Cladding - Detail Drawing</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
+                <tr><td>IWS-321 Stainless steel cladding layout drawing - Architectural plan [Platform L00 Concourse Paid]</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
                 <tr><td>Joinery Unit – Internal Joinery</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td>—</td></tr>
                 <tr><td>Aluminium + Glass – Window System</td><td>8 days</td><td>06/04/2026</td><td>15/04/2026</td><td>—</td></tr>
               </tbody>
@@ -345,10 +350,10 @@
             { activityDescription: "CLG-131 CFC panel", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "20/03/2026" },
             { activityDescription: "CLG-402 Aluminium Batten Platform L00 Concourse PAID", durationDays: "12 days", startDate: "23/03/2026", targetDate: "09/04/2026", completionDate: "20/03/2026" },
             { activityDescription: "CLG-131 CFC celeing layout Ground floor Zone A - Bicycle Parking", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "20/03/2026" },
-            { activityDescription: "IWS-321C – Stainless Steel Wall Panel System 2 (Primary Cladding)", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
-            { activityDescription: "IWS-301C – Stainless Steel Wall Panel System 1", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
-            { activityDescription: "IWS-321C – Alternative (Alumate)", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
-            { activityDescription: "IWS-301C – Alternative (Alumate)", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
+            { activityDescription: "IWS-321 Stainless steel cladding layout drawing - Elevation A [Platform L00 Concourse Paid]", durationDays: "8 days", startDate: "11/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
+            { activityDescription: "IWS-321 Stainless steel cladding layout drawing - Elevation B-F [Platform L00 Concourse Paid]", durationDays: "8 days", startDate: "11/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
+            { activityDescription: "IWS-321 Stainless Steel Cladding - Detail Drawing", durationDays: "8 days", startDate: "11/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
+            { activityDescription: "IWS-321 Stainless steel cladding layout drawing - Architectural plan [Platform L00 Concourse Paid]", durationDays: "8 days", startDate: "11/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
             { activityDescription: "Joinery Unit – Internal Joinery", durationDays: "12 days", startDate: "23/03/2026", targetDate: "09/04/2026", completionDate: "—" },
             { activityDescription: "Aluminium + Glass – Window System", durationDays: "8 days", startDate: "06/04/2026", targetDate: "15/04/2026", completionDate: "—" }
           ],
@@ -441,9 +446,9 @@
     const stationMetrics = dataSource.stationMetrics.bind(dataSource);
 
     function renderStationPage() {
-      const completedItems = 5;
+      const completedItems = 9;
       const totalItems = 39;
-      const overallPercent = 13;
+      const overallPercent = 23;
       document.getElementById("stationKpis").innerHTML = [
         ` <div class="hero-pill">Overall: Needs Attention</div>`,
         ` <div class="hero-pill">Progress: ${overallPercent}%</div>`,
@@ -477,7 +482,7 @@
 
       const staticProgress = {
         table1: { completed: 1, total: 7 },
-        table2: { completed: 4, total: 12 },
+        table2: { completed: 8, total: 12 },
         table3: { completed: 0, total: 10 },
         table4: { completed: 0, total: 10 }
       };

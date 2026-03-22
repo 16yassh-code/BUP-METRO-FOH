@@ -316,14 +316,21 @@
       : fallbackDashboardData;
     const { stationData } = dashboard;
     const stationMetrics = (station) => dashboard.stationMetrics(station);
+    const staticLdnProgress = { progress: 23, completedItems: 9, totalItems: 39 };
+    const mergeWithStoredOrStatic = (station, metrics, stored) => {
+      if (station === "LDN") {
+        return { ...metrics, ...staticLdnProgress };
+      }
+      return stored
+        ? { ...metrics, progress: stored.progress, completedItems: stored.completedItems, totalItems: stored.totalItems }
+        : metrics;
+    };
 
     function renderSummary() {
       const metricsByStation = Object.keys(stationData).map((station) => {
         const metrics = stationMetrics(station);
         const stored = JSON.parse(localStorage.getItem(`metro_foh_progress_${station}`) || "null");
-        return stored
-          ? { ...metrics, progress: stored.progress, completedItems: stored.completedItems, totalItems: stored.totalItems }
-          : metrics;
+        return mergeWithStoredOrStatic(station, metrics, stored);
       });
       const stationCount = Object.keys(stationData).length;
       const totalItems = metricsByStation.reduce((sum, item) => sum + item.totalItems, 0);
@@ -361,9 +368,7 @@
       const all = Object.keys(stationData).map((station) => {
         const metrics = stationMetrics(station);
         const stored = JSON.parse(localStorage.getItem(`metro_foh_progress_${station}`) || "null");
-        const merged = stored
-          ? { ...metrics, progress: stored.progress, completedItems: stored.completedItems, totalItems: stored.totalItems }
-          : metrics;
+        const merged = mergeWithStoredOrStatic(station, metrics, stored);
         return { station, metrics: merged };
       });
       const avg = all.length ? Math.round(all.reduce((sum, x) => sum + x.metrics.progress, 0) / all.length) : 0;
@@ -405,9 +410,7 @@
         const stored = JSON.parse(localStorage.getItem(`metro_foh_progress_${station}`) || "null");
         return {
           station,
-          ...(stored
-            ? { ...metrics, progress: stored.progress, completedItems: stored.completedItems, totalItems: stored.totalItems }
-            : metrics)
+          ...mergeWithStoredOrStatic(station, metrics, stored)
         };
       });
 
