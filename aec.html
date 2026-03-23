@@ -24,6 +24,7 @@
     .table-progress .progress-shell { background: rgba(20, 53, 90, 0.15); height: 10px; }
     .table-progress .progress-fill { background: #9ca3af; }
     .progress-fill { transition: width 0.3s ease, background-color 0.3s ease; }
+    .completion-on-time { color: #0f8f5f; font-weight: 700; }
     @media (max-width: 760px) { .timeline-axis, .timeline-row { grid-template-columns: 1fr; } .axis-months { font-size: 0.66rem; } .timeline-label { margin-bottom: 4px; } }
   </style>
 </head>
@@ -97,6 +98,15 @@
         <article class="table-card">
           <h3>Sample Submission Tracker</h3>
           <p class="small-copy">15 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span class="table-progress-text">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap"><table><thead><tr><th>Description</th><th>Form Submission</th><th>Sample Submission</th><th>Approval Status</th><th>Completion Date</th></tr></thead><tbody>
             <tr class="status-row-review"><td>CLG-401F – Metal Batten Ceiling (Aluminium Battens)</td><td>Submitted</td><td>Pending (ETA TBC)</td><td><span class="tag tag-review">In Progress (HP pending)</span></td><td>—</td></tr>
             <tr class="status-row-review"><td>IWS-301F – Stainless Steel Wall Panel System 1</td><td>MSF Submitted</td><td>Received (Warehouse)</td><td><span class="tag tag-review">Under Review</span></td><td>—</td></tr>
@@ -117,7 +127,16 @@
         </article>
         <article class="table-card">
           <h3>Shop Drawings</h3>
-          <p class="small-copy">16 tracked items</p>
+          <p class="small-copy">18 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span class="table-progress-text">11%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill table-progress-fill" style="width:11%;"></div>
+            </div>
+          </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Date</th><th>Completion Date</th></tr></thead><tbody>
             <tr><td>CLG-401F – Metal Batten Ceiling (Platform/Concourse Priority)</td><td>15 days</td><td>08/04/2026</td><td>01/05/2026</td><td>—</td></tr>
             <tr><td>CLG-410F – Metal Pan Ceiling (Platform/Concourse)</td><td>15 days</td><td>08/04/2026</td><td>01/05/2026</td><td>—</td></tr>
@@ -135,11 +154,22 @@
             <tr><td>IWS-220F/221F/222F/223/224 – Metal Covers & Trims</td><td>15 days</td><td>15/04/2026</td><td>09/05/2026</td><td>—</td></tr>
             <tr><td>Joinery Unit – Internal Joinery (Separate Subcontract Priority)</td><td>10 days</td><td>13/04/2026</td><td>28/04/2026</td><td>—</td></tr>
             <tr><td>Partition Wall – Internal Partition System (Early Works)</td><td>5 days</td><td>—</td><td>30/04/2026</td><td>—</td></tr>
+            <tr><td>IWS-321 & IWS-301 Stainless steel cladding layout platform east psd</td><td>4 days</td><td>19/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
+            <tr><td>IWS-321 & IWS-301 Stainless steel cladding layout platform west psd</td><td>4 days</td><td>19/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
           </tbody></table></div>
         </article>
         <article class="table-card">
           <h3>Procurement</h3>
           <p class="small-copy">16 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span class="table-progress-text">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Lead Time (Days)</th><th>Start Date</th><th>Target Delivery Date</th><th>Completion Date</th></tr></thead><tbody>
             <tr><td>CLG-401F – Metal Batten Ceiling (Aluminium Battens)</td><td>8–10 wks</td><td>01/05/2026</td><td>15/07/2026</td><td>—</td></tr>
             <tr><td>CLG-410F – Metal Pan Ceiling (Aluminium Panel)</td><td>8–10 wks</td><td>01/05/2026</td><td>15/07/2026</td><td>—</td></tr>
@@ -162,6 +192,15 @@
         <article class="table-card">
           <h3>Installation</h3>
           <p class="small-copy">17 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span class="table-progress-text">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Completion Date</th><th>Completion Date</th></tr></thead><tbody>
             <tr><td>CLG-401F – Metal Batten Ceiling (Aluminium Battens)</td><td>20 days</td><td>15/07/2026</td><td>—</td><td>—</td></tr>
             <tr><td>CLG-410F – Metal Pan Ceiling (Aluminium Panel)</td><td>15 days</td><td>15/07/2026</td><td>—</td><td>—</td></tr>
@@ -228,7 +267,9 @@
             { activityDescription: "IWS-210F – Applied Finish Solid Curved Aluminium Panel System", durationDays: "10 days", startDate: "15/04/2026", targetDate: "02/05/2026", completionDate: "—" },
             { activityDescription: "IWS-220F/221F/222F/223/224 – Metal Covers & Trims", durationDays: "15 days", startDate: "15/04/2026", targetDate: "09/05/2026", completionDate: "—" },
             { activityDescription: "Joinery Unit – Internal Joinery (Separate Subcontract Priority)", durationDays: "10 days", startDate: "13/04/2026", targetDate: "28/04/2026", completionDate: "—" },
-            { activityDescription: "Partition Wall – Internal Partition System (Early Works)", durationDays: "5 days", startDate: "—", targetDate: "30/04/2026", completionDate: "—" }
+            { activityDescription: "Partition Wall – Internal Partition System (Early Works)", durationDays: "5 days", startDate: "—", targetDate: "30/04/2026", completionDate: "—" },
+            { activityDescription: "IWS-321 & IWS-301 Stainless steel cladding layout platform east psd", durationDays: "4 days", startDate: "19/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
+            { activityDescription: "IWS-321 & IWS-301 Stainless steel cladding layout platform west psd", durationDays: "4 days", startDate: "19/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" }
           ],
           procurement: [
             { activityDescription: "CLG-401F – Metal Batten Ceiling (Aluminium Battens)", leadTimeDays: "8–10 wks", startDate: "01/05/2026", targetDeliveryDate: "15/07/2026", completionDate: "—" },
@@ -311,7 +352,11 @@
           const values = Object.values(row);
           return `<tr class="${rowClass(row.approvalStatus || "")}">${values.map((value, index) => {
             if (index === 3 && row.approvalStatus) return `<td>${tag(value)}</td>`;
-            return `<td>${value || "-"}</td>`;
+            const isCompletionCell = index === values.length - 1;
+            const completionClass = isCompletionCell && /^(?:\d{1,2}\/\d{1,2}\/\d{4}|\d{4}-\d{2}-\d{2})$/.test(String(value || "").trim())
+              ? ' class="completion-on-time"'
+              : "";
+            return `<td${completionClass}>${value || "-"}</td>`;
           }).join("")}</tr>`;
         }).join("");
         return `
@@ -339,7 +384,8 @@
     };
 
     const dataSource = window.DashboardData && window.DashboardData.stationData ? window.DashboardData : fallbackData;
-    const { stationData, sectionDefinitions, buildTable } = dataSource;
+    const { stationData, sectionDefinitions } = dataSource;
+    const buildTable = fallbackData.buildTable.bind(fallbackData);
     const stationMetrics = dataSource.stationMetrics.bind(dataSource);
 
     function renderStationPage() {

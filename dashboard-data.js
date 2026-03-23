@@ -143,7 +143,9 @@
           { activityDescription: "IWS-210F – Applied Finish Solid Curved Aluminium Panel System", durationDays: "10 days", startDate: "15/04/2026", targetDate: "02/05/2026", completionDate: "—" },
           { activityDescription: "IWS-220F/221F/222F/223/224 – Metal Covers & Trims", durationDays: "15 days", startDate: "15/04/2026", targetDate: "09/05/2026", completionDate: "—" },
           { activityDescription: "Joinery Unit – Internal Joinery (Separate Subcontract Priority)", durationDays: "10 days", startDate: "13/04/2026", targetDate: "28/04/2026", completionDate: "—" },
-          { activityDescription: "Partition Wall – Internal Partition System (Early Works)", durationDays: "5 days", startDate: "—", targetDate: "30/04/2026", completionDate: "—" }
+          { activityDescription: "Partition Wall – Internal Partition System (Early Works)", durationDays: "5 days", startDate: "—", targetDate: "30/04/2026", completionDate: "—" },
+          { activityDescription: "IWS-321 & IWS-301 Stainless steel cladding layout platform east psd", durationDays: "4 days", startDate: "19/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
+          { activityDescription: "IWS-321 & IWS-301 Stainless steel cladding layout platform west psd", durationDays: "4 days", startDate: "19/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" }
         ],
         procurement: [
           { activityDescription: "CLG-401F – Metal Batten Ceiling (Aluminium Battens)", leadTimeDays: "8–10 wks", startDate: "01/05/2026", targetDeliveryDate: "15/07/2026", completionDate: "—" },
@@ -341,6 +343,15 @@
         <article class="table-card">
           <h3>${section.title || titleFromKey(section.key)}</h3>
           <p class="small-copy">${rowItems.length} tracked item${rowItems.length === 1 ? "" : "s"}</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span class="table-progress-text">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>

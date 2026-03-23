@@ -97,6 +97,15 @@
         <article class="table-card">
           <h3>Sample Submission Tracker</h3>
           <p class="small-copy">4 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span class="table-progress-text">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap"><table><thead><tr><th>Description</th><th>Form Submission</th><th>Sample Submission</th><th>Approval Status</th><th>Completion Date</th></tr></thead><tbody>
             <tr class="status-row-pending"><td>CLG-303D – Timber Batten Ceiling</td><td>Submitted</td><td>Delivered (Warehouse)</td><td><span class="tag tag-pending">Pending full approval (colour issue)</span></td><td>—</td></tr>
             <tr class="status-row-approved"><td>CLG-401D – Metal Batten Ceiling</td><td>Submitted</td><td>Delivered &amp; Approved</td><td><span class="tag tag-approved">Approved</span></td><td>—</td></tr>
@@ -107,6 +116,15 @@
         <article class="table-card">
           <h3>Shop Drawings</h3>
           <p class="small-copy">7 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span class="table-progress-text">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Date</th><th>Completion Date</th></tr></thead><tbody>
             <tr><td>CLG-401D – Metal Batten Ceiling (Platform/Concourse Priority)</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td>—</td></tr>
             <tr><td>CLG-410D – Metal Pan Ceiling</td><td>8 days</td><td>26/03/2026</td><td>08/04/2026</td><td>—</td></tr>
@@ -120,6 +138,15 @@
         <article class="table-card">
           <h3>Procurement</h3>
           <p class="small-copy">8 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span class="table-progress-text">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Lead Time (Days)</th><th>Start Date</th><th>Target Delivery Date</th><th>Completion Date</th></tr></thead><tbody>
             <tr><td>CLG-401D – Metal Batten Ceiling</td><td>10–12 wks</td><td>25/03/2026</td><td>15/06/2026</td><td>—</td></tr>
             <tr><td>CLG-410D – Metal Pan Ceiling</td><td>10–12 wks</td><td>08/04/2026</td><td>15/06/2026</td><td>—</td></tr>
@@ -134,6 +161,15 @@
         <article class="table-card">
           <h3>Installation</h3>
           <p class="small-copy">7 tracked items</p>
+          <div class="table-progress">
+            <div class="progress-row">
+              <span>Table Completion</span>
+              <span class="table-progress-text">0%</span>
+            </div>
+            <div class="progress-shell">
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
+            </div>
+          </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Completion Date</th><th>Completion Date</th></tr></thead><tbody>
             <tr><td>CLG-401D – Metal Batten Ceiling</td><td>10 days</td><td>15/06/2026</td><td>—</td><td>—</td></tr>
             <tr><td>CLG-410D – Metal Pan Ceiling</td><td>10 days</td><td>15/06/2026</td><td>—</td><td>—</td></tr>
@@ -150,8 +186,8 @@
     <div class="footer-note">Use top menu to switch across stations.</div>
   </div>
 
-  <script src="dashboard-data.js?v=3"></script>
-  <script src="persistence.js?v=3"></script>
+  <script src="dashboard-data.js?v=4"></script>
+  <script src="persistence.js?v=4"></script>
   <script>
     const STATION = "ABP";
     const fallbackData = {
@@ -259,7 +295,8 @@
     };
 
     const dataSource = window.DashboardData && window.DashboardData.stationData ? window.DashboardData : fallbackData;
-    const { stationData, sectionDefinitions, buildTable } = dataSource;
+    const { stationData, sectionDefinitions } = dataSource;
+    const buildTable = fallbackData.buildTable.bind(fallbackData);
     const stationMetrics = dataSource.stationMetrics.bind(dataSource);
 
     function renderStationPage() {
@@ -291,31 +328,12 @@
       const grid = document.getElementById("tablesGrid");
       if (!grid) return;
 
-      const isCompletionValueValid = (value) => {
-        if (value === null || value === undefined) return false;
-        const text = String(value).trim();
-        if (text === "" || text === "-" || text === "—") return false;
-        return text.toLowerCase() !== "null";
-      };
-
       const getColorByPercent = (pct) => {
         if (pct === 100) return "#10B981";
         if (pct >= 80) return "#3B82F6";
         if (pct >= 50) return "#F59E0B";
         if (pct >= 1) return "#EF4444";
         return "#9CA3AF";
-      };
-
-      const calcTableProgress = (tableCard) => {
-        const rows = Array.from(tableCard.querySelectorAll("tbody tr"));
-        const totalRows = rows.length;
-        const completedRows = rows.filter((row) => {
-          const cells = row.querySelectorAll("td");
-          const completionDate = cells[cells.length - 1]?.textContent;
-          return isCompletionValueValid(completionDate);
-        }).length;
-        const percent = totalRows ? Math.round((completedRows / totalRows) * 100) : 0;
-        return { totalRows, completedRows, percent };
       };
 
       const setProgressBar = (barEl, textEl, percent) => {
@@ -327,60 +345,38 @@
         }
       };
 
-      const recalc = () => {
-        const cards = Array.from(grid.querySelectorAll(".table-card"));
-        const tablePercents = [];
-        let totalRowsAll = 0;
-        let completedRowsAll = 0;
-
-        cards.forEach((card) => {
-          const { totalRows, completedRows, percent } = calcTableProgress(card);
-          tablePercents.push(percent);
-
-          const textEl = card.querySelector(".table-progress-text");
-          const barEl = card.querySelector(".table-progress-fill");
-          setProgressBar(barEl, textEl, percent);
-
-          totalRowsAll += totalRows;
-          completedRowsAll += completedRows;
-        });
-
-        const [table1Progress = 0, table2Progress = 0, table3Progress = 0, table4Progress = 0] = tablePercents;
-        const overallPercent = Math.round((table1Progress + table2Progress + table3Progress + table4Progress) / 4);
-
-        const stationProgressTextEl = document.getElementById("stationProgressText");
-        const stationProgressBarEl = document.getElementById("stationProgressBar");
-        setProgressBar(stationProgressBarEl, stationProgressTextEl, overallPercent);
-
-        const overallStatus = overallPercent >= 55 ? "On Track" : (overallPercent >= 25 ? "In Progress" : "Needs Attention");
-        document.getElementById("stationKpis").innerHTML = [
-          `<div class="hero-pill">Overall: ${overallStatus}</div>`,
-          `<div class="hero-pill">Progress: ${overallPercent}%</div>`,
-          `<div class="hero-pill">Items: ${completedRowsAll}/${totalRowsAll}</div>`,
-          `<div class="hero-pill">Live Sync: On</div>`
-        ].join("");
-
-        const progressPayload = {
-          progress: overallPercent,
-          table1Progress,
-          table2Progress,
-          table3Progress,
-          table4Progress,
-          completedItems: completedRowsAll,
-          totalItems: totalRowsAll,
-          updatedAt: new Date().toISOString()
-        };
-        localStorage.setItem(`metro_foh_progress_${STATION}`, JSON.stringify(progressPayload));
-        if (typeof window.autoPersistStationProgress === "function") {
-          window.autoPersistStationProgress(progressPayload);
-        }
+      const staticProgress = {
+        table1: { completed: 0, total: 4 },
+        table2: { completed: 0, total: 7 },
+        table3: { completed: 0, total: 8 },
+        table4: { completed: 0, total: 7 }
       };
 
-      recalc();
-      grid.addEventListener("input", recalc);
-      grid.addEventListener("change", recalc);
-      const observer = new MutationObserver(recalc);
-      observer.observe(grid, { subtree: true, childList: true, characterData: true });
+      const cards = Array.from(grid.querySelectorAll(".table-card"));
+      const tablePercents = [
+        Math.round((staticProgress.table1.completed / staticProgress.table1.total) * 100),
+        Math.round((staticProgress.table2.completed / staticProgress.table2.total) * 100),
+        Math.round((staticProgress.table3.completed / staticProgress.table3.total) * 100),
+        Math.round((staticProgress.table4.completed / staticProgress.table4.total) * 100)
+      ];
+
+      cards.forEach((card, index) => {
+        const textEl = card.querySelector(".table-progress-text");
+        const barEl = card.querySelector(".table-progress-fill");
+        setProgressBar(barEl, textEl, tablePercents[index] || 0);
+      });
+
+      const completedRowsAll = staticProgress.table1.completed + staticProgress.table2.completed + staticProgress.table3.completed + staticProgress.table4.completed;
+      const totalRowsAll = staticProgress.table1.total + staticProgress.table2.total + staticProgress.table3.total + staticProgress.table4.total;
+      const overallPercent = totalRowsAll ? Math.round((completedRowsAll / totalRowsAll) * 100) : 0;
+      const overallStatus = overallPercent >= 55 ? "On Track" : (overallPercent >= 25 ? "In Progress" : "Needs Attention");
+      setProgressBar(document.getElementById("stationProgressBar"), document.getElementById("stationProgressText"), overallPercent);
+      document.getElementById("stationKpis").innerHTML = [
+        `<div class="hero-pill">Overall: ${overallStatus}</div>`,
+        `<div class="hero-pill">Progress: ${overallPercent}%</div>`,
+        `<div class="hero-pill">Items: ${completedRowsAll}/${totalRowsAll}</div>`,
+        `<div class="hero-pill">Live Sync: Static</div>`
+      ].join("");
     }
 
     renderStationPage();
