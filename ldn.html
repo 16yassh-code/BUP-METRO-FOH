@@ -145,10 +145,10 @@
       <div class="overall-progress" style="margin-bottom:12px;">
         <div class="progress-row">
           <span>Overall Station Completion</span>
-          <span id="stationProgressText">23%</span>
+          <span id="stationProgressText">21%</span>
         </div>
         <div class="progress-shell">
-          <div class="progress-fill" id="stationProgressBar" style="width:23%;"></div>
+          <div class="progress-fill" id="stationProgressBar" style="width:21%;"></div>
         </div>
       </div>
 
@@ -193,14 +193,14 @@
       <div class="station-sections" id="tablesGrid">
         <article class="table-card">
           <h3>Sample Submission Tracker</h3>
-          <p class="small-copy">7 tracked items</p>
+          <p class="small-copy">6 tracked items</p>
           <div class="table-progress">
             <div class="progress-row">
               <span>Table Completion</span>
-              <span id="tableProgressText1" class="table-progress-text">14%</span>
+              <span id="tableProgressText1" class="table-progress-text">0%</span>
             </div>
             <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" id="tableProgressBar1" style="width:14%;"></div>
+              <div class="progress-fill table-progress-fill" id="tableProgressBar1" style="width:0%;"></div>
             </div>
           </div>
           <div class="table-wrap">
@@ -209,11 +209,10 @@
                 <tr><th>Description</th><th>Form Submission</th><th>Sample Submission</th><th>Approval Status</th><th>Completion Date</th></tr>
               </thead>
               <tbody>
-                <tr class="status-row-pending"><td>CLG-401C – Metal Batten Ceiling</td><td>Submitted</td><td>Pending</td><td><span class="tag tag-pending">Pending (HP raised)</span></td><td>—</td></tr>
-                <tr class="status-row-pending"><td>CLG-402 – Aluminium Batten Ceiling</td><td>Submitted</td><td>ETA TBC</td><td><span class="tag tag-pending">Pending</span></td><td>—</td></tr>
-                <tr class="status-row-pending"><td>IWS-301E – Stainless Steel Wall Panel System 1</td><td>Submitted</td><td>Pending delivery</td><td><span class="tag tag-pending">Pending</span></td><td>—</td></tr>
-                <tr class="status-row-pending"><td>IWS-321E – Stainless Steel Wall Panel System 2</td><td>Submitted</td><td>Pending delivery</td><td><span class="tag tag-pending">Pending</span></td><td>—</td></tr>
-                <tr class="status-row-pending"><td>IWS-301E / 321E (Alternative – Alumate)</td><td>Submitted</td><td>ETA 24/03/2026</td><td><span class="tag tag-pending">Pending review</span></td><td>24/03/2026 (Expected)</td></tr>
+                <tr class="status-row-pending"><td>CLG-401C Sculptform Aluminium Batten Powdercoated</td><td>Submitted</td><td>Sample submitted 25/03/2026</td><td><span class="tag tag-pending">Pending (HP raised)</span></td><td>—</td></tr>
+                <tr class="status-row-pending"><td>IWS-301E Rimex Granex Inco Black</td><td>Submitted</td><td>Sample submitted 25/03/2026</td><td><span class="tag tag-pending">Pending</span></td><td>—</td></tr>
+                <tr class="status-row-pending"><td>IWS-321E Rimex Black Pinstripe</td><td>Submitted</td><td>Sample submitted 25/03/2026</td><td><span class="tag tag-pending">Pending</span></td><td>—</td></tr>
+                <tr class="status-row-pending"><td>IWS-301E / 321E (Alternative – Alumate)</td><td>Submitted</td><td>ETA 24/03/2026</td><td><span class="tag tag-pending">Pending review</span></td><td>—</td></tr>
                 <tr class="status-row-review"><td>GLA-201C – Internal Window Glass</td><td>Submitted</td><td>Sample under review</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
                 <tr class="status-row-pending"><td>DOR-403 – Gateline Stacked Door</td><td>Submitted</td><td>ETA TBC</td><td><span class="tag tag-pending">Pending</span></td><td>—</td></tr>
               </tbody>
@@ -335,11 +334,10 @@
       stationData: {
         LDN: {
           sampleSubmissionTracker: [
-            { description: "CLG-401C – Metal Batten Ceiling", formSubmission: "Submitted", sampleSubmission: "Pending", approvalStatus: "Pending (HP raised)", completionDate: "—" },
-            { description: "CLG-402 – Aluminium Batten Ceiling", formSubmission: "Submitted", sampleSubmission: "ETA TBC", approvalStatus: "Pending", completionDate: "—" },
-            { description: "IWS-301E – Stainless Steel Wall Panel System 1", formSubmission: "Submitted", sampleSubmission: "Pending delivery", approvalStatus: "Pending", completionDate: "—" },
-            { description: "IWS-321E – Stainless Steel Wall Panel System 2", formSubmission: "Submitted", sampleSubmission: "Pending delivery", approvalStatus: "Pending", completionDate: "—" },
-            { description: "IWS-301E / 321E (Alternative – Alumate)", formSubmission: "Submitted", sampleSubmission: "ETA 24/03/2026", approvalStatus: "Pending review", completionDate: "24/03/2026 (Expected)" },
+            { description: "CLG-401C Sculptform Aluminium Batten Powdercoated", formSubmission: "Submitted", sampleSubmission: "Sample submitted 25/03/2026", approvalStatus: "Pending (HP raised)", completionDate: "—" },
+            { description: "IWS-301E Rimex Granex Inco Black", formSubmission: "Submitted", sampleSubmission: "Sample submitted 25/03/2026", approvalStatus: "Pending", completionDate: "—" },
+            { description: "IWS-321E Rimex Black Pinstripe", formSubmission: "Submitted", sampleSubmission: "Sample submitted 25/03/2026", approvalStatus: "Pending", completionDate: "—" },
+            { description: "IWS-301E / 321E (Alternative – Alumate)", formSubmission: "Submitted", sampleSubmission: "ETA 24/03/2026", approvalStatus: "Pending review", completionDate: "—" },
             { description: "GLA-201C – Internal Window Glass", formSubmission: "Submitted", sampleSubmission: "Sample under review", approvalStatus: "In Review", completionDate: "—" },
             { description: "DOR-403 – Gateline Stacked Door", formSubmission: "Submitted", sampleSubmission: "ETA TBC", approvalStatus: "Pending", completionDate: "—" }
           ],
@@ -446,9 +444,9 @@
     const stationMetrics = dataSource.stationMetrics.bind(dataSource);
 
     function renderStationPage() {
-      const completedItems = 9;
-      const totalItems = 39;
-      const overallPercent = 23;
+      const completedItems = 8;
+      const totalItems = 38;
+      const overallPercent = 21;
       document.getElementById("stationKpis").innerHTML = [
         ` <div class="hero-pill">Overall: Needs Attention</div>`,
         ` <div class="hero-pill">Progress: ${overallPercent}%</div>`,
@@ -481,7 +479,7 @@
       };
 
       const staticProgress = {
-        table1: { completed: 1, total: 7 },
+        table1: { completed: 0, total: 6 },
         table2: { completed: 8, total: 12 },
         table3: { completed: 0, total: 10 },
         table4: { completed: 0, total: 10 }
