@@ -461,11 +461,12 @@ h1, h2, h3, p { margin: 0; }
 .legend-started .legend-dot { background: var(--red); }
 
 .table-wrap {
-  overflow-x: auto;
+  overflow: visible;
   border-radius: 12px;
   border: 1px solid rgba(20, 53, 90, 0.1);
   background: #fff;
-  max-height: 420px;
+  height: auto;
+  max-height: none;
 }
 
 table {
@@ -571,19 +572,31 @@ tr.status-row-started td { background: linear-gradient(90deg, rgba(209, 74, 80, 
   .page-shell {
     width: min(100% - 18px, 100%);
     padding-top: 12px;
+    padding-bottom: 28px;
   }
 
   .topbar { top: 8px; }
 
   .topbar-inner {
     width: 100%;
-    border-radius: 22px;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 16px;
     flex-direction: column;
     align-items: stretch;
   }
 
   .brand,
   .menu { justify-content: center; }
+
+  .menu {
+    gap: 6px;
+  }
+
+  .menu a {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+  }
 
   .hero,
   .stations-overview,
@@ -594,4 +607,123 @@ tr.status-row-started td { background: linear-gradient(90deg, rgba(209, 74, 80, 
   .station-card,
   .section-panel,
   .page-intro { border-radius: 22px; }
+
+  .hero-card,
+  .summary-card,
+  .station-card,
+  .section-panel,
+  .page-intro,
+  .table-card {
+    padding: 18px;
+  }
+
+  .hero-card {
+    min-height: auto;
+  }
+
+  .hero-card h1 {
+    max-width: none;
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .hero-card p,
+  .page-intro p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .progress-row,
+  .section-header,
+  .station-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .section-header {
+    margin-top: 20px;
+  }
+
+  .station-banner,
+  .hero-meta,
+  .section-kpis,
+  .status-legend {
+    gap: 10px;
+  }
+
+  .section-kpis .hero-pill,
+  .hero-pill,
+  .legend-item,
+  .tag {
+    white-space: normal;
+  }
+
+  .summary-grid,
+  .station-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrap {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  thead th,
+  tbody td {
+    padding: 10px 9px;
+    font-size: 0.82rem;
+  }
+
+  .footer-note {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page-shell {
+    width: min(100% - 12px, 100%);
+  }
+
+  .topbar-inner {
+    padding: 7px 9px;
+  }
+
+  .menu {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: visible;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .hero-card,
+  .summary-card,
+  .station-card,
+  .section-panel,
+  .page-intro,
+  .table-card {
+    padding: 16px;
+  }
+
+  .eyebrow {
+    padding: 7px 12px;
+    font-size: 0.72rem;
+  }
+
+  .station-code {
+    font-size: 1.75rem;
+  }
+
+  table {
+    min-width: 500px;
+  }
 }
