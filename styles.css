@@ -575,7 +575,9 @@ tr.status-row-started td { background: linear-gradient(90deg, rgba(209, 74, 80, 
     padding-bottom: 28px;
   }
 
-  .topbar { top: 8px; }
+  .topbar {
+    position: static;
+  }
 
   .topbar-inner {
     width: 100%;
@@ -663,15 +665,27 @@ tr.status-row-started td { background: linear-gradient(90deg, rgba(209, 74, 80, 
   }
 
   .table-wrap {
-    height: auto;
-    max-height: none;
-    overflow: visible;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   thead th,
   tbody td {
-    padding: 10px 9px;
-    font-size: 0.82rem;
+    padding: 8px 7px;
+    font-size: 0.76rem;
+  }
+
+  thead th {
+    position: static;
+  }
+
+  .table-card h3 {
+    font-size: 0.96rem;
+  }
+
+  .table-card .small-copy,
+  .progress-row {
+    font-size: 0.8rem;
   }
 
   .footer-note {
@@ -691,7 +705,7 @@ tr.status-row-started td { background: linear-gradient(90deg, rgba(209, 74, 80, 
   .menu {
     justify-content: flex-start;
     flex-wrap: nowrap;
-    overflow-x: visible;
+    overflow-x: auto;
     padding-bottom: 2px;
     scrollbar-width: none;
   }
@@ -724,6 +738,6 @@ tr.status-row-started td { background: linear-gradient(90deg, rgba(209, 74, 80, 
   }
 
   table {
-    min-width: 500px;
+    min-width: 420px;
   }
 }
