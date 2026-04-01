@@ -24,10 +24,6 @@
     .table-progress .progress-shell { background: rgba(20, 53, 90, 0.15); height: 10px; }
     .table-progress .progress-fill { background: #9ca3af; }
     .progress-fill { transition: width 0.3s ease, background-color 0.3s ease; }
-    .completed-row { background: #dcfce7; }
-    .completion-on-time { color: #0f8f5f; font-weight: 700; }
-    .shop-completion-done { background: #dcfce7; color: #166534; font-weight: 700; border-radius: 6px; }
-    .shop-completion-late { background: #fecaca; color: #991b1b; font-weight: 700; border-radius: 6px; }
     @media (max-width: 760px) { .timeline-axis, .timeline-row { grid-template-columns: 1fr; } .axis-months { font-size: 0.66rem; } .timeline-label { margin-bottom: 4px; } }
   </style>
 </head>
@@ -75,7 +71,7 @@
           <span id="stationProgressText">7%</span>
         </div>
         <div class="progress-shell">
-          <div class="progress-fill" id="stationProgressBar" style="width:7%; background:#EF4444;"></div>
+          <div class="progress-fill" id="stationProgressBar" style="width:7%;"></div>
         </div>
       </div>
 
@@ -112,7 +108,7 @@
               <span class="table-progress-text">0%</span>
             </div>
             <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:0%; background:#9CA3AF;"></div>
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
             </div>
           </div>
           <div class="table-wrap"><table><thead><tr><th>Description</th><th>Form Submission</th><th>Sample Submission</th><th>Approval Status</th><th>Completion Date</th></tr></thead><tbody>
@@ -145,13 +141,13 @@
               <span class="table-progress-text">30%</span>
             </div>
             <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:30%; background:#10B981;"></div>
+              <div class="progress-fill table-progress-fill" style="width:30%;"></div>
             </div>
           </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Date</th><th>Completion Date</th></tr></thead><tbody>
-            <tr class="completed-row" style="background:#dcfce7;"><td>CLG-303D&amp;IWS-220D Timber Batten&amp; Aluminum panel Ceiling Detail drawing L01 Main Canopy Soffit</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td class="shop-completion-done">30/03/2026</td></tr>
-            <tr class="completed-row" style="background:#dcfce7;"><td>CLG-103 Plasterboard Ceiling layout drawing Public and Staff Toilet</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td class="shop-completion-done">30/03/2026</td></tr>
-            <tr class="completed-row" style="background:#dcfce7;"><td>CO1 Main nopy Sorte 3D&amp;/WS-220D Timber Batten&amp; Aluminum panel Ceiling layout drawing</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td class="shop-completion-done">30/03/2026</td></tr>
+            <tr class="status-row-complete"><td>CLG-303D&amp;IWS-220D Timber Batten&amp; Aluminum panel Ceiling Detail drawing L01 Main Canopy Soffit</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td class="completion-on-time">30/03/2026</td></tr>
+            <tr class="status-row-complete"><td>CLG-103 Plasterboard Ceiling layout drawing Public and Staff Toilet</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td class="completion-on-time">30/03/2026</td></tr>
+            <tr class="status-row-complete"><td>CO1 Main nopy Sorte 3D&amp;/WS-220D Timber Batten&amp; Aluminum panel Ceiling layout drawing</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td class="completion-on-time">30/03/2026</td></tr>
             <tr><td>CLG-401D – Metal Batten Ceiling (Platform/Concourse Priority)</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td>—</td></tr>
             <tr><td>CLG-410D – Metal Pan Ceiling</td><td>8 days</td><td>26/03/2026</td><td>08/04/2026</td><td>—</td></tr>
             <tr><td>CLG-410H – Mesh Panel Ceiling</td><td>8 days</td><td>26/03/2026</td><td>08/04/2026</td><td>—</td></tr>
@@ -170,7 +166,7 @@
               <span class="table-progress-text">0%</span>
             </div>
             <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:0%; background:#9CA3AF;"></div>
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
             </div>
           </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Lead Time (Days)</th><th>Start Date</th><th>Target Delivery Date</th><th>Completion Date</th></tr></thead><tbody>
@@ -193,7 +189,7 @@
               <span class="table-progress-text">0%</span>
             </div>
             <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:0%; background:#9CA3AF;"></div>
+              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
             </div>
           </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Completion Date</th><th>Completion Date</th></tr></thead><tbody>

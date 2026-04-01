@@ -24,8 +24,6 @@
     .table-progress .progress-shell { background: rgba(20, 53, 90, 0.15); height: 10px; }
     .table-progress .progress-fill { background: #9ca3af; }
     .progress-fill { transition: width 0.3s ease, background-color 0.3s ease; }
-    .completion-on-time { color: #0f8f5f; font-weight: 700; }
-    .shop-completion-done { background: #dcfce7; color: #166534; font-weight: 700; border-radius: 6px; }
     @media (max-width: 760px) { .timeline-axis, .timeline-row { grid-template-columns: 1fr; } .axis-months { font-size: 0.66rem; } .timeline-label { margin-bottom: 4px; } }
   </style>
 </head>
@@ -165,8 +163,8 @@
             <tr><td>IWS-220F/221F/222F/223/224 – Metal Covers & Trims</td><td>15 days</td><td>15/04/2026</td><td>09/05/2026</td><td>—</td></tr>
             <tr><td>Joinery Unit – Internal Joinery (Separate Subcontract Priority)</td><td>10 days</td><td>13/04/2026</td><td>28/04/2026</td><td>—</td></tr>
             <tr><td>Partition Wall – Internal Partition System (Early Works)</td><td>5 days</td><td>—</td><td>30/04/2026</td><td>—</td></tr>
-            <tr><td>IWS-321 & IWS-301 Stainless steel cladding layout platform east psd</td><td>4 days</td><td>19/03/2026</td><td>23/03/2026</td><td class="completion-on-time shop-completion-done">23/03/2026</td></tr>
-            <tr><td>IWS-321 & IWS-301 Stainless steel cladding layout platform west psd</td><td>4 days</td><td>19/03/2026</td><td>23/03/2026</td><td class="completion-on-time shop-completion-done">23/03/2026</td></tr>
+            <tr><td>IWS-321 & IWS-301 Stainless steel cladding layout platform east psd</td><td>4 days</td><td>19/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
+            <tr><td>IWS-321 & IWS-301 Stainless steel cladding layout platform west psd</td><td>4 days</td><td>19/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
           </tbody></table></div>
         </article>
         <article class="table-card">
@@ -375,9 +373,7 @@
             if (index === 3 && row.approvalStatus) return `<td>${tag(value)}</td>`;
             const isCompletionCell = index === values.length - 1;
             const isCompletedDate = /^(?:\d{1,2}\/\d{1,2}\/\d{4}|\d{4}-\d{2}-\d{2})$/.test(String(value || "").trim());
-            const completionClass = isCompletionCell && isCompletedDate
-              ? ` class="completion-on-time${section.key === "shopDrawings" ? " shop-completion-done" : ""}"`
-              : "";
+            const completionClass = isCompletionCell && isCompletedDate ? ' class="completion-on-time"' : "";
             return `<td${completionClass}>${value || "-"}</td>`;
           }).join("")}</tr>`;
         }).join("");
