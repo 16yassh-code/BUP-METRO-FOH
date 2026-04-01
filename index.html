@@ -89,13 +89,88 @@
       margin-bottom: 16px;
     }
     .big-progress .progress-shell { background: rgba(255, 255, 255, 0.28); height: 14px; }
-    .portfolio-timeline-item { padding: 14px; border: 1px solid rgba(20, 53, 90, 0.08); border-radius: 14px; background: rgba(255, 255, 255, 0.92); margin-bottom: 12px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .portfolio-timeline-item:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(15,45,71,0.1); }
+    .timeline-note {
+      margin: 10px 0 16px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(20, 53, 90, 0.08);
+      color: #556476;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .portfolio-timeline-item {
+      padding: 16px;
+      border: 1px solid rgba(20, 53, 90, 0.08);
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(11, 132, 243, 0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(247, 250, 253, 0.98) 100%);
+      margin-bottom: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .portfolio-timeline-item:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(15,45,71,0.1); }
     .portfolio-timeline-item:last-child { margin-bottom: 0; }
-    .timeline-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .timeline-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
     .timeline-head strong { font-family: "Space Grotesk", sans-serif; font-size: 1.1rem; }
-    .timeline-track { height: 24px; border-radius: 999px; background: #eaf1f8; border: 1px solid rgba(20, 53, 90, 0.08); position: relative; overflow: hidden; margin: 7px 0; }
-    .timeline-bar { position: absolute; top: 3px; bottom: 3px; border-radius: 999px; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; padding: 0 10px; }
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 10px 12px;
+      align-items: center;
+    }
+    .timeline-axis-label,
+    .timeline-phase-label {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #556476;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .timeline-axis {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 6px;
+      padding: 0 2px 4px;
+    }
+    .timeline-axis span {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .timeline-track {
+      height: 26px;
+      border-radius: 999px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #eaf1f8 0,
+          #eaf1f8 calc(10% - 1px),
+          rgba(20, 53, 90, 0.08) calc(10% - 1px),
+          rgba(20, 53, 90, 0.08) 10%
+        );
+      border: 1px solid rgba(20, 53, 90, 0.08);
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+    }
+    .timeline-bar {
+      position: absolute;
+      top: 3px;
+      bottom: 3px;
+      border-radius: 999px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0 10px;
+      box-shadow: 0 6px 12px rgba(15, 45, 71, 0.16);
+    }
     .bar-samples { background: linear-gradient(90deg, #17a2ff, #4bc8ff); }
     .bar-drawings { background: linear-gradient(90deg, #0a7adf, #1ea5ff); }
     .bar-procurement { background: linear-gradient(90deg, #5a7ce2, #7d9bff); }
@@ -158,8 +233,13 @@
       letter-spacing: 0.04em;
     }
     @media (max-width: 1100px) { .glance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 680px) { .glance-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 680px) { .station-rings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 680px) {
+      .glance-grid { grid-template-columns: 1fr; }
+      .station-rings { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .timeline-grid { grid-template-columns: 1fr; gap: 8px; }
+      .timeline-axis-label { display: none; }
+      .timeline-phase-label { margin-top: 6px; }
+    }
   </style>
 </head>
 <body>
@@ -239,16 +319,25 @@
         <div class="progress-row"><span>Overall Project Progress</span><span>33%</span></div>
         <div class="progress-shell"><div class="progress-fill" style="width:33%;"></div></div>
       </div>
+      <div class="timeline-note">Timeline will be updated once baseline is received from all station.</div>
 
       <div class="portfolio-timeline-item">
         <div class="timeline-head">
           <strong>LDN</strong>
           <a href="ldn.html" class="hero-pill" style="padding:8px 12px;">Open LDN</a>
         </div>
-        <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:18%;">Mar-Apr</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">May-Dec</div></div>
+        <div class="timeline-grid">
+          <div class="timeline-axis-label">Month Axis</div>
+          <div class="timeline-axis"><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
+          <div class="timeline-phase-label">Samples</div>
+          <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:18%;">Mar-Apr</div></div>
+          <div class="timeline-phase-label">Drawings</div>
+          <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
+          <div class="timeline-phase-label">Procurement</div>
+          <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
+          <div class="timeline-phase-label">Installation</div>
+          <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">May-Dec</div></div>
+        </div>
       </div>
 
       <div class="portfolio-timeline-item">
@@ -256,10 +345,18 @@
           <strong>ATL</strong>
           <a href="atl.html" class="hero-pill" style="padding:8px 12px;">Open ATL</a>
         </div>
-        <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:16%;">Mar-Apr</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">Jun-Dec</div></div>
+        <div class="timeline-grid">
+          <div class="timeline-axis-label">Month Axis</div>
+          <div class="timeline-axis"><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
+          <div class="timeline-phase-label">Samples</div>
+          <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:16%;">Mar-Apr</div></div>
+          <div class="timeline-phase-label">Drawings</div>
+          <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
+          <div class="timeline-phase-label">Procurement</div>
+          <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
+          <div class="timeline-phase-label">Installation</div>
+          <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">Jun-Dec</div></div>
+        </div>
       </div>
 
       <div class="portfolio-timeline-item">
@@ -267,10 +364,18 @@
           <strong>AEC</strong>
           <a href="aec.html" class="hero-pill" style="padding:8px 12px;">Open AEC</a>
         </div>
-        <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:16%;">Mar-Apr</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">Jun-Dec</div></div>
+        <div class="timeline-grid">
+          <div class="timeline-axis-label">Month Axis</div>
+          <div class="timeline-axis"><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
+          <div class="timeline-phase-label">Samples</div>
+          <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:16%;">Mar-Apr</div></div>
+          <div class="timeline-phase-label">Drawings</div>
+          <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:14%;">Mar</div></div>
+          <div class="timeline-phase-label">Procurement</div>
+          <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
+          <div class="timeline-phase-label">Installation</div>
+          <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">Jun-Dec</div></div>
+        </div>
       </div>
 
       <div class="portfolio-timeline-item">
@@ -278,10 +383,18 @@
           <strong>ABP</strong>
           <a href="abp.html" class="hero-pill" style="padding:8px 12px;">Open ABP</a>
         </div>
-        <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:12%;">Mar</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:16%;">Mar-Apr</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
-        <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">Jun-Dec</div></div>
+        <div class="timeline-grid">
+          <div class="timeline-axis-label">Month Axis</div>
+          <div class="timeline-axis"><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
+          <div class="timeline-phase-label">Samples</div>
+          <div class="timeline-track"><div class="timeline-bar bar-samples" style="left:0%;width:12%;">Mar</div></div>
+          <div class="timeline-phase-label">Drawings</div>
+          <div class="timeline-track"><div class="timeline-bar bar-drawings" style="left:0%;width:16%;">Mar-Apr</div></div>
+          <div class="timeline-phase-label">Procurement</div>
+          <div class="timeline-track"><div class="timeline-bar bar-procurement" style="left:11%;width:79%;">Apr-Nov</div></div>
+          <div class="timeline-phase-label">Installation</div>
+          <div class="timeline-track"><div class="timeline-bar bar-installation" style="left:22%;width:78%;">Jun-Dec</div></div>
+        </div>
       </div>
     </section>
 
