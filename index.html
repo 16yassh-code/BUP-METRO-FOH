@@ -35,6 +35,64 @@
       transform: translateY(-1px);
       box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
     }
+    .summary-card {
+      background:
+        radial-gradient(circle at 100% 0%, rgba(11, 132, 243, 0.14), transparent 30%),
+        radial-gradient(circle at 0% 100%, rgba(36, 181, 123, 0.12), transparent 28%),
+        linear-gradient(155deg, #ffffff 0%, #f6fbff 52%, #edf4fb 100%);
+      border: 1px solid rgba(30, 68, 111, 0.14);
+      box-shadow: 0 22px 44px rgba(20, 53, 90, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .summary-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -60px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(121, 210, 255, 0.28) 0%, rgba(121, 210, 255, 0) 70%);
+      pointer-events: none;
+    }
+    .summary-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .summary-heading h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      letter-spacing: -0.03em;
+    }
+    .summary-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(20, 53, 90, 0.1);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #28445f;
+      white-space: nowrap;
+    }
+    .summary-intro {
+      color: #546579;
+      font-size: 0.93rem;
+      line-height: 1.65;
+      margin-bottom: 16px;
+      max-width: 42ch;
+      position: relative;
+      z-index: 1;
+    }
     .portfolio-panel {
       background: var(--surface);
       border: 1px solid var(--line);
@@ -175,33 +233,90 @@
     .bar-drawings { background: linear-gradient(90deg, #0a7adf, #1ea5ff); }
     .bar-procurement { background: linear-gradient(90deg, #5a7ce2, #7d9bff); }
     .bar-installation { background: linear-gradient(90deg, #18a66d, #36c389); }
+    .summary-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
+    }
+    .mini-stat {
+      padding: 16px;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(243, 248, 253, 0.94) 100%);
+      border: 1px solid rgba(20, 53, 90, 0.1);
+      box-shadow: 0 12px 24px rgba(20, 53, 90, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .mini-stat::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(180deg, #0b84f3, #79d2ff);
+      opacity: 0.85;
+    }
+    .mini-stat span {
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #607286;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .mini-stat strong {
+      font-size: clamp(1.9rem, 2.6vw, 2.3rem);
+      letter-spacing: -0.05em;
+      color: #11283c;
+      line-height: 1;
+    }
+    .mini-stat em {
+      display: block;
+      margin-top: 8px;
+      color: #6a798a;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-weight: 600;
+    }
+    .station-rings-panel {
+      position: relative;
+      z-index: 1;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(20, 53, 90, 0.08);
+      backdrop-filter: blur(10px);
+    }
     .station-rings {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
+      gap: 12px;
     }
     .station-rings-title {
-      font-size: 0.86rem;
+      font-size: 0.78rem;
       font-weight: 800;
       color: #334155;
-      letter-spacing: 0.04em;
-      margin-top: 2px;
-      margin-bottom: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 14px;
     }
     .station-ring-card {
-      background: #fff;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 248, 252, 0.94) 100%);
       border: 1px solid rgba(20, 53, 90, 0.1);
-      border-radius: 12px;
-      padding: 10px 8px;
+      border-radius: 16px;
+      padding: 12px 10px;
       display: grid;
       justify-items: center;
-      gap: 6px;
+      gap: 8px;
+      box-shadow: 0 10px 18px rgba(20, 53, 90, 0.06);
     }
     .station-ring {
       --deg: 0deg;
       --ring-color: #f59e0b;
-      width: 58px;
-      height: 58px;
+      width: 64px;
+      height: 64px;
       border-radius: 999px;
       background: conic-gradient(var(--ring-color) var(--deg), #e5e7eb var(--deg));
       display: grid;
@@ -209,15 +324,15 @@
     }
     .station-ring::after {
       content: "";
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 999px;
       background: #fff;
       border: 1px solid rgba(20, 53, 90, 0.08);
     }
     .station-ring-value {
       position: absolute;
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       font-weight: 800;
       color: #0f172a;
     }
@@ -227,14 +342,17 @@
       place-items: center;
     }
     .station-ring-label {
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 800;
       color: #334155;
       letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
     @media (max-width: 1100px) { .glance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 680px) {
       .glance-grid { grid-template-columns: 1fr; }
+      .summary-heading { flex-direction: column; align-items: flex-start; }
+      .summary-grid { grid-template-columns: 1fr; }
       .station-rings { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .timeline-grid { grid-template-columns: 1fr; gap: 8px; }
       .timeline-axis-label { display: none; }
@@ -278,29 +396,26 @@
       </div>
 
       <aside class="summary-card">
-        <div>
-          <h3>Project Summary</h3>
-        </div>
-        <div class="summary-grid" id="summaryGrid">
-          <div class="mini-stat"><span>Stations</span><strong>4</strong></div>
-          <div class="mini-stat"><span>Tracked Items</span><strong>199</strong></div>
-          <div class="mini-stat"><span>Completed Items</span><strong>13</strong></div>
-          <div class="mini-stat"><span>Approved Samples</span><strong>2</strong></div>
-        </div>
-        <div class="station-rings-title">Station Progress Rings</div>
-        <div class="station-rings" id="stationRings">
-          <article class="station-ring-card"><div class="station-ring-label">LDN Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:180deg;--ring-color:#f59e0b"></div><span class="station-ring-value">50%</span></div></article>
-          <article class="station-ring-card"><div class="station-ring-label">ATL Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:36deg;--ring-color:#f59e0b"></div><span class="station-ring-value">10%</span></div></article>
-          <article class="station-ring-card"><div class="station-ring-label">AEC Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:119deg;--ring-color:#f59e0b"></div><span class="station-ring-value">33%</span></div></article>
-          <article class="station-ring-card"><div class="station-ring-label">ABP Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:90deg;--ring-color:#f59e0b"></div><span class="station-ring-value">25%</span></div></article>
-        </div>
-        <div class="overall-progress">
-          <div class="progress-row">
-            <span>Overall Completion</span>
-            <span id="overallProgressText">33%</span>
+        <div class="summary-heading">
+          <div>
+            <h3>Project Summary</h3>
           </div>
-          <div class="progress-shell">
-            <div class="progress-fill" id="overallProgressBar" style="width:33%;"></div>
+          <div class="summary-kicker">Portfolio Snapshot</div>
+        </div>
+        <p class="summary-intro">A cleaner portfolio snapshot for total station count, tracked scope, completed items, approvals, and current progress across all live station pages.</p>
+        <div class="summary-grid" id="summaryGrid">
+          <div class="mini-stat"><span>Stations</span><strong>4</strong><em>Active station dashboards</em></div>
+          <div class="mini-stat"><span>Tracked Items</span><strong>226</strong><em>Total portfolio line items</em></div>
+          <div class="mini-stat"><span>Completed Items</span><strong>17</strong><em>Marked complete to date</em></div>
+          <div class="mini-stat"><span>Approved Samples</span><strong>2</strong><em>Approved sample submissions</em></div>
+        </div>
+        <div class="station-rings-panel">
+          <div class="station-rings-title">Station Progress Rings</div>
+          <div class="station-rings" id="stationRings">
+            <article class="station-ring-card"><div class="station-ring-label">LDN Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:180deg;--ring-color:#f59e0b"></div><span class="station-ring-value">50%</span></div></article>
+            <article class="station-ring-card"><div class="station-ring-label">ATL Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:36deg;--ring-color:#f59e0b"></div><span class="station-ring-value">10%</span></div></article>
+            <article class="station-ring-card"><div class="station-ring-label">AEC Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:119deg;--ring-color:#f59e0b"></div><span class="station-ring-value">33%</span></div></article>
+            <article class="station-ring-card"><div class="station-ring-label">ABP Page</div><div class="station-ring-wrap"><div class="station-ring" style="--deg:90deg;--ring-color:#f59e0b"></div><span class="station-ring-value">25%</span></div></article>
           </div>
         </div>
       </aside>
