@@ -102,6 +102,11 @@
       color: #166534;
       font-weight: 700;
     }
+    .status-row-complete td {
+      background: #dcfce7;
+      color: #166534;
+      font-weight: 700;
+    }
     @media (max-width: 760px) {
       .timeline-axis, .timeline-row { grid-template-columns: 1fr; }
       .axis-months { font-size: 0.66rem; }
@@ -145,10 +150,10 @@
       <div class="overall-progress" style="margin-bottom:12px;">
         <div class="progress-row">
           <span>Overall Station Completion</span>
-          <span id="stationProgressText">21%</span>
+          <span id="stationProgressText">50%</span>
         </div>
         <div class="progress-shell">
-          <div class="progress-fill" id="stationProgressBar" style="width:21%;"></div>
+          <div class="progress-fill" id="stationProgressBar" style="width:50%;"></div>
         </div>
       </div>
 
@@ -243,18 +248,18 @@
                 <tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Date</th><th>Completion Date</th></tr>
               </thead>
               <tbody>
-                <tr><td>CLG-401C – Metal Batten Ceiling (Platform/Concourse Priority)</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>—</td></tr>
-                <tr><td>CLG-410C – Metal Pan Ceiling</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td>—</td></tr>
-                <tr><td>CLG-402 Aluminium batten</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td class="completion-on-time">20/03/2026</td></tr>
-                <tr><td>CLG-131 CFC panel</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td class="completion-on-time">20/03/2026</td></tr>
-                <tr><td>CLG-402 Aluminium Batten Platform L00 Concourse PAID</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td class="completion-on-time">20/03/2026</td></tr>
-                <tr><td>CLG-131 CFC celeing layout Ground floor Zone A - Bicycle Parking</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td class="completion-on-time">20/03/2026</td></tr>
-                <tr><td>IWS-321 Stainless steel cladding layout drawing - Elevation A [Platform L00 Concourse Paid]</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
-                <tr><td>IWS-321 Stainless steel cladding layout drawing - Elevation B-F [Platform L00 Concourse Paid]</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
-                <tr><td>IWS-321 Stainless Steel Cladding - Detail Drawing</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
-                <tr><td>IWS-321 Stainless steel cladding layout drawing - Architectural plan [Platform L00 Concourse Paid]</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
-                <tr><td>Joinery Unit – Internal Joinery</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td>—</td></tr>
-                <tr><td>Aluminium + Glass – Window System</td><td>8 days</td><td>06/04/2026</td><td>15/04/2026</td><td>—</td></tr>
+                <tr class="status-row-complete"><td>CLG-401C&amp;CLG-410C Aluminum Batten&amp; Aluminum panel Ceiling Detail drawing</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td class="completion-on-time">02/04/2026</td></tr>
+                <tr class="status-row-complete"><td>CLG-405 Alumuminum batten detail drawing</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td class="completion-on-time">02/04/2026</td></tr>
+                <tr class="status-row-complete"><td>CLG-402 Aluminium batten</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td class="completion-on-time">20/03/2026</td></tr>
+                <tr class="status-row-complete"><td>CLG-131 CFC panel</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td class="completion-on-time">20/03/2026</td></tr>
+                <tr class="status-row-complete"><td>CLG-402 Aluminium Batten Platform L00 Concourse PAID</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td class="completion-on-time">20/03/2026</td></tr>
+                <tr class="status-row-complete"><td>CLG-131 CFC celeing layout Ground floor Zone A - Bicycle Parking</td><td>8 days</td><td>11/03/2026</td><td>21/03/2026</td><td class="completion-on-time">20/03/2026</td></tr>
+                <tr class="status-row-complete"><td>IWS-321 Stainless steel cladding layout drawing - Elevation A [Platform L00 Concourse Paid]</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
+                <tr class="status-row-complete"><td>IWS-321 Stainless steel cladding layout drawing - Elevation B-F [Platform L00 Concourse Paid]</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
+                <tr class="status-row-complete"><td>IWS-321 Stainless Steel Cladding - Detail Drawing</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
+                <tr class="status-row-complete"><td>IWS-321 Stainless steel cladding layout drawing - Architectural plan [Platform L00 Concourse Paid]</td><td>8 days</td><td>11/03/2026</td><td>23/03/2026</td><td class="completion-on-time">23/03/2026</td></tr>
+                <tr class="status-row-complete"><td>CLG-401 Aluminum batten ceiling layout drawing LEVEL 00 NORTH ZONE A</td><td>12 days</td><td>23/03/2026</td><td>09/04/2026</td><td class="completion-on-time">02/04/2026</td></tr>
+                <tr class="status-row-complete"><td>CLG-405 Aluminum batten ceiling layout drawing LEVEL 00 NORTH ZONE A</td><td>8 days</td><td>06/04/2026</td><td>15/04/2026</td><td class="completion-on-time">02/04/2026</td></tr>
               </tbody>
             </table>
           </div>
@@ -347,8 +352,8 @@
             { description: "DOR-403 – Gateline Stacked Door", formSubmission: "Submitted", sampleSubmission: "ETA TBC", approvalStatus: "Pending", completionDate: "—" }
           ],
           shopDrawings: [
-            { activityDescription: "CLG-401C – Metal Batten Ceiling (Platform/Concourse Priority)", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
-            { activityDescription: "CLG-410C – Metal Pan Ceiling", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "—" },
+            { activityDescription: "CLG-401C&CLG-410C Aluminum Batten& Aluminum panel Ceiling Detail drawing", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "02/04/2026" },
+            { activityDescription: "CLG-405 Alumuminum batten detail drawing", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "02/04/2026" },
             { activityDescription: "CLG-402 Aluminium batten", durationDays: "12 days", startDate: "23/03/2026", targetDate: "09/04/2026", completionDate: "20/03/2026" },
             { activityDescription: "CLG-131 CFC panel", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "20/03/2026" },
             { activityDescription: "CLG-402 Aluminium Batten Platform L00 Concourse PAID", durationDays: "12 days", startDate: "23/03/2026", targetDate: "09/04/2026", completionDate: "20/03/2026" },
@@ -357,8 +362,8 @@
             { activityDescription: "IWS-321 Stainless steel cladding layout drawing - Elevation B-F [Platform L00 Concourse Paid]", durationDays: "8 days", startDate: "11/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
             { activityDescription: "IWS-321 Stainless Steel Cladding - Detail Drawing", durationDays: "8 days", startDate: "11/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
             { activityDescription: "IWS-321 Stainless steel cladding layout drawing - Architectural plan [Platform L00 Concourse Paid]", durationDays: "8 days", startDate: "11/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
-            { activityDescription: "Joinery Unit – Internal Joinery", durationDays: "12 days", startDate: "23/03/2026", targetDate: "09/04/2026", completionDate: "—" },
-            { activityDescription: "Aluminium + Glass – Window System", durationDays: "8 days", startDate: "06/04/2026", targetDate: "15/04/2026", completionDate: "—" }
+            { activityDescription: "CLG-401 Aluminum batten ceiling layout drawing LEVEL 00 NORTH ZONE A", durationDays: "12 days", startDate: "23/03/2026", targetDate: "09/04/2026", completionDate: "02/04/2026" },
+            { activityDescription: "CLG-405 Aluminum batten ceiling layout drawing LEVEL 00 NORTH ZONE A", durationDays: "8 days", startDate: "06/04/2026", targetDate: "15/04/2026", completionDate: "02/04/2026" }
           ],
           procurement: [
             { activityDescription: "CLG-401C – Metal Batten Ceiling", leadTimeDays: "8–10 wks", startDate: "21/03/2026", targetDeliveryDate: "15/06/2026", completionDate: "—" },
@@ -423,9 +428,12 @@
           return "status-row-pending";
         };
         const bodyRows = rowItems.map((row) => {
+          const hasCompletionDate = typeof row.completionDate === "string" && row.completionDate.trim() && row.completionDate.trim() !== "—";
           const values = Object.values(row);
-          return `<tr class="${rowClass(row.approvalStatus || "")}">${values.map((value, index) => {
+          const classes = [rowClass(row.approvalStatus || ""), hasCompletionDate ? "status-row-complete" : ""].filter(Boolean).join(" ");
+          return `<tr class="${classes}">${values.map((value, index) => {
             if (index === 3 && row.approvalStatus) return `<td>${tag(value)}</td>`;
+            if (index === values.length - 1 && hasCompletionDate) return `<td class="completion-on-time">${value || "-"}</td>`;
             return `<td>${value || "-"}</td>`;
           }).join("")}</tr>`;
         }).join("");
@@ -449,11 +457,11 @@
     const stationMetrics = dataSource.stationMetrics.bind(dataSource);
 
     function renderStationPage() {
-      const completedItems = 8;
+      const completedItems = 19;
       const totalItems = 38;
-      const overallPercent = 21;
+      const overallPercent = 50;
       document.getElementById("stationKpis").innerHTML = [
-        ` <div class="hero-pill">Overall: Needs Attention</div>`,
+        ` <div class="hero-pill">Overall: In Progress</div>`,
         ` <div class="hero-pill">Progress: ${overallPercent}%</div>`,
         ` <div class="hero-pill">Items: ${completedItems}/${totalItems}</div>`,
         ` <div class="hero-pill">Live Sync: On</div>`
@@ -485,9 +493,9 @@
 
       const staticProgress = {
         table1: { completed: 0, total: 6 },
-        table2: { completed: 8, total: 12 },
+        table2: { completed: 12, total: 12 },
         table3: { completed: 0, total: 10 },
-        table4: { completed: 0, total: 10 }
+        table4: { completed: 7, total: 10 }
       };
 
       const table1Progress = Math.round((staticProgress.table1.completed / staticProgress.table1.total) * 100);
