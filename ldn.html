@@ -89,10 +89,48 @@
     .progress-fill {
       transition: width 0.3s ease, background-color 0.3s ease;
     }
+    .sample-tracker-table th {
+      white-space: nowrap;
+    }
+    .sample-tracker-table th:nth-child(1),
+    .sample-tracker-table td:nth-child(1) {
+      width: 110px;
+      font-weight: 700;
+      color: #14355a;
+    }
+    .sample-tracker-table th:nth-child(2),
+    .sample-tracker-table td:nth-child(2) {
+      min-width: 360px;
+    }
+    .sample-tracker-table th:nth-child(3),
+    .sample-tracker-table td:nth-child(3),
+    .sample-tracker-table th:nth-child(4),
+    .sample-tracker-table td:nth-child(4) {
+      width: 160px;
+      white-space: nowrap;
+    }
+    .sample-tracker-table tbody tr.sample-row-submitted td {
+      background: linear-gradient(90deg, rgba(13, 159, 100, 0.06), transparent 58%);
+    }
+    .sample-tracker-table tbody tr.sample-row-pending td {
+      background: linear-gradient(90deg, rgba(209, 74, 80, 0.07), transparent 58%);
+    }
+    .sample-tracker-table td:empty::after {
+      content: "—";
+      color: var(--muted);
+    }
     @media (max-width: 760px) {
       .timeline-axis, .timeline-row { grid-template-columns: 1fr; }
       .axis-months { font-size: 0.66rem; }
       .timeline-label { margin-bottom: 4px; }
+      .sample-tracker-table th,
+      .sample-tracker-table td {
+        white-space: normal;
+      }
+      .sample-tracker-table th:nth-child(2),
+      .sample-tracker-table td:nth-child(2) {
+        min-width: 0;
+      }
     }
   </style>
 </head>
@@ -180,7 +218,7 @@
       <div class="station-sections" id="tablesGrid">
         <article class="table-card">
           <h3>Sample Submission Tracker</h3>
-          <p class="small-copy">11 tracked items</p>
+          <p class="small-copy">12 tracked items</p>
           <div class="table-progress">
             <div class="progress-row">
               <span>Table Completion</span>
@@ -191,22 +229,23 @@
             </div>
           </div>
           <div class="table-wrap">
-            <table>
+            <table class="sample-tracker-table">
               <thead>
-                <tr><th>Description</th><th>Form Submission</th><th>Sample Submission</th><th>Approval Status</th><th>Completion Date</th></tr>
+                <tr><th>Sample No.</th><th>Sample Name</th><th>MSF Submission Date</th><th>Sample Submission Date</th></tr>
               </thead>
               <tbody>
-                <tr class="status-row-review"><td>CLG-401C – L00 North Zone A - Service Bulkhead Ceiling</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-                <tr><td>CLG-404C / CLG-402 – Perforated Aluminium Ceiling - Aluminium Batten</td><td>Submitted</td><td>Not Submitted</td><td>—</td><td>—</td></tr>
-                <tr><td>CLG-405 – L00 North Zone A -Aluminium Batten Ceiling</td><td>Submitted</td><td>Not Submitted</td><td>—</td><td>—</td></tr>
-                <tr class="status-row-review"><td>CLG-410C – Metal Pan Ceiling - L02 Platform</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-                <tr class="status-row-review"><td>CLG-131 – 9mm compressed suspended CFC system</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-                <tr class="status-row-review"><td>IWS-321C – Rimex Stainless with 9mm CFC (ColourTex Blue Pinstripe)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-                <tr class="status-row-review"><td>IWS-321F – IWS 321F - Rimex Stainless Sheet With 9mm CFC (ColourTex Champagne Pinstripe)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-                <tr class="status-row-review"><td>IWS-301C – Stainless steel plus 9mm FC (Flat)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-                <tr class="status-row-review"><td>RFS-205 – Aluminium Capping with PNT-201B (3mm)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-                <tr class="status-row-review"><td>IWS-222C – Soffit to Gateline Portal</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-                <tr class="status-row-review"><td>GLA-201C – Façade Glazing to Front of House Concourse</td><td>Not Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
+                <tr class="sample-row-submitted"><td>CLG-131</td><td>9 mm CFC suspended ceiling (incl. ceiling framing Rondo or similar)</td><td>16/02/2026</td><td></td></tr>
+                <tr class="sample-row-pending"><td>CLG-401E</td><td>Perforated 3 mm aluminium ceilling powdercoat Sydney Metro Luddenham</td><td>15/03/2026</td><td>06/03/2026</td></tr>
+                <tr class="sample-row-pending"><td>CLG-401C</td><td>Aluminium click on battens ceiling powdercoat Sydney Metro Luddenham</td><td>05/02/2026</td><td>24/03/2026</td></tr>
+                <tr class="sample-row-pending"><td>CLG-405</td><td>Aluminium click on battens ceiling powdercoa Sydney Metro Luddenham</td><td></td><td></td></tr>
+                <tr class="sample-row-pending"><td>CLG-410C</td><td>Aluminium ceiling bonded to 9 mm CFC backing powdercoat Sydney Metro Luddenham, Interpon D2525 POW777677/1 Smoked Purple Satin</td><td>05/02/2026</td><td>14/04/2026</td></tr>
+                <tr class="sample-row-submitted"><td>IWS-321C</td><td>Stainless Steel Wall Panel System 2 - LDN</td><td>16/02/2026</td><td>02/03/2026</td></tr>
+                <tr class="sample-row-submitted"><td>IWS-301C</td><td>Stainless Steel Wall Panel System 1 - LDN</td><td>16/02/2026</td><td>02/03/2026</td></tr>
+                <tr class="sample-row-pending"><td>IWS-222C</td><td>Removable mild steel cover sheet, Dulux Metro Witches Cauldron Satin</td><td></td><td></td></tr>
+                <tr class="sample-row-pending"><td>IWS-220C</td><td>Aluminium Trims</td><td></td><td></td></tr>
+                <tr class="sample-row-pending"><td>IWS-221C</td><td>Aluminium Cover Sheet</td><td></td><td></td></tr>
+                <tr class="sample-row-pending"><td>EWS-206</td><td>Perforated Aluminium Wall Panel</td><td></td><td></td></tr>
+                <tr class="sample-row-pending"><td>GLA-201C</td><td>Façade Glazing</td><td>24/02/2026</td><td></td></tr>
               </tbody>
             </table>
           </div>
@@ -326,12 +365,18 @@
       stationData: {
         LDN: {
           sampleSubmissionTracker: [
-            { description: "CLG-401C Sculptform Aluminium Batten Powdercoated", formSubmission: "Submitted", sampleSubmission: "Sample submitted 25/03/2026", approvalStatus: "Pending (HP raised)", completionDate: "—" },
-            { description: "IWS-301E Rimex Granex Inco Black", formSubmission: "Submitted", sampleSubmission: "Sample submitted 25/03/2026", approvalStatus: "Pending", completionDate: "—" },
-            { description: "IWS-321E Rimex Black Pinstripe", formSubmission: "Submitted", sampleSubmission: "Sample submitted 25/03/2026", approvalStatus: "Pending", completionDate: "—" },
-            { description: "IWS-301E / 321E (Alternative – Alumate)", formSubmission: "Submitted", sampleSubmission: "ETA 24/03/2026", approvalStatus: "Pending review", completionDate: "—" },
-            { description: "GLA-201C – Internal Window Glass", formSubmission: "Submitted", sampleSubmission: "Sample under review", approvalStatus: "In Review", completionDate: "—" },
-            { description: "DOR-403 – Gateline Stacked Door", formSubmission: "Submitted", sampleSubmission: "ETA TBC", approvalStatus: "Pending", completionDate: "—" }
+            { sampleNo: "CLG-131", sampleName: "9 mm CFC suspended ceiling (incl. ceiling framing Rondo or similar)", msfSubmissionDate: "16/02/2026", sampleSubmissionDate: "" },
+            { sampleNo: "CLG-401E", sampleName: "Perforated 3 mm aluminium ceilling powdercoat Sydney Metro Luddenham", msfSubmissionDate: "15/03/2026", sampleSubmissionDate: "06/03/2026" },
+            { sampleNo: "CLG-401C", sampleName: "Aluminium click on battens ceiling powdercoat Sydney Metro Luddenham", msfSubmissionDate: "05/02/2026", sampleSubmissionDate: "24/03/2026" },
+            { sampleNo: "CLG-405", sampleName: "Aluminium click on battens ceiling powdercoa Sydney Metro Luddenham", msfSubmissionDate: "", sampleSubmissionDate: "" },
+            { sampleNo: "CLG-410C", sampleName: "Aluminium ceiling bonded to 9 mm CFC backing powdercoat Sydney Metro Luddenham, Interpon D2525 POW777677/1 Smoked Purple Satin", msfSubmissionDate: "05/02/2026", sampleSubmissionDate: "14/04/2026" },
+            { sampleNo: "IWS-321C", sampleName: "Stainless Steel Wall Panel System 2 - LDN", msfSubmissionDate: "16/02/2026", sampleSubmissionDate: "02/03/2026" },
+            { sampleNo: "IWS-301C", sampleName: "Stainless Steel Wall Panel System 1 - LDN", msfSubmissionDate: "16/02/2026", sampleSubmissionDate: "02/03/2026" },
+            { sampleNo: "IWS-222C", sampleName: "Removable mild steel cover sheet, Dulux Metro Witches Cauldron Satin", msfSubmissionDate: "", sampleSubmissionDate: "" },
+            { sampleNo: "IWS-220C", sampleName: "Aluminium Trims", msfSubmissionDate: "", sampleSubmissionDate: "" },
+            { sampleNo: "IWS-221C", sampleName: "Aluminium Cover Sheet", msfSubmissionDate: "", sampleSubmissionDate: "" },
+            { sampleNo: "EWS-206", sampleName: "Perforated Aluminium Wall Panel", msfSubmissionDate: "", sampleSubmissionDate: "" },
+            { sampleNo: "GLA-201C", sampleName: "Façade Glazing", msfSubmissionDate: "24/02/2026", sampleSubmissionDate: "" }
           ],
           shopDrawings: [
             { activityDescription: "CLG-401C&CLG-410C Aluminum Batten& Aluminum panel Ceiling Detail drawing", durationDays: "8 days", startDate: "11/03/2026", targetDate: "21/03/2026", completionDate: "02/04/2026" },
@@ -374,7 +419,7 @@
         }
       },
       sectionDefinitions: [
-        { key: "sampleSubmissionTracker", title: "Sample Submission Tracker", columns: ["Description", "Form Submission", "Sample Submission", "Approval Status", "Completion Date"] },
+        { key: "sampleSubmissionTracker", title: "Sample Submission Tracker", columns: ["Sample No.", "Sample Name", "MSF Submission Date", "Sample Submission Date"] },
         { key: "shopDrawings", title: "Shop Drawings", columns: ["Activity Description", "Duration (Days)", "Start Date", "Target Date", "Completion Date"] },
         { key: "procurement", title: "Procurement", columns: ["Activity Description", "Lead Time (Days)", "Start Date", "Target Delivery Date", "Completion Date"] },
         { key: "installation", title: "Installation", columns: ["Activity Description", "Duration (Days)", "Start Date", "Target Completion Date", "Completion Date"] }
@@ -474,7 +519,7 @@
       };
 
       const staticProgress = {
-        table1: { completed: 0, total: 6 },
+        table1: { completed: 6, total: 12 },
         table2: { completed: 12, total: 12 },
         table3: { completed: 0, total: 10 },
         table4: { completed: 7, total: 10 }

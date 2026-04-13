@@ -24,7 +24,31 @@
     .table-progress .progress-shell { background: rgba(20, 53, 90, 0.15); height: 10px; }
     .table-progress .progress-fill { background: #9ca3af; }
     .progress-fill { transition: width 0.3s ease, background-color 0.3s ease; }
-    @media (max-width: 760px) { .timeline-axis, .timeline-row { grid-template-columns: 1fr; } .axis-months { font-size: 0.66rem; } .timeline-label { margin-bottom: 4px; } }
+    .sample-tracker-table th { white-space: nowrap; }
+    .sample-tracker-table th:nth-child(1),
+    .sample-tracker-table td:nth-child(1) { width: 110px; font-weight: 700; color: #14355a; }
+    .sample-tracker-table th:nth-child(2),
+    .sample-tracker-table td:nth-child(2) { min-width: 360px; }
+    .sample-tracker-table th:nth-child(3),
+    .sample-tracker-table td:nth-child(3),
+    .sample-tracker-table th:nth-child(4),
+    .sample-tracker-table td:nth-child(4) { width: 160px; white-space: nowrap; }
+    .sample-tracker-table tbody tr.sample-row-submitted td {
+      background: linear-gradient(90deg, rgba(13, 159, 100, 0.06), transparent 58%);
+    }
+    .sample-tracker-table tbody tr.sample-row-pending td {
+      background: linear-gradient(90deg, rgba(209, 74, 80, 0.07), transparent 58%);
+    }
+    .sample-tracker-table td:empty::after { content: "—"; color: var(--muted); }
+    @media (max-width: 760px) {
+      .timeline-axis, .timeline-row { grid-template-columns: 1fr; }
+      .axis-months { font-size: 0.66rem; }
+      .timeline-label { margin-bottom: 4px; }
+      .sample-tracker-table th,
+      .sample-tracker-table td { white-space: normal; }
+      .sample-tracker-table th:nth-child(2),
+      .sample-tracker-table td:nth-child(2) { min-width: 0; }
+    }
   </style>
 </head>
 <body>
@@ -101,35 +125,34 @@
       <div class="station-sections" id="tablesGrid">
         <article class="table-card">
           <h3>Sample Submission Tracker</h3>
-          <p class="small-copy">18 tracked items</p>
+          <p class="small-copy">17 tracked items</p>
           <div class="table-progress">
             <div class="progress-row">
               <span>Table Completion</span>
-              <span class="table-progress-text">0%</span>
+              <span class="table-progress-text">35%</span>
             </div>
             <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
+              <div class="progress-fill table-progress-fill" style="width:35%; background:#EF4444;"></div>
             </div>
           </div>
-          <div class="table-wrap"><table><thead><tr><th>Description</th><th>Form Submission</th><th>Sample Submission</th><th>Approval Status</th><th>Completion Date</th></tr></thead><tbody>
-            <tr class="status-row-review"><td>INS-101 | CSR Bradford 50mm 24kg Insulation</td><td>Not Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>INS-102 | CSR Bradford 100mm 14kg Insulation</td><td>Not Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>INS-201 | CSR Martini Absorb</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-103 | Suspended Plasterboard Ceiling System - Moisture-Resistant</td><td>Not Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-pending"><td>CLG-303D | Timber Batten</td><td>Submitted</td><td>Not Submitted</td><td><span class="tag tag-pending">Pending full approval (colour issue)</span></td><td>—</td></tr>
-            <tr class="status-row-started"><td>CLG-401D | Metal Batten Ceiling including supporting strucural steel</td><td>Submitted</td><td>Not Submitted</td><td><span class="tag tag-started">Not Submitted</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-410D | Aluminum panel Ceiling, Interpon : D2525 POW816982/2.</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-410H | Aluminum panel Ceiling, Colour match PNT-205 (RAL9005)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-204D | 3mm Aluminum panel</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-321D | Stainless Steel Wall Panel System 2</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-211 | Applied Finish Flat Aluminium Panel System (3mm Aluminium)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-pending"><td>IWS-220D/221D | Aluminium Trims and Removable Aluminium Cover Sheet (3mm Aluminium panel)</td><td>Submitted</td><td>Not Submitted</td><td><span class="tag tag-pending">Pending review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-222D | Removable Mild Steel Cover Sheet (Thickness: varies 3/5/10mm)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-333D | Mild steel sheet (Thickness: 3mm)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-223 | Removable Mild Steel Cover Sheet (Thickness: varies 3/5/10mm)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-224 | Perforated Mild Steel Cover Sheet for Speaker</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-started"><td>EWS-202 | Expanded Mesh System (Stainless steel mesh)</td><td>Submitted</td><td>Not Submitted</td><td><span class="tag tag-started">Not Submitted</span></td><td>—</td></tr>
-            <tr><td>ILG-505 | Vermin/Bird Proofing Mesh</td><td>Not Submitted</td><td>Not Submitted</td><td>—</td><td>—</td></tr>
+          <div class="table-wrap"><table class="sample-tracker-table"><thead><tr><th>Sample No.</th><th>Sample Name</th><th>MSF Submission Date</th><th>Sample Submission Date</th></tr></thead><tbody>
+            <tr class="sample-row-pending"><td>CLG-103</td><td>Rondo / Part no.129 supporting frame, with CSR Gyprock/Aquachek</td><td></td><td></td></tr>
+            <tr class="sample-row-pending"><td>CLG-303D</td><td>Timber batten with acoustic backing. Spotted Gum (corymbia maculata), batten finish Rubio wood cream - creamy white</td><td>05/02/2026</td><td>06/03/2026</td></tr>
+            <tr class="sample-row-pending"><td>CLG-401D</td><td>Sculptform Architectural / Concept Click Batten System. Aluminium extrusion, size 100 x 40mm at 100m centre, powder coated to D2525 POW816982/2, with acoustic backing</td><td>05/02/2026</td><td></td></tr>
+            <tr class="sample-row-pending"><td>CLG-401D Access Panels</td><td>Metal Pan Ceiling Access Panel</td><td></td><td></td></tr>
+            <tr class="sample-row-pending"><td>CLG-410D</td><td>Metal Pan Ceiling. Removable folded aluminium panel, size 1200 x, 3mm thickness, finish thermoset polyester powder coated - D2525 POW816982/2</td><td>16/02/2026</td><td>29/04/2026</td></tr>
+            <tr class="sample-row-submitted"><td>CLG-410H</td><td>Same as above, colour to match PNT-205</td><td>16/02/2026</td><td>14/04/2026</td></tr>
+            <tr class="sample-row-pending"><td>IWS-201D</td><td>Track side cladding wall</td><td>16/02/2026</td><td></td></tr>
+            <tr class="sample-row-submitted"><td>IWS-321</td><td>Stainless steel wall cladding</td><td>16/02/2026</td><td>02/03/2026</td></tr>
+            <tr class="sample-row-pending"><td>IWS-211D</td><td>Applied finish flat aluminium Panel System, with PNT-401D finish</td><td>16/02/2026</td><td></td></tr>
+            <tr class="sample-row-pending"><td>IWS-220D</td><td>Aluminium Trims, 3mm powder coated. Colour: D2525 POW816982/2</td><td>16/02/2026</td><td>29/04/2026</td></tr>
+            <tr class="sample-row-pending"><td>IWS-221D</td><td>Removable Aluminium Cover Sheet, 3mm powder coated. Colour: D2525 POW806126/1</td><td>16/02/2026</td><td>29/04/2026</td></tr>
+            <tr class="sample-row-pending"><td>IWS-222D</td><td>Removable mild steel cover sheet</td><td>16/02/2026</td><td></td></tr>
+            <tr class="sample-row-pending"><td>IWS-333D</td><td>Folded Steel cover plates</td><td>16/02/2026</td><td></td></tr>
+            <tr class="sample-row-pending"><td>IWS-223</td><td>Removable Mild Steel Cover Sheet (Include Interface/support of signage)</td><td>16/02/2026</td><td></td></tr>
+            <tr class="sample-row-pending"><td>IWS-224</td><td>Perforated Mild Steel Cover Sheet for Speaker</td><td>16/02/2026</td><td></td></tr>
+            <tr class="sample-row-pending"><td>EWS-202</td><td>Expanded Stainless Steel Mesh System</td><td>10/04/2026</td><td></td></tr>
+            <tr class="sample-row-submitted"><td>ILG-505</td><td>Vermin/Bird Proofing Mesh. Stainless Steel Wire and Mesh</td><td>10/04/2026</td><td></td></tr>
           </tbody></table></div>
         </article>
         <article class="table-card">

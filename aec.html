@@ -24,7 +24,31 @@
     .table-progress .progress-shell { background: rgba(20, 53, 90, 0.15); height: 10px; }
     .table-progress .progress-fill { background: #9ca3af; }
     .progress-fill { transition: width 0.3s ease, background-color 0.3s ease; }
-    @media (max-width: 760px) { .timeline-axis, .timeline-row { grid-template-columns: 1fr; } .axis-months { font-size: 0.66rem; } .timeline-label { margin-bottom: 4px; } }
+    .sample-tracker-table th { white-space: nowrap; }
+    .sample-tracker-table th:nth-child(1),
+    .sample-tracker-table td:nth-child(1) { width: 110px; font-weight: 700; color: #14355a; }
+    .sample-tracker-table th:nth-child(2),
+    .sample-tracker-table td:nth-child(2) { min-width: 360px; }
+    .sample-tracker-table th:nth-child(3),
+    .sample-tracker-table td:nth-child(3),
+    .sample-tracker-table th:nth-child(4),
+    .sample-tracker-table td:nth-child(4) { width: 160px; white-space: nowrap; }
+    .sample-tracker-table tbody tr.sample-row-submitted td {
+      background: linear-gradient(90deg, rgba(13, 159, 100, 0.06), transparent 58%);
+    }
+    .sample-tracker-table tbody tr.sample-row-pending td {
+      background: linear-gradient(90deg, rgba(209, 74, 80, 0.07), transparent 58%);
+    }
+    .sample-tracker-table td:empty::after { content: "—"; color: var(--muted); }
+    @media (max-width: 760px) {
+      .timeline-axis, .timeline-row { grid-template-columns: 1fr; }
+      .axis-months { font-size: 0.66rem; }
+      .timeline-label { margin-bottom: 4px; }
+      .sample-tracker-table th,
+      .sample-tracker-table td { white-space: normal; }
+      .sample-tracker-table th:nth-child(2),
+      .sample-tracker-table td:nth-child(2) { min-width: 0; }
+    }
   </style>
 </head>
 <body>
@@ -96,7 +120,7 @@
       <div class="station-sections" id="tablesGrid">
         <article class="table-card">
           <h3>Sample Submission Tracker</h3>
-          <p class="small-copy">24 tracked items</p>
+          <p class="small-copy">13 tracked items</p>
           <div class="table-progress">
             <div class="progress-row">
               <span>Table Completion</span>
@@ -106,32 +130,20 @@
               <div class="progress-fill table-progress-fill" style="width:0%;"></div>
             </div>
           </div>
-          <div class="table-wrap"><table><thead><tr><th>Description</th><th>Form Submission</th><th>Sample Submission</th><th>Approval Status</th><th>Completion Date</th></tr></thead><tbody>
-            <tr class="status-row-review"><td>CLG-131 – Suspended Plasterboard Ceiling System</td><td>Not Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-started"><td>ILG-505 – Vermin/Bird Proofing Mesh</td><td>Not Submitted</td><td>Not Submitted</td><td><span class="tag tag-started">Not Submitted</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-401F – Metal Batten Ceiling (Aluminium Battens)</td><td>Submitted</td><td>Not Submitted</td><td><span class="tag tag-review">In Progress (HP pending)</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-404F – Perforated Aluminium Ceiling</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-410 – Metal Pan Ceiling</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-420 – Metal Pan Ceiling with Applied Finish</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-220F – Aluminium Trims</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-201F – Applied Finish Metal Wall Panel System</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-204F – Applied Finish Perforated Metal Wall Panel System</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-started"><td>IWS-210F &amp; PNT-401F – Applied Finish Solid Curved Aluminium Panel System</td><td>Submitted</td><td>Not Submitted</td><td><span class="tag tag-started">Not Submitted</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-221F – Removable Aluminium Cover Sheet</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-222F – Removable Mild Steel Cover Sheet</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-223 – Mild Steel Cover Sheet (Signage Interface)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-224 – Perforated Mild Steel Cover Sheet (Speaker)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-301F – Stainless Steel Wall Panel System 1</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-started"><td>IWS-301F-A – Alternative (Alumate)</td><td>Submitted</td><td>Not Submitted</td><td><span class="tag tag-started">Not Submitted</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-321F – Stainless Steel Wall Panel System 2 (Pinstripe)</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-started"><td>IWS-321F-A – Alternative (Alumate)</td><td>Submitted</td><td>Not Submitted</td><td><span class="tag tag-started">Not Submitted</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-330F – Stainless Steel Trims</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-101 – Suspended Plasterboard Ceiling System</td><td>Not Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-102 – Suspended Plasterboard Ceiling System - Fire-Rated (One Way)</td><td>Not Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-103 – Suspended Plasterboard Ceiling System - Moisture-Resistant</td><td>Not Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>CLG-202 – Suspended Mineral Fibre Tile Ceiling System - Moisture-Resistant</td><td>Not Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-review"><td>IWS-205 – Perforated Aluminium Cladding Panel - Black</td><td>Submitted</td><td>Submitted</td><td><span class="tag tag-review">In Review</span></td><td>—</td></tr>
-            <tr class="status-row-started"><td>Joinery Unit – Internal Joinery</td><td>Not Submitted</td><td>Not Submitted</td><td><span class="tag tag-started">Not Submitted</span></td><td>—</td></tr>
+          <div class="table-wrap"><table class="sample-tracker-table"><thead><tr><th>Sample No.</th><th>Sample Name</th><th>MSF Submission Date</th><th>Sample Submission Date</th></tr></thead><tbody>
+            <tr class="sample-row-pending"><td>CLG-401F</td><td>Sculptform Architectural / Concept Click Batten System (Aluminium, acoustic backing)</td><td>09/02/2026</td><td>15/04/2026</td></tr>
+            <tr class="sample-row-pending"><td>CLG-404F</td><td>Perforated 3 mm aluminium ceiling powdercoat Sydney Metro Bradfield</td><td>09/02/2026</td><td>10/04/2026</td></tr>
+            <tr class="sample-row-pending"><td>CLG-410F</td><td>Aluminium ceiling bonded to 9 mm CFC backing powdercoat Sydney Metro Bradfield</td><td>09/02/2026</td><td>08/04/2026</td></tr>
+            <tr class="sample-row-pending"><td>CLG-420F</td><td>Aluminium ceiling bonded to 9 mm CFC backing, Finish: Applied concrete finish</td><td>09/02/2026</td><td></td></tr>
+            <tr class="sample-row-pending"><td>IWS-201F</td><td>Applied Finish Metal Wall Panel System (3mm Aluminium; Custom colour: Water (POW_819408))</td><td>09/02/2026</td><td>29/04/2026</td></tr>
+            <tr class="sample-row-pending"><td>IWS-204F</td><td>Applied Finish Perforated Metal Wall Panel System (3mm Aluminium; Custom colour: Water (POW_819408))</td><td>09/02/2026</td><td>29/04/2026</td></tr>
+            <tr class="sample-row-submitted"><td>IWS-205</td><td>Perforated Aluminium Cladding Panel (RAL 9005)</td><td>09/02/2026</td><td>14/04/2026</td></tr>
+            <tr class="sample-row-pending"><td>IWS-210F</td><td>Perforated Aluminium Cladding Panel (Ecotone match)</td><td>09/02/2026</td><td></td></tr>
+            <tr class="sample-row-pending"><td>IWS-222F</td><td>Removable Mild Steel Cover Sheet (Stone Fortress Satin)</td><td>09/02/2026</td><td></td></tr>
+            <tr class="sample-row-submitted"><td>IWS-220F</td><td>Aluminium Trims (Stone Fortress Satin)</td><td>09/02/2026</td><td>14/04/2026</td></tr>
+            <tr class="sample-row-submitted"><td>IWS-221F</td><td>Aluminium Trims (Stone Fortress Satin)</td><td>09/02/2026</td><td>14/04/2026</td></tr>
+            <tr class="sample-row-pending"><td>IWS-223</td><td>Removable Mild Steel Cover Sheet</td><td>09/02/2026</td><td></td></tr>
+            <tr class="sample-row-pending"><td>IWS-224</td><td>Perforated Cover for Speaker</td><td>09/02/2026</td><td></td></tr>
           </tbody></table></div>
         </article>
         <article class="table-card">
@@ -244,31 +256,19 @@
       stationData: {
         AEC: {
           sampleSubmissionTracker: [
-            { description: "CLG-131 – Suspended Plasterboard Ceiling System", formSubmission: "Not Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Started", completionDate: "—" },
-            { description: "ILG-505 – Vermin/Bird Proofing Mesh", formSubmission: "Not Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "CLG-401F – Metal Batten Ceiling (Aluminium Battens)", formSubmission: "Submitted", sampleSubmission: "Pending (ETA TBC)", approvalStatus: "In Progress (HP pending)", completionDate: "—" },
-            { description: "CLG-404F – Perforated Aluminium Ceiling", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "CLG-410F – Metal Pan Ceiling", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "CLG-420F – Metal Pan Ceiling with Applied Finish", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-220F – Aluminium Trims", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-201F – Applied Finish Metal Wall Panel System", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-204F – Applied Finish Perforated Metal Wall Panel System", formSubmission: "Not Submitted", sampleSubmission: "Submitted", approvalStatus: "Under Review", completionDate: "—" },
-            { description: "IWS-210F & PNT-401F – Applied Finish Solid Curved Aluminium Panel System", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-221F – Removable Aluminium Cover Sheet", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-222F – Removable Mild Steel Cover Sheet", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-223 – Mild Steel Cover Sheet (Signage Interface)", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-224 – Perforated Mild Steel Cover Sheet (Speaker)", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-301F – Stainless Steel Wall Panel System 1", formSubmission: "MSF Submitted", sampleSubmission: "Received (Warehouse)", approvalStatus: "Under Review", completionDate: "—" },
-            { description: "IWS-301F-A – Alternative (Alumate)", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-321F – Stainless Steel Wall Panel System 2 (Pinstripe)", formSubmission: "MSF Submitted", sampleSubmission: "Received (Warehouse)", approvalStatus: "Under Review", completionDate: "—" },
-            { description: "IWS-321F-A – Alternative (Alumate)", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-330F – Stainless Steel Trims", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "CLG-101 – Suspended Plasterboard Ceiling System", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "CLG-102 – Suspended Plasterboard Ceiling System - Fire-Rated (One Way)", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "CLG-103 – Suspended Plasterboard Ceiling System - Moisture-Resistant", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "CLG-202 – Suspended Mineral Fibre Tile Ceiling System - Moisture-Resistant", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "IWS-205 – Perforated Aluminium Cladding Panel - Black", formSubmission: "Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" },
-            { description: "Joinery Unit – Internal Joinery", formSubmission: "Not Submitted", sampleSubmission: "Not Submitted", approvalStatus: "Not Submitted", completionDate: "—" }
+            { sampleNo: "CLG-401F", sampleName: "Sculptform Architectural / Concept Click Batten System (Aluminium, acoustic backing)", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "15/04/2026" },
+            { sampleNo: "CLG-404F", sampleName: "Perforated 3 mm aluminium ceiling powdercoat Sydney Metro Bradfield", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "10/04/2026" },
+            { sampleNo: "CLG-410F", sampleName: "Aluminium ceiling bonded to 9 mm CFC backing powdercoat Sydney Metro Bradfield", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "08/04/2026" },
+            { sampleNo: "CLG-420F", sampleName: "Aluminium ceiling bonded to 9 mm CFC backing, Finish: Applied concrete finish", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "" },
+            { sampleNo: "IWS-201F", sampleName: "Applied Finish Metal Wall Panel System (3mm Aluminium; Custom colour: Water (POW_819408))", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "29/04/2026" },
+            { sampleNo: "IWS-204F", sampleName: "Applied Finish Perforated Metal Wall Panel System (3mm Aluminium; Custom colour: Water (POW_819408))", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "29/04/2026" },
+            { sampleNo: "IWS-205", sampleName: "Perforated Aluminium Cladding Panel (RAL 9005)", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "14/04/2026" },
+            { sampleNo: "IWS-210F", sampleName: "Perforated Aluminium Cladding Panel (Ecotone match)", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "" },
+            { sampleNo: "IWS-222F", sampleName: "Removable Mild Steel Cover Sheet (Stone Fortress Satin)", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "" },
+            { sampleNo: "IWS-220F", sampleName: "Aluminium Trims (Stone Fortress Satin)", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "14/04/2026" },
+            { sampleNo: "IWS-221F", sampleName: "Aluminium Trims (Stone Fortress Satin)", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "14/04/2026" },
+            { sampleNo: "IWS-223", sampleName: "Removable Mild Steel Cover Sheet", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "" },
+            { sampleNo: "IWS-224", sampleName: "Perforated Cover for Speaker", msfSubmissionDate: "09/02/2026", sampleSubmissionDate: "" }
           ],
           shopDrawings: [
             { activityDescription: "CLG-401F – Metal Batten Ceiling (Platform/Concourse Priority)", durationDays: "15 days", startDate: "08/04/2026", targetDate: "01/05/2026", completionDate: "—" },
@@ -330,7 +330,7 @@
         }
       },
       sectionDefinitions: [
-        { key: "sampleSubmissionTracker", title: "Sample Submission Tracker", columns: ["Description", "Form Submission", "Sample Submission", "Approval Status", "Completion Date"] },
+        { key: "sampleSubmissionTracker", title: "Sample Submission Tracker", columns: ["Sample No.", "Sample Name", "MSF Submission Date", "Sample Submission Date"] },
         { key: "shopDrawings", title: "Shop Drawings", columns: ["Activity Description", "Duration (Days)", "Start Date", "Target Date", "Completion Date"] },
         { key: "procurement", title: "Procurement", columns: ["Activity Description", "Lead Time (Days)", "Start Date", "Target Delivery Date", "Completion Date"] },
         { key: "installation", title: "Installation", columns: ["Activity Description", "Duration (Days)", "Start Date", "Target Completion Date", "Completion Date"] }
