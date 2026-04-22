@@ -20,9 +20,6 @@
     .bar-procurement { background: linear-gradient(90deg, #5a7ce2, #7d9bff); }
     .bar-installation { background: linear-gradient(90deg, #18a66d, #36c389); }
     .timeline-footnote { margin-top: 8px; color: var(--muted); font-size: 0.82rem; }
-    .table-progress { margin: 8px 0 12px; padding: 10px 12px; border: 1px solid rgba(20, 53, 90, 0.1); border-radius: 12px; background: rgba(245, 248, 252, 0.95); }
-    .table-progress .progress-shell { background: rgba(20, 53, 90, 0.15); height: 10px; }
-    .table-progress .progress-fill { background: #9ca3af; }
     .progress-fill { transition: width 0.3s ease, background-color 0.3s ease; }
     .sample-tracker-table th { white-space: nowrap; }
     .sample-tracker-table th:nth-child(1),
@@ -89,16 +86,6 @@
         </div>
       </div>
 
-      <div class="overall-progress" style="margin-bottom:12px;">
-        <div class="progress-row">
-          <span>Overall Station Completion</span>
-          <span id="stationProgressText">7%</span>
-        </div>
-        <div class="progress-shell">
-          <div class="progress-fill" id="stationProgressBar" style="width:7%;"></div>
-        </div>
-      </div>
-
       <div class="status-legend">
         <span class="legend-item legend-approved"><span class="legend-dot"></span>Approved</span>
         <span class="legend-item legend-review"><span class="legend-dot"></span>Under Review</span>
@@ -126,15 +113,6 @@
         <article class="table-card">
           <h3>Sample Submission Tracker</h3>
           <p class="small-copy">17 tracked items</p>
-          <div class="table-progress">
-            <div class="progress-row">
-              <span>Table Completion</span>
-              <span class="table-progress-text">35%</span>
-            </div>
-            <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:35%; background:#EF4444;"></div>
-            </div>
-          </div>
           <div class="table-wrap"><table class="sample-tracker-table"><thead><tr><th>Sample No.</th><th>Sample Name</th><th>MSF Submission Date</th><th>Sample Submission Date</th></tr></thead><tbody>
             <tr class="sample-row-pending"><td>CLG-103</td><td>Rondo / Part no.129 supporting frame, with CSR Gyprock/Aquachek</td><td></td><td></td></tr>
             <tr class="sample-row-pending"><td>CLG-303D</td><td>Timber batten with acoustic backing. Spotted Gum (corymbia maculata), batten finish Rubio wood cream - creamy white</td><td>05/02/2026</td><td>06/03/2026</td></tr>
@@ -158,15 +136,6 @@
         <article class="table-card">
           <h3>Shop Drawings</h3>
           <p class="small-copy">16 tracked items</p>
-          <div class="table-progress">
-            <div class="progress-row">
-              <span>Table Completion</span>
-              <span class="table-progress-text">63%</span>
-            </div>
-            <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:63%;"></div>
-            </div>
-          </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Date</th><th>Completion Date</th></tr></thead><tbody>
             <tr class="status-row-complete"><td>CLG-303D&amp;IWS-220D Timber Batten&amp; Aluminum panel Ceiling Detail drawing L01 Main Canopy Soffit</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td class="completion-on-time">30/03/2026</td></tr>
             <tr class="status-row-complete"><td>CLG-103 Plasterboard Ceiling layout drawing Public and Staff Toilet</td><td>8 days</td><td>14/03/2026</td><td>25/03/2026</td><td class="completion-on-time">30/03/2026</td></tr>
@@ -189,15 +158,6 @@
         <article class="table-card">
           <h3>Procurement</h3>
           <p class="small-copy">8 tracked items</p>
-          <div class="table-progress">
-            <div class="progress-row">
-              <span>Table Completion</span>
-              <span class="table-progress-text">0%</span>
-            </div>
-            <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
-            </div>
-          </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Lead Time (Days)</th><th>Start Date</th><th>Target Delivery Date</th><th>Completion Date</th></tr></thead><tbody>
             <tr><td>CLG-401D – Metal Batten Ceiling</td><td>10–12 wks</td><td>25/03/2026</td><td>15/06/2026</td><td>—</td></tr>
             <tr><td>CLG-410D – Metal Pan Ceiling</td><td>10–12 wks</td><td>08/04/2026</td><td>15/06/2026</td><td>—</td></tr>
@@ -212,15 +172,6 @@
         <article class="table-card">
           <h3>Installation</h3>
           <p class="small-copy">7 tracked items</p>
-          <div class="table-progress">
-            <div class="progress-row">
-              <span>Table Completion</span>
-              <span class="table-progress-text">0%</span>
-            </div>
-            <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
-            </div>
-          </div>
           <div class="table-wrap"><table><thead><tr><th>Activity Description</th><th>Duration (Days)</th><th>Start Date</th><th>Target Completion Date</th><th>Completion Date</th></tr></thead><tbody>
             <tr><td>CLG-401D – Metal Batten Ceiling</td><td>10 days</td><td>15/06/2026</td><td>—</td><td>—</td></tr>
             <tr><td>CLG-410D – Metal Pan Ceiling</td><td>10 days</td><td>15/06/2026</td><td>—</td><td>—</td></tr>

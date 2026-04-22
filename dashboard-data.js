@@ -343,15 +343,6 @@
         <article class="table-card">
           <h3>${section.title || titleFromKey(section.key)}</h3>
           <p class="small-copy">${rowItems.length} tracked item${rowItems.length === 1 ? "" : "s"}</p>
-          <div class="table-progress">
-            <div class="progress-row">
-              <span>Table Completion</span>
-              <span class="table-progress-text">0%</span>
-            </div>
-            <div class="progress-shell">
-              <div class="progress-fill table-progress-fill" style="width:0%;"></div>
-            </div>
-          </div>
           <div class="table-wrap">
             <table>
               <thead>
