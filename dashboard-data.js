@@ -128,24 +128,27 @@
           { description: "Joinery Unit – Internal Joinery", formSubmission: "Shop Drawing Started (16/03/2026)", sampleSubmission: "Pending", approvalStatus: "In Progress", completionDate: "—" }
         ],
         shopDrawings: [
-          { activityDescription: "CLG-401F – Metal Batten Ceiling (Platform/Concourse Priority)", durationDays: "15 days", startDate: "08/04/2026", targetDate: "01/05/2026", completionDate: "—" },
           { activityDescription: "CLG-410F – Metal Pan Ceiling (Platform/Concourse)", durationDays: "15 days", startDate: "08/04/2026", targetDate: "01/05/2026", completionDate: "—" },
           { activityDescription: "CLG-404F – Metal Pan Ceiling (FOH / Corridor Areas)", durationDays: "10 days", startDate: "08/04/2026", targetDate: "24/04/2026", completionDate: "—" },
           { activityDescription: "CLG-131 – Suspended Plasterboard Ceiling (Bike Store / Secondary Areas)", durationDays: "10 days", startDate: "08/04/2026", targetDate: "24/04/2026", completionDate: "—" },
-          { activityDescription: "IWS-321F – Stainless Steel Wall Panel System 2 (Primary Cladding)", durationDays: "10 days", startDate: "08/04/2026", targetDate: "24/04/2026", completionDate: "—" },
           { activityDescription: "IWS-301F – Stainless Steel Wall Panel System 1", durationDays: "10 days", startDate: "08/04/2026", targetDate: "24/04/2026", completionDate: "—" },
           { activityDescription: "IWS-321C – Alternative (Alumate – Priority for Lead Time Reduction)", durationDays: "10 days", startDate: "08/04/2026", targetDate: "24/04/2026", completionDate: "—" },
           { activityDescription: "IWS-301C – Alternative (Alumate)", durationDays: "10 days", startDate: "08/04/2026", targetDate: "24/04/2026", completionDate: "—" },
           { activityDescription: "IWS-330 – Stainless Steel Trims & Cappings", durationDays: "10 days", startDate: "08/04/2026", targetDate: "24/04/2026", completionDate: "—" },
           { activityDescription: "IWS-330 – Alternative (Alumate)", durationDays: "10 days", startDate: "08/04/2026", targetDate: "24/04/2026", completionDate: "—" },
-          { activityDescription: "IWS-204F – Applied Finish Perforated Metal Wall Panel System", durationDays: "15 days", startDate: "15/04/2026", targetDate: "09/05/2026", completionDate: "—" },
           { activityDescription: "IWS-201F – Applied Finish Metal Wall Panel System", durationDays: "10 days", startDate: "15/04/2026", targetDate: "02/05/2026", completionDate: "—" },
           { activityDescription: "IWS-210F – Applied Finish Solid Curved Aluminium Panel System", durationDays: "10 days", startDate: "15/04/2026", targetDate: "02/05/2026", completionDate: "—" },
           { activityDescription: "IWS-220F/221F/222F/223/224 – Metal Covers & Trims", durationDays: "15 days", startDate: "15/04/2026", targetDate: "09/05/2026", completionDate: "—" },
           { activityDescription: "Joinery Unit – Internal Joinery (Separate Subcontract Priority)", durationDays: "10 days", startDate: "13/04/2026", targetDate: "28/04/2026", completionDate: "—" },
           { activityDescription: "Partition Wall – Internal Partition System (Early Works)", durationDays: "5 days", startDate: "—", targetDate: "30/04/2026", completionDate: "—" },
           { activityDescription: "IWS-321 & IWS-301 Stainless steel cladding layout platform east psd", durationDays: "4 days", startDate: "19/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
-          { activityDescription: "IWS-321 & IWS-301 Stainless steel cladding layout platform west psd", durationDays: "4 days", startDate: "19/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" }
+          { activityDescription: "IWS-321 & IWS-301 Stainless steel cladding layout platform west psd", durationDays: "4 days", startDate: "19/03/2026", targetDate: "23/03/2026", completionDate: "23/03/2026" },
+          { activityDescription: "CLG-401F Metal Ceiling Battens Layout Drawing – B04 Ceiling / B03 Soffit", durationDays: "15 days", startDate: "08/04/2026", targetDate: "01/05/2026", completionDate: "22/04/2026" },
+          { activityDescription: "IWS-204F & IWS-204F-ART Aluminium Cladding Layout Drawing – B03 Internal Elevation, Mezzanine West", durationDays: "15 days", startDate: "15/04/2026", targetDate: "09/05/2026", completionDate: "22/04/2026" },
+          { activityDescription: "IWS-204F & IWS-204F-ART Aluminium Cladding Layout Drawing – B03 Internal Elevation, Mezzanine East", durationDays: "15 days", startDate: "15/04/2026", targetDate: "09/05/2026", completionDate: "22/04/2026" },
+          { activityDescription: "IWS-321F-ART Stainless Steel Cladding Detail Drawing – B03 Mezzanine", durationDays: "10 days", startDate: "08/04/2026", targetDate: "24/04/2026", completionDate: "22/04/2026" },
+          { activityDescription: "CLG-401F Metal Ceiling Battens Layout Drawing – B04 Ceiling, Platform", durationDays: "15 days", startDate: "08/04/2026", targetDate: "01/05/2026", completionDate: "22/04/2026" },
+          { activityDescription: "CLG-401F Metal Ceiling Battens Detail Drawing – B04 Ceiling, Platform", durationDays: "15 days", startDate: "08/04/2026", targetDate: "01/05/2026", completionDate: "22/04/2026" }
         ],
         procurement: [
           { activityDescription: "CLG-401F – Metal Batten Ceiling (Aluminium Battens)", leadTimeDays: "8–10 wks", startDate: "01/05/2026", targetDeliveryDate: "15/07/2026", completionDate: "—" },
